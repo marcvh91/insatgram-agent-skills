@@ -27,5 +27,5 @@ Archivos en el repo GitHub `marcvh91/insatgram-agent-skills`, carpeta `media/` (
 - `video_terapia_manual_peu.mp4` (16 s) — terapia manual en pie y tobillo. Ideal para fascitis plantar, neuroma de Morton, esguince. Usado en la story de presentación (19/10/2026).
 
 ## Uso hecho
-- 19/10/2026: carrusel de presentación (IMG_2074, 1960, 1952, 1958, 2073) + story con `video_terapia_manual_peu.mp4`.
+- 19/10/2026: carrusel de presentación estilo negro+lima (IMG_2074, 1960, 1952, 1956, 1958, 2073) + story con `video_terapia_manual_peu.mp4`.
 Evitar repetir la misma foto de portada en publicaciones seguidas.

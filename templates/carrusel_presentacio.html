@@ -37,6 +37,26 @@ li .sub{display:block;font-size:32px;font-weight:400;color:var(--muted);margin-t
 .wa .x{font-size:32px;color:var(--muted);margin-top:6px}
 .portrait{width:300px;height:300px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:10px solid var(--acc)}
 .story{width:1080px;height:1920px;position:relative;overflow:hidden;background:transparent}
+</style><style>
+:root{--acc:#D4FF3F;--acc2:#D4FF3F;--ink:#FFFFFF;--muted:#D6DEE3}
+.s{background:#0B0F12!important;color:#fff}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,15,.35) 0%,rgba(8,12,15,.78) 45%,rgba(8,12,15,.92) 100%)}
+.fade{background:linear-gradient(180deg,rgba(8,12,15,0) 30%,rgba(8,12,15,.8) 60%,rgba(8,12,15,.95) 80%)!important}
+.body{justify-content:flex-end;padding-bottom:150px!important;z-index:2}
+h1,h2{color:#fff;text-transform:uppercase;letter-spacing:-.01em}
+h2{font-size:78px!important}
+.kick{color:var(--acc)!important}
+.big{color:var(--acc)!important}
+.acc{color:var(--acc)!important}
+li{border-color:rgba(255,255,255,.2)!important}
+li b{color:var(--acc)!important}
+.z{background:rgba(255,255,255,.1)!important;backdrop-filter:blur(6px)}
+.z .t{color:var(--acc)!important}
+.wa{background:var(--acc)!important;color:#0B0F12}.wa .k{color:#0B0F12!important}.wa .x{color:#33402A!important}
+.dots i{background:rgba(255,255,255,.3)!important}.dots i.on{background:var(--acc)!important}
+.foot{color:#D6DEE3!important}
+p.lead{color:#D6DEE3!important}
+p.lead b{color:#fff!important}
 </style></head><body>
 
 <!-- 1 PORTADA -->
@@ -53,8 +73,8 @@ li .sub{display:block;font-size:32px;font-weight:400;color:var(--muted);margin-t
 
 <!-- 2 QUI SÓC -->
 <section class="s" id="s2">
-  <div class="top"><img src="../media/IMG_1960.jpg" style="object-position:50% 12%"></div>
-  <div class="body">
+  <img class="ph" src="../media/IMG_1960.jpg" style="object-position:50% 15%"><div class="shade"></div>
+    <div class="body">
     <div class="kick">Qui sóc</div>
     <div class="big" style="margin-top:20px">2016</div>
     <h2>Em vaig graduar com a fisioterapeuta.</h2>
@@ -65,8 +85,8 @@ li .sub{display:block;font-size:32px;font-weight:400;color:var(--muted);margin-t
 
 <!-- 3 FORMACIÓ -->
 <section class="s" id="s3">
-  <div class="top" style="height:440px"><img src="../media/IMG_1952.jpg" style="object-position:50% 30%"></div>
-  <div class="body">
+  <img class="ph" src="../media/IMG_1952.jpg" style="object-position:50% 30%"><div class="shade"></div>
+    <div class="body">
     <div class="kick">Formació</div>
     <h2>El que hi ha darrere de cada sessió</h2>
     <ul>
@@ -81,7 +101,8 @@ li .sub{display:block;font-size:32px;font-weight:400;color:var(--muted);margin-t
 
 <!-- 4 QUÈ TRACTO -->
 <section class="s" id="s4">
-  <div class="body" style="padding-top:110px">
+  <img class="ph" src="../media/IMG_1956.jpg" style="object-position:50% 40%"><div class="shade"></div>
+  <div class="body" >
     <div class="kick">Què tracto</div>
     <h2>Lesions del corredor, <span class="acc">de muntanya i d'asfalt</span></h2>
     <div class="zones">
@@ -96,8 +117,8 @@ li .sub{display:block;font-size:32px;font-weight:400;color:var(--muted);margin-t
 
 <!-- 5 COM TREBALLO -->
 <section class="s" id="s5">
-  <div class="top" style="height:380px"><img src="../media/IMG_1958.jpg" style="object-position:50% 30%"></div>
-  <div class="body">
+  <img class="ph" src="../media/IMG_1958.jpg" style="object-position:50% 30%"><div class="shade"></div>
+    <div class="body">
     <div class="kick">Com treballo</div>
     <h2>4 passos, sense dreceres</h2>
     <ul style="margin-top:26px">
@@ -111,20 +132,22 @@ li .sub{display:block;font-size:32px;font-weight:400;color:var(--muted);margin-t
 </section>
 
 <!-- 6 CITA -->
-<section class="s light" id="s6">
-  <div class="body" style="padding-top:110px">
-    <img class="portrait" src="../media/IMG_2073.jpg">
+<section class="s" id="s6">
+  <img class="ph" src="../media/IMG_2073.jpg" style="object-position:50% 15%"><div class="shade"></div>
+  <div class="body" >
+    
     <div class="kick" style="margin-top:44px">On em trobes</div>
     <h2>Passo consulta a <span class="acc">Tonus Fisioteràpia</span>, a Tarragona.</h2>
     <div class="wa"><div class="k">Per demanar cita amb mi</div><div class="n">627 148 092</div><div class="x">WhatsApp directe · també a la bio</div></div>
-    <p class="lead" style="margin-top:40px">El 8 de novembre corro els <b style="color:var(--bg)">10K de Tarragona</b>. Tu fas els 10K o la mitja?</p>
+    <p class="lead" style="margin-top:40px">El 8 de novembre corro els <b>10K de Tarragona</b>. Tu fas els 10K o la mitja?</p>
   </div>
   <div class="foot"><span>@marcvallfisio</span><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div></div>
 </section>
 
+
 <!-- STORY OVERLAY (transparent, sobre vídeo) -->
 <section class="story" id="story">
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,58,.92) 0%,rgba(15,42,58,.55) 26%,rgba(15,42,58,0) 42%,rgba(15,42,58,0) 66%,rgba(15,42,58,.9) 84%)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,15,.92) 0%,rgba(8,12,15,.55) 26%,rgba(8,12,15,0) 42%,rgba(8,12,15,0) 66%,rgba(8,12,15,.9) 84%)"></div>
   <div style="position:absolute;left:90px;right:90px;top:230px">
     <div class="kick">Nou per aquí 👋</div>
     <h1 style="font-size:118px">Sóc en Marc,<br>fisio a <span class="acc">Tarragona.</span></h1>
