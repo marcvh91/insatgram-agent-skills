@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ca"><head><meta charset="utf-8">
+<style>
+:root{--bg:#0F2A3A;--bg2:#163B50;--ink:#F4F1EA;--muted:#A9BCC8;--acc:#FF6A3D;--acc2:#FFD9C9}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#222;font-family:"Inter",sans-serif;color:var(--ink)}
+.s{width:1080px;height:1350px;background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,58,0) 30%,rgba(15,42,58,.75) 58%,var(--bg) 78%)}
+.top{position:relative;height:560px;flex:none;overflow:hidden}
+.top img{width:100%;height:100%;object-fit:cover}
+.top:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,58,0) 55%,var(--bg) 100%)}
+.body{position:relative;padding:20px 96px 140px;flex:1;display:flex;flex-direction:column}
+.kick{font-weight:700;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+h1{font-family:"Inter Display";font-weight:900;font-size:124px;line-height:.96;letter-spacing:-.02em;margin-top:28px}
+h2{font-family:"Inter Display";font-weight:800;font-size:80px;line-height:1.02;letter-spacing:-.015em;margin-top:22px}
+.acc{color:var(--acc)}
+p.lead{font-size:42px;line-height:1.35;color:var(--muted);margin-top:30px}
+p.lead b{color:var(--ink)}
+ul{list-style:none;margin-top:36px}
+li{font-size:42px;line-height:1.2;font-weight:600;padding:17px 0;border-top:2px solid rgba(244,241,234,.14);display:flex;gap:28px;align-items:baseline}
+li:last-child{border-bottom:2px solid rgba(244,241,234,.14)}
+li b{color:var(--acc);font-family:"Inter Display";font-weight:900;font-size:38px;min-width:64px}
+li .sub{display:block;font-size:32px;font-weight:400;color:var(--muted);margin-top:6px}
+.foot{position:absolute;left:96px;right:96px;bottom:60px;display:flex;justify-content:space-between;font-size:28px;font-weight:600;color:var(--muted);z-index:3}
+.dots{display:flex;gap:12px;align-items:center}.dots i{width:14px;height:14px;border-radius:50%;background:rgba(244,241,234,.3)}.dots i.on{background:var(--acc);width:40px;border-radius:7px}
+.big{font-family:"Inter Display";font-weight:900;font-size:200px;line-height:.9;color:var(--acc);letter-spacing:-.03em}
+.zones{display:grid;grid-template-columns:1fr;gap:22px;margin-top:40px}
+.z{background:var(--bg2);border-radius:26px;padding:30px 40px;display:flex;gap:34px;align-items:center}
+.z .t{font-family:"Inter Display";font-weight:900;font-size:40px;color:var(--acc);min-width:190px;letter-spacing:.04em}
+.z .v{font-size:36px;font-weight:600;line-height:1.3}
+.light{background:var(--ink);color:var(--bg)}
+.light p.lead{color:#4C6372}.light .foot{color:#4C6372}.light .dots i{background:rgba(15,42,58,.2)}.light .dots i.on{background:var(--acc)}
+.wa{background:var(--bg);color:var(--ink);border-radius:30px;padding:40px 48px;margin-top:40px}
+.wa .k{font-size:28px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.wa .n{font-family:"Inter Display";font-weight:900;font-size:86px;margin-top:6px;letter-spacing:-.01em}
+.wa .x{font-size:32px;color:var(--muted);margin-top:6px}
+.portrait{width:300px;height:300px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:10px solid var(--acc)}
+.story{width:1080px;height:1920px;position:relative;overflow:hidden;background:transparent}
+</style></head><body>
+
+<!-- 1 PORTADA -->
+<section class="s" id="s1">
+  <img class="ph" src="../media/IMG_2074.jpg" style="object-position:50% 12%">
+  <div class="fade"></div>
+  <div class="body" style="justify-content:flex-end;padding-bottom:170px">
+    <div class="kick">Fisioterapeuta · Tarragona</div>
+    <h1>Hola, sóc<br>en Marc.<br><span class="acc">Fisio i corredor.</span></h1>
+    <p class="lead">T'explico qui sóc, què faig i per què les lesions del corredor són la meva especialitat. <b style="color:var(--acc2)">Llisca →</b></p>
+  </div>
+  <div class="foot"><span>@marcvallfisio</span><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<!-- 2 QUI SÓC -->
+<section class="s" id="s2">
+  <div class="top"><img src="../media/IMG_1960.jpg" style="object-position:50% 12%"></div>
+  <div class="body">
+    <div class="kick">Qui sóc</div>
+    <div class="big" style="margin-top:20px">2016</div>
+    <h2>Em vaig graduar com a fisioterapeuta.</h2>
+    <p class="lead">Des de llavors he treballat amb equips professionals de <b>bàsquet, rugbi i natació</b>, i en consulta privada.</p>
+  </div>
+  <div class="foot"><span>@marcvallfisio</span><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<!-- 3 FORMACIÓ -->
+<section class="s" id="s3">
+  <div class="top" style="height:440px"><img src="../media/IMG_1952.jpg" style="object-position:50% 30%"></div>
+  <div class="body">
+    <div class="kick">Formació</div>
+    <h2>El que hi ha darrere de cada sessió</h2>
+    <ul>
+      <li><b>01</b><div>Postgrau en Fisioteràpia Esportiva</div></li>
+      <li><b>02</b><div>Màster en Teràpia Manual Ortopèdica</div></li>
+      <li><b>03</b><div>Postgrau en Fisioteràpia Invasiva</div></li>
+    </ul>
+    <p class="lead" style="font-size:38px">Treballo amb evidència científica. Si una cosa no està demostrada, no la faig servir.</p>
+  </div>
+  <div class="foot"><span>@marcvallfisio</span><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div></div>
+</section>
+
+<!-- 4 QUÈ TRACTO -->
+<section class="s" id="s4">
+  <div class="body" style="padding-top:110px">
+    <div class="kick">Què tracto</div>
+    <h2>Lesions del corredor, <span class="acc">de muntanya i d'asfalt</span></h2>
+    <div class="zones">
+      <div class="z"><div class="t">PEU</div><div class="v">Fasciïtis plantar · neuroma de Morton · metatarsàlgia · esquinç de turmell</div></div>
+      <div class="z"><div class="t">CAMA</div><div class="v">Periostitis tibial · sobrecàrregues musculars · tendinopatia aquil·liana</div></div>
+      <div class="z"><div class="t">GENOLL</div><div class="v">Tendinopatia rotuliana · condromalàcia · artrosi</div></div>
+    </div>
+    <p class="lead">I també mal d'esquena, cervicals i cefalees.</p>
+  </div>
+  <div class="foot"><span>@marcvallfisio</span><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div></div>
+</section>
+
+<!-- 5 COM TREBALLO -->
+<section class="s" id="s5">
+  <div class="top" style="height:380px"><img src="../media/IMG_1958.jpg" style="object-position:50% 30%"></div>
+  <div class="body">
+    <div class="kick">Com treballo</div>
+    <h2>4 passos, sense dreceres</h2>
+    <ul style="margin-top:26px">
+      <li><b>01</b><div>Entrevista<span class="sub">La teva història, el teu esport, els teus objectius</span></div></li>
+      <li><b>02</b><div>Valoració funcional i ecogràfica<span class="sub">Veiem què passa, no ho suposem</span></div></li>
+      <li><b>03</b><div>Tractament personalitzat<span class="sub">Teràpia manual, exercici, neuromodulació…</span></div></li>
+      <li><b>04</b><div>Seguiment i prevenció<span class="sub">Perquè tornis a córrer i no recaiguis</span></div></li>
+    </ul>
+  </div>
+  <div class="foot"><span>@marcvallfisio</span><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div></div>
+</section>
+
+<!-- 6 CITA -->
+<section class="s light" id="s6">
+  <div class="body" style="padding-top:110px">
+    <img class="portrait" src="../media/IMG_2073.jpg">
+    <div class="kick" style="margin-top:44px">On em trobes</div>
+    <h2>Passo consulta a <span class="acc">Tonus Fisioteràpia</span>, a Tarragona.</h2>
+    <div class="wa"><div class="k">Per demanar cita amb mi</div><div class="n">627 148 092</div><div class="x">WhatsApp directe · també a la bio</div></div>
+    <p class="lead" style="margin-top:40px">El 8 de novembre corro els <b style="color:var(--bg)">10K de Tarragona</b>. Tu fas els 10K o la mitja?</p>
+  </div>
+  <div class="foot"><span>@marcvallfisio</span><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div></div>
+</section>
+
+<!-- STORY OVERLAY (transparent, sobre vídeo) -->
+<section class="story" id="story">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,58,.92) 0%,rgba(15,42,58,.55) 26%,rgba(15,42,58,0) 42%,rgba(15,42,58,0) 66%,rgba(15,42,58,.9) 84%)"></div>
+  <div style="position:absolute;left:90px;right:90px;top:230px">
+    <div class="kick">Nou per aquí 👋</div>
+    <h1 style="font-size:118px">Sóc en Marc,<br>fisio a <span class="acc">Tarragona.</span></h1>
+  </div>
+  <div style="position:absolute;left:90px;right:90px;bottom:250px">
+    <p class="lead" style="color:var(--ink);font-weight:600;font-size:46px">Especialista en lesions del corredor.</p>
+    <p class="lead" style="color:var(--acc2);font-weight:700;margin-top:18px">Tot sobre mi al darrer post ↓</p>
+  </div>
+</section>
+</body></html>

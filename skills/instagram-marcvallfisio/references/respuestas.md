@@ -10,7 +10,7 @@
 - **Comentario positivo**: agradecer + pregunta para alargar la conversación.
 - **Pregunta sobre su dolor**: "Sin valorarte no puedo decirte qué es, pero [orientación general]. Si quieres, escríbeme por privado y vemos cómo te puedo ayudar."
 - **DM con palabra clave** (p. ej. DOLOR): entregar lo prometido + una pregunta + oferta suave de cita.
-- **Pide precio/cita**: nunca precio en comentarios. Responder que se lo das por WhatsApp (número en `perfil.md`) y facilitar el siguiente paso en un solo mensaje.
+- **Pide precio/cita**: nunca precio en comentarios. Responder en catalán (o en el idioma de la persona) que se lo das por **tu** WhatsApp (627 148 092), nunca derivar al teléfono del centro y facilitar el siguiente paso en un solo mensaje.
 - **Crítica o troll**: una respuesta educada o ninguna. Nunca discutir.
 - **No es de la zona**: agradecer y ofrecer contenido útil; no forzar la cita.
 
