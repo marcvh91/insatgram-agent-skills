@@ -17,3 +17,6 @@
 4. Pregunta para comentarios con 👇.
 5. 5–7 hashtags al final, incluyendo #marcvallfisio.
 Más: ubicación Tarragona, texto alternativo por diapositiva, post a las 13:30 y story a las 20:30.
+
+## Reels sin grabar
+Marc prefiere no grabar: los Reels se montan con diapositivas verticales 1080×1920 (plantilla `templates/reel_vertical.html`) con zoom lento + clips de sus vídeos, unidos con ffmpeg (~20 s). Texto entre y=700 y y=1550 (zona segura). Marc añade la música en la app. Explicarle siempre en lenguaje sencillo, sin jerga.

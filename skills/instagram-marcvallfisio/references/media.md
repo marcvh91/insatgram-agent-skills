@@ -29,3 +29,4 @@ Archivos en el repo GitHub `marcvh91/insatgram-agent-skills`, carpeta `media/` (
 ## Uso hecho
 - 19/10/2026: carrusel de presentación estilo negro+lima (IMG_2074, 1960, 1952, 1956, 1958, 2073) + story con `video_terapia_manual_peu.mp4`.
 Evitar repetir la misma foto de portada en publicaciones seguidas.
+- 21/10/2026: Reel «Queden 18 dies» (IMG_1935, 1956, 1958, 1955, 2073 + 3,5 s de `video_terapia_manual_peu.mp4`). Plantilla `templates/reel_vertical.html`.
