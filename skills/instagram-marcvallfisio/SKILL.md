@@ -11,7 +11,7 @@ description: Gestiona el Instagram @marcvallfisio (fisioterapeuta, Tonus Fisiote
 - Especialidad: fisioterapia deportiva y readaptación deportiva. Servicios: fisioterapia, ecografía, neuromodulación percutánea, readaptación.
 - Objetivo: ser conocido en la zona y convertir seguidores en pacientes. Seguidores de fuera de la zona valen poco; prioriza alcance local.
 - Público principal: **corredores de montaña (trail) y de asfalto**, desde populares hasta competidores. La zona sirve para segmentar (ubicación, hashtags), pero en los textos no escribas "corredors del Camp de Tarragona": di "corredors" o "a Tarragona".
-- Lesiones típicas del corredor (usar estas): **peu** — fasciïtis plantar, neuroma de Morton, metatarsàlgia, esquinç de turmell; **cama** — periostitis tibial, sobrecàrregues musculars, tendinopatia aquil·liana; **genoll** — tendinopatia rotuliana, condromalàcia, artrosi.
+- Lesiones típicas del corredor (usar estas): **peu** — fascitis plantar, neuroma de Morton, metatarsàlgia, esquinç de turmell; **cama** — periostitis tibial, sobrecàrregues musculars, tendinopatia Aquil·lea; **genoll** — tendinopatia rotuliana, condromalàcia, artrosi.
 - Público secundario: adultos de la zona con dolor común (espalda, cuello). Sin fútbol ni otros deportes de equipo como foco.
 - Diferencial personal: Marc corre trail y entrena; habla de corredor a corredor.
 - Idioma: **catalán por defecto** en todo lo publicable (diapositivas, copys, stories). Castellano solo si Marc lo pide.
