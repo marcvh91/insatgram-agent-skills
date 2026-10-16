@@ -3,15 +3,15 @@
 Los campos con `[PENDIENTE]` no se inventan: si hacen falta, pregunta a Marc.
 
 - Usuario: @marcvallfisio
-- Nombre visible: [PENDIENTE]
+- Nombre visible: Marc Vall Hernández
 - Centro: Tonus Fisioterapia
-- Localidad exacta y barrio: [PENDIENTE]
-- Zonas a las que quiero llegar (pueblos/ciudades): [PENDIENTE — p. ej. Tarragona, Reus, Salou, Cambrils, Vila-seca, Torredembarra]
-- Servicios que ofrezco: [PENDIENTE]
-- Especialidad o caso estrella: [PENDIENTE]
-- Cómo se pide cita (enlace, WhatsApp, teléfono): [PENDIENTE]
-- Horario: [PENDIENTE]
-- Ficha de Google Business (enlace): [PENDIENTE]
+- Localidad exacta y barrio: Tarragona, Vall de l'Arrabassada
+- Zonas a las que quiero llegar (pueblos/ciudades): Tarragona, Canonja, Torreforta
+- Servicios que ofrezco: Sesiones de fisioterapia, ecografia, neuromodulación percutanea, readaptacion deportiva.
+- Especialidad o caso estrella: fisioterapia deportiva, readaptaciones deportivas
+- Cómo se pide cita: WhatsApp y email (solo en la versión instalada, no en este repo público)
+- Horario: 9:30 - 20h
+- Ficha de Google Business: ubicación 47CF+VV Tarragona (Plus Code; falta el enlace corto de la ficha)
 - Tono: cercano, claro, sin tecnicismos; humor ligero permitido.
-- Cosas que NO quiero publicar: [PENDIENTE]
-- Colaboradores locales posibles (clubs, gimnasios, tiendas de running, entrenadores): [PENDIENTE]
+- Cosas que NO quiero publicar: precios de sesiones, promesas, cosas falsas, informacion poco fiable o sin evidencia cientifica.
+- Colaboradores locales posibles (clubs, gimnasios, tiendas de running, entrenadores): TONUS FISIOTERAPIA, Nastic Tarragona, entrenadores personales, gimnasios
