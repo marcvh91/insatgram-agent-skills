@@ -9,3 +9,11 @@
 - Stories en vídeo: capa PNG transparente sobre vídeo propio (ffmpeg overlay), texto arriba y abajo, centro libre para stickers.
 - Comprobar antes de entregar: legibilidad sobre la foto y que nada se solape con el pie.
 - Alternativas descartadas por Marc: azul noche + naranja, crema + verde clínico.
+
+## Estructura fija del texto de la publicación (catalán)
+1. Gancho en la primera línea (se ve antes de «més»).
+2. 2–3 líneas de contenido, una idea por línea.
+3. «Passo consulta a Tonus Fisioteràpia, a Tarragona. Si vols cita amb mi, escriu-me directament per WhatsApp 📲 627 148 092 (també a la bio).»
+4. Pregunta para comentarios con 👇.
+5. 5–7 hashtags al final, incluyendo #marcvallfisio.
+Más: ubicación Tarragona, texto alternativo por diapositiva, post a las 13:30 y story a las 20:30.

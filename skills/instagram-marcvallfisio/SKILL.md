@@ -28,6 +28,7 @@ description: Gestiona el Instagram @marcvallfisio (fisioterapeuta, Tonus Fisiote
 7. **Una pieza = un objetivo**: alcance (compartible), confianza (educativo) o conversión (CTA a cita). Indícalo.
 8. **Formato prioritario**: Reels de 7–30 s. Carruseles para contenido guardable. Stories para cercanía y conversión.
 9. Entrega listo para publicar: sin explicaciones largas.
+10. **Formato fijo de publicación (siempre el mismo)**: estilo «Foto a sang» negro + verde lima de `references/disseny.md` y la plantilla `templates/carrusel_presentacio.html`. No proponer otros estilos salvo que Marc lo pida. Cada entrega incluye: PNG 1080×1350 por diapositiva, texto de la publicación con la estructura de `references/disseny.md`, texto alternativo por diapositiva y hora de programación.
 
 ## Qué hacer según la petición
 | Petición | Guía |
