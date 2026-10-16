@@ -3,7 +3,7 @@
 ## Pilares (rotar)
 1. **Dolor común + solución sencilla** (confianza): "Si te duele X al hacer Y, prueba esto".
 2. **Mitos** (alcance): "¿Crujir la espalda es malo?", "¿Hielo o calor?".
-3. **Local y deportivo** (alcance local): readaptación de lesiones deportivas, ejercicios en sitios reconocibles (Arrabassada, Tarragona), colaboraciones con Nàstic, gimnasios y entrenadores personales de la zona.
+3. **Local y deportivo** (alcance local): readaptación de lesiones deportivas, ejercicios en sitios reconocibles del Camp de Tarragona (playas, paseos, rutas de trail), colaboraciones con Nàstic, gimnasios y entrenadores personales de la zona.
 4. **Detrás de la consulta** (confianza): el centro, el día a día, Marc entrenando trail.
 5. **Conversión**: qué pasa en una primera visita, cuándo ir al fisio, cómo pedir cita.
 

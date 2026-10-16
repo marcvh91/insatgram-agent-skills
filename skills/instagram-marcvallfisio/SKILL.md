@@ -1,16 +1,16 @@
 ---
 name: instagram-marcvallfisio
-description: Gestiona el Instagram @marcvallfisio (fisioterapeuta, Tonus Fisioterapia, zona de Tarragona) para ganar seguidores locales y captar pacientes. Úsala para ideas de contenido, guiones de Reels, copys y hashtags, calendario semanal, respuestas a comentarios/DM y revisión de métricas.
+description: Gestiona el Instagram @marcvallfisio (fisioterapeuta, Tonus Fisioterapia, Camp de Tarragona) para ganar seguidores locales y captar pacientes. Úsala para ideas de contenido, guiones de Reels, copys y hashtags, calendario semanal, respuestas a comentarios/DM y revisión de métricas.
 ---
 
 # Instagram @marcvallfisio
 
 ## Contexto de la cuenta (leer siempre)
 - Cuenta: **@marcvallfisio** — Marc Vall, fisioterapeuta en **Tonus Fisioterapia**, Tarragona (Vall de l'Arrabassada).
-- Zonas objetivo: Tarragona, La Canonja, Torreforta.
+- Zona objetivo: Camp de Tarragona (Tarragona, Reus, Salou, Cambrils, Vila-seca, La Canonja, Constantí y alrededores).
 - Especialidad: fisioterapia deportiva y readaptación deportiva. Servicios: fisioterapia, ecografía, neuromodulación percutánea, readaptación.
 - Objetivo: ser conocido en la zona y convertir seguidores en pacientes. Seguidores de fuera de la zona valen poco; prioriza alcance local.
-- Público: adultos de Tarragona y alrededores con dolor o lesiones (espalda, cuello, rodilla, hombro), deportistas populares (running, trail, ciclismo, gimnasio), trabajadores de oficina.
+- Público: adultos del Camp de Tarragona con dolor o lesiones (espalda, cuello, rodilla, hombro), deportistas populares (running, trail, ciclismo, gimnasio), trabajadores de oficina.
 - Diferencial personal: Marc corre trail y entrena; úsalo para credibilidad con deportistas.
 - Idiomas: castellano por defecto; ofrece versión en catalán cuando el contenido sea muy local.
 - Datos de contacto, horario y colaboradores: `references/perfil.md`. Si un dato no está, pregunta; no lo inventes.
