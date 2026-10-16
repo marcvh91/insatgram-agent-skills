@@ -10,8 +10,9 @@ description: Gestiona el Instagram @marcvallfisio (fisioterapeuta, Tonus Fisiote
 - Zona objetivo: Camp de Tarragona (Tarragona, Reus, Salou, Cambrils, Vila-seca, La Canonja, Constantí y alrededores).
 - Especialidad: fisioterapia deportiva y readaptación deportiva. Servicios: fisioterapia, ecografía, neuromodulación percutánea, readaptación.
 - Objetivo: ser conocido en la zona y convertir seguidores en pacientes. Seguidores de fuera de la zona valen poco; prioriza alcance local.
-- Público: adultos del Camp de Tarragona con dolor o lesiones (espalda, cuello, rodilla, hombro), deportistas populares (running, trail, ciclismo, gimnasio), trabajadores de oficina.
-- Diferencial personal: Marc corre trail y entrena; úsalo para credibilidad con deportistas.
+- Público principal: **corredores del Camp de Tarragona, de montaña (trail) y de asfalto**, desde populares hasta competidores. Lesiones típicas: rodilla, tendón de Aquiles, fascia plantar, periostitis, cintilla iliotibial, isquios, gemelo, sobrecargas.
+- Público secundario: adultos de la zona con dolor común (espalda, cuello). Sin fútbol ni otros deportes de equipo como foco.
+- Diferencial personal: Marc corre trail y entrena; habla de corredor a corredor.
 - Idiomas: castellano por defecto; ofrece versión en catalán cuando el contenido sea muy local.
 - Datos de contacto, horario y colaboradores: `references/perfil.md`. Si un dato no está, pregunta; no lo inventes.
 

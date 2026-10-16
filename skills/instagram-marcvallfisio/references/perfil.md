@@ -14,4 +14,4 @@ Los campos con `[PENDIENTE]` no se inventan: si hacen falta, pregunta a Marc.
 - Ficha de Google Business: https://maps.app.goo.gl/uGNztRePga7qVAn28
 - Tono: cercano, claro, sin tecnicismos; humor ligero permitido.
 - Cosas que NO quiero publicar: precios de sesiones, promesas, cosas falsas, informacion poco fiable o sin evidencia cientifica.
-- Colaboradores locales posibles (clubs, gimnasios, tiendas de running, entrenadores): TONUS FISIOTERAPIA, Nastic Tarragona, entrenadores personales, gimnasios
+- Colaboradores locales posibles (clubs, gimnasios, tiendas de running, entrenadores): TONUS FISIOTERAPIA, clubs de running y trail de la zona, tiendas de running, entrenadores personales, gimnasios

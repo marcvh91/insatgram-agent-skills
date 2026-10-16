@@ -14,7 +14,7 @@
 ## Hashtags (3–8, no más)
 Mezcla:
 - 2–3 locales: #Tarragona #CampdeTarragona #fisioterapiatarragona #Reus #Salou #Cambrils (elige según dónde se grabe)
-- 2–3 del tema: #fisioterapiadeportiva #readaptaciondeportiva #running #trailrunning #futbol…
+- 2–3 del tema: #running #trailrunning #corredores #runningtarragona #fisioterapiadeportiva #lesionesrunning…
 - 1 de marca propia: #marcvallfisio
 
 Los hashtags pesan poco en el alcance; prioriza **etiquetar la ubicación** y palabras clave del tema dentro del copy (Instagram funciona también como buscador).
