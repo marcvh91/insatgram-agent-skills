@@ -1,0 +1,203 @@
+<title>Story Hores Lliures</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap">
+<style>
+/* Layout: eina en dues columnes (formulari | previsualització 9:16); en mòbil, una sota l'altra. Estil de marca negre + llima, tema únic fosc. */
+:root{
+  --bg:#0B0F12; --surface:#151B20; --line:#27323C; --fg:#F3F6F7; --muted:#9AA8B2; --acc:#D4FF3F; --acc-ink:#0B0F12;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.45}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+header{margin-bottom:22px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+h1{font-weight:900;font-size:clamp(28px,6vw,40px);line-height:1;text-transform:uppercase;letter-spacing:-.02em;margin:8px 0 8px;text-wrap:balance}
+.lead{color:var(--muted);margin:0;max-width:60ch}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:28px;align-items:start}
+@media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}}
+form{display:flex;flex-direction:column;gap:18px;min-width:0}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+legend,label.l{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:6px}
+input[type=text],input[type=time]{width:100%;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:600 17px var(--body);font-variant-numeric:tabular-nums}
+input:focus-visible,button:focus-visible,.photo input:focus-visible+img{outline:2px solid var(--acc);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1 1 140px;min-width:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font:700 14px var(--body);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.check{display:flex;align-items:center;gap:10px;font-weight:600;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--acc)}
+.photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.photo{position:relative;cursor:pointer}
+.photo input{position:absolute;opacity:0}
+.photo img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 20%;border-radius:10px;border:3px solid transparent}
+.photo input:checked+img{border-color:var(--acc)}
+.prev{position:sticky;top:calc(16px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:12px}
+canvas{width:100%;max-width:380px;aspect-ratio:9/16;border-radius:18px;background:#000;display:block}
+.btn{background:var(--acc);color:var(--acc-ink);border:0;border-radius:12px;padding:14px 18px;font:800 16px var(--body);cursor:pointer}
+.btn[hidden]{display:none}
+.msg{font-size:14px;color:var(--muted);min-height:20px}
+.hint{font-size:13px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">@marcvallfisio · Stories</div>
+    <h1>Hores lliures</h1>
+    <p class="lead">Escriu el dia i l'hora que tens lliure i desa la imatge per penjar-la a les stories.</p>
+  </header>
+
+  <div class="grid">
+    <form id="f" autocomplete="off">
+      <fieldset>
+        <legend>Dia</legend>
+        <div class="chips" id="dayChips">
+          <button type="button" class="chip" data-day="Avui" aria-pressed="true">Avui</button>
+          <button type="button" class="chip" data-day="Demà" aria-pressed="false">Demà</button>
+          <button type="button" class="chip" data-day="" aria-pressed="false">Un altre dia</button>
+        </div>
+        <input type="text" id="day" value="Avui" aria-label="Dia" maxlength="28">
+        <input type="text" id="date" value="" placeholder="Data opcional, p. ex. dijous 23" aria-label="Data" maxlength="28">
+      </fieldset>
+
+      <fieldset>
+        <legend>Hores</legend>
+        <div class="row">
+          <input type="time" id="h1" value="18:30" aria-label="Primera hora">
+          <input type="time" id="h2" value="19:30" aria-label="Segona hora">
+        </div>
+        <label class="check"><input type="checkbox" id="two"> Tinc dues hores</label>
+      </fieldset>
+
+
+    </form>
+
+    <div class="prev">
+      <canvas id="c" width="1080" height="1920" aria-label="Previsualització de la story"></canvas>
+      <button class="btn" id="save" type="button">Desa la imatge</button>
+      <div class="msg" id="msg" role="status"></div>
+      <p class="hint">Si el botó no funciona, mantén premuda la imatge (mòbil) o fes-hi clic dret (ordinador) per desar-la.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const ACC='#D4FF3F', INK='#0B0F12';
+const $=id=>document.getElementById(id);
+const c=$('c'), ctx=c.getContext('2d');
+let bg='rellotge';
+
+function drawBg(W,H){
+  if(bg==='rellotge'){
+    const cx=W-330, cy=560, r=300;
+    ctx.strokeStyle='rgba(255,255,255,.10)'; ctx.lineWidth=2;
+    for(let i=1;i<=3;i++){ctx.beginPath();ctx.arc(cx,cy,r+i*70,0,Math.PI*2);ctx.stroke();}
+    ctx.strokeStyle=ACC; ctx.lineWidth=26; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke();
+    for(let i=0;i<12;i++){const a=i/12*Math.PI*2, r1=r-60, r2=r-(i%3===0?110:85);
+      ctx.strokeStyle= i%3===0?'#fff':'rgba(255,255,255,.55)'; ctx.lineWidth=i%3===0?12:7; ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(cx+Math.sin(a)*r1,cy-Math.cos(a)*r1);ctx.lineTo(cx+Math.sin(a)*r2,cy-Math.cos(a)*r2);ctx.stroke();}
+    const v=($('h1').value||'10:00').split(':'), hh=(+v[0])%12, mm=+v[1]||0;
+    const ah=(hh+mm/60)/12*Math.PI*2, am=mm/60*Math.PI*2;
+    ctx.lineCap='round'; ctx.strokeStyle='#fff';
+    ctx.lineWidth=22; ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.sin(ah)*(r*.48),cy-Math.cos(ah)*(r*.48));ctx.stroke();
+    ctx.strokeStyle=ACC; ctx.lineWidth=14; ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.sin(am)*(r*.72),cy-Math.cos(am)*(r*.72));ctx.stroke();
+    ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(cx,cy,24,0,Math.PI*2); ctx.fill();
+    ctx.lineCap='butt';
+  } else if(bg==='pista'){
+    const cx=W+170, cy=560;
+    for(let i=0;i<8;i++){const r=200+i*78;
+      ctx.strokeStyle= i===2?ACC:'rgba(255,255,255,.13)'; ctx.lineWidth= i===2?14:4;
+      ctx.beginPath(); ctx.ellipse(cx,cy,r*1.25,r,0,0,Math.PI*2); ctx.stroke();}
+  } else {
+    ctx.fillStyle=ACC; ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(380,0); ctx.lineTo(0,380); ctx.closePath(); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.05)'; ctx.font='900 300px Inter'; ctx.fillText('FISIO',60,820);
+  }
+}
+
+// day chips
+$('dayChips').addEventListener('click',e=>{
+  const b=e.target.closest('.chip'); if(!b) return;
+  document.querySelectorAll('#dayChips .chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  $('day').value=b.dataset.day; if(!b.dataset.day) $('day').focus(); draw();
+});
+['day','date','h1','h2','two'].forEach(id=>$(id).addEventListener('input',draw));
+$('two').addEventListener('change',()=>{$('h2').disabled=!$('two').checked;draw();});
+$('h2').disabled=!$('two').checked;
+
+function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);}
+function fit(text,maxW,size,weight){let s=size;do{ctx.font=`${weight} ${s}px Inter`;if(ctx.measureText(text).width<=maxW)break;s-=4;}while(s>30);return s;}
+
+function draw(){
+  const W=1080,H=1920,L=90;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle=INK; ctx.fillRect(0,0,W,H);
+  drawBg(W,H);
+
+  const two=$('two').checked;
+  const hours=[$('h1').value, two?$('h2').value:''].filter(Boolean);
+  const day=($('day').value||'').trim(), date=($('date').value||'').trim();
+
+  // top tag
+  ctx.textBaseline='alphabetic';
+  ctx.font='800 34px Inter'; ctx.letterSpacing='4px'; ctx.fillStyle=ACC;
+  ctx.fillText('AGENDA A TONUS FISIOTERÀPIA',L,175);
+  ctx.letterSpacing='0px';
+
+  // title
+  const t1='TINC', t2= hours.length>1?'2 HORES':'1 HORA', t3= hours.length>1?'LLIURES':'LLIURE';
+  ctx.font='900 150px Inter'; ctx.fillStyle='#fff';
+  ctx.fillText(t1,L,1000);
+  ctx.fillStyle=ACC; ctx.fillText(t2,L,1140);
+  ctx.fillStyle='#fff'; ctx.fillText(t3,L,1280);
+
+  // day line
+  const dl=[day,date].filter(Boolean).join(' · ');
+  if(dl){const s=fit(dl.toUpperCase(),W-2*L,58,'800');ctx.fillStyle='#fff';ctx.font=`800 ${s}px Inter`;ctx.fillText(dl.toUpperCase(),L,1370);}
+
+  // hour chips
+  let x=L; const y=1405, h=150;
+  hours.forEach(hh=>{
+    const t=hh+' h'; ctx.font='900 96px Inter'; const w=ctx.measureText(t).width+72;
+    ctx.fillStyle=ACC; rr(x,y,w,h,28); ctx.fill();
+    ctx.fillStyle=INK; ctx.fillText(t,x+36,y+112);
+    x+=w+24;
+  });
+
+  // note
+
+  // contact (small, low)
+  const cy=1610, cw=470, ch=118;
+  ctx.strokeStyle=ACC; ctx.lineWidth=3; rr(L,cy,cw,ch,22); ctx.stroke();
+  ctx.font='800 22px Inter'; ctx.letterSpacing='3px'; ctx.fillStyle=ACC; ctx.fillText('CITA AMB MI · WHATSAPP',L+28,cy+40); ctx.letterSpacing='0px';
+  ctx.font='900 54px Inter'; ctx.fillStyle='#fff'; ctx.fillText('627 148 092',L+28,cy+98);
+  ctx.font='700 28px Inter'; ctx.fillStyle='#D6DEE3'; ctx.textAlign='right'; ctx.fillText('@marcvallfisio',W-L,cy+98); ctx.textAlign='left';
+}
+
+// save
+let dl=null;
+async function setupSave(){
+  try{ dl = window.claude && window.claude.use ? await window.claude.use('downloads') : null; }catch(e){ dl=null; }
+}
+setupSave();
+$('save').addEventListener('click',()=>{
+  const msg=$('msg'); msg.textContent='';
+  c.toBlob(async blob=>{
+    const name='story-hores-'+(($('day').value||'dia').toLowerCase().replace(/[^a-z0-9àèéíòóúç]+/gi,'-'))+'.png';
+    if(dl){
+      try{ await dl.save({filename:name,data:blob}); msg.textContent='Imatge desada.'; return; }
+      catch(e){ if(e&&e.code==='declined'){msg.textContent='No s\'ha desat.';return;} }
+    }
+    // fallback: show as image to long-press
+    const url=URL.createObjectURL(blob);
+    msg.innerHTML='';
+    const im=new Image(); im.src=url; im.alt='Story per desar'; im.style.cssText='width:100%;max-width:380px;border-radius:18px';
+    msg.appendChild(im);
+    const p=document.createElement('p'); p.className='hint'; p.textContent='Mantén premuda aquesta imatge per desar-la.'; msg.appendChild(p);
+  },'image/png');
+});
+
+(document.fonts&&document.fonts.load ? Promise.all(['900 150px Inter','800 34px Inter','600 36px Inter','700 28px Inter'].map(f=>document.fonts.load(f))) : Promise.resolve()).then(draw,draw);
+draw();
+</script>
