@@ -167,12 +167,14 @@ function draw(){
 
   // note
 
-  // contact (small, low)
-  const cy=1610, cw=470, ch=118;
-  ctx.strokeStyle=ACC; ctx.lineWidth=3; rr(L,cy,cw,ch,22); ctx.stroke();
-  ctx.font='800 22px Inter'; ctx.letterSpacing='3px'; ctx.fillStyle=ACC; ctx.fillText('CITA AMB MI · WHATSAPP',L+28,cy+40); ctx.letterSpacing='0px';
-  ctx.font='900 54px Inter'; ctx.fillStyle='#fff'; ctx.fillText('627 148 092',L+28,cy+98);
-  ctx.font='700 28px Inter'; ctx.fillStyle='#D6DEE3'; ctx.textAlign='right'; ctx.fillText('@marcvallfisio',W-L,cy+98); ctx.textAlign='left';
+  // contact (small, low): WhatsApp personal + clínica
+  const cy=1605, gap=20, cw=(W-2*L-gap)/2, ch=118;
+  [['WHATSAPP · AMB MI','627 148 092'],['CLÍNICA · DEMANA PER MI','601 983 214']].forEach(([k,v],i)=>{
+    const x=L+i*(cw+gap);
+    ctx.strokeStyle=ACC; ctx.lineWidth=3; rr(x,cy,cw,ch,22); ctx.stroke();
+    ctx.font='800 20px Inter'; ctx.letterSpacing='2px'; ctx.fillStyle=ACC; ctx.fillText(k,x+26,cy+40); ctx.letterSpacing='0px';
+    ctx.font='900 50px Inter'; ctx.fillStyle='#fff'; ctx.fillText(v,x+26,cy+97);
+  });
 }
 
 // save
