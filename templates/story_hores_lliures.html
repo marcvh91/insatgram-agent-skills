@@ -91,7 +91,7 @@ let bg='rellotge';
 
 function drawBg(W,H){
   if(bg==='rellotge'){
-    const cx=W-330, cy=560, r=300;
+    const cx=W-320, cy=500, r=255;
     ctx.strokeStyle='rgba(255,255,255,.10)'; ctx.lineWidth=2;
     for(let i=1;i<=3;i++){ctx.beginPath();ctx.arc(cx,cy,r+i*70,0,Math.PI*2);ctx.stroke();}
     ctx.strokeStyle=ACC; ctx.lineWidth=26; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke();
@@ -148,16 +148,16 @@ function draw(){
   // title
   const t1='TINC', t2= hours.length>1?'2 HORES':'1 HORA', t3= hours.length>1?'LLIURES':'LLIURE';
   ctx.font='900 150px Inter'; ctx.fillStyle='#fff';
-  ctx.fillText(t1,L,1000);
-  ctx.fillStyle=ACC; ctx.fillText(t2,L,1140);
-  ctx.fillStyle='#fff'; ctx.fillText(t3,L,1280);
+  ctx.fillText(t1,L,910);
+  ctx.fillStyle=ACC; ctx.fillText(t2,L,1050);
+  ctx.fillStyle='#fff'; ctx.fillText(t3,L,1190);
 
   // day line
   const dl=[day,date].filter(Boolean).join(' · ');
-  if(dl){const s=fit(dl.toUpperCase(),W-2*L,58,'800');ctx.fillStyle='#fff';ctx.font=`800 ${s}px Inter`;ctx.fillText(dl.toUpperCase(),L,1370);}
+  if(dl){const s=fit(dl.toUpperCase(),W-2*L,58,'800');ctx.fillStyle='#fff';ctx.font=`800 ${s}px Inter`;ctx.fillText(dl.toUpperCase(),L,1280);}
 
   // hour chips
-  let x=L; const y=1405, h=150;
+  let x=L; const y=1315, h=150;
   hours.forEach(hh=>{
     const t=hh+' h'; ctx.font='900 96px Inter'; const w=ctx.measureText(t).width+72;
     ctx.fillStyle=ACC; rr(x,y,w,h,28); ctx.fill();
@@ -167,15 +167,18 @@ function draw(){
 
   // note
 
-  // contact (small, low): WhatsApp personal + clínica
-  const cy=1588, gap=20, cw=(W-2*L-gap)/2, ch=146;
-  [['WHATSAPP','627 148 092','Amb mi directament'],['CLÍNICA TONUS FISIOTERÀPIA','601 983 214','Demana per mi']].forEach(([k,v,s],i)=>{
-    const x=L+i*(cw+gap), iw=cw-52;
-    ctx.strokeStyle=ACC; ctx.lineWidth=3; rr(x,cy,cw,ch,22); ctx.stroke();
-    ctx.letterSpacing='1.5px'; let fs=20; do{ctx.font=`800 ${fs}px Inter`; if(ctx.measureText(k).width<=iw) break; fs--;}while(fs>14);
-    ctx.fillStyle=ACC; ctx.fillText(k,x+26,cy+38); ctx.letterSpacing='0px';
-    ctx.font='900 50px Inter'; ctx.fillStyle='#fff'; ctx.fillText(v,x+26,cy+94);
-    ctx.font='700 26px Inter'; ctx.fillStyle='#D6DEE3'; ctx.fillText(s,x+26,cy+128);
+  // contact: dues files a tot l'ample
+  const rows=[[['WHATSAPP','AMB MI'],'627 148 092'],[['CLÍNICA TONUS FISIOTERÀPIA','DEMANA PER MI'],'601 983 214']];
+  const rw=W-2*L, rh=112; let ry=1500;
+  rows.forEach(([lab,num])=>{
+    ctx.strokeStyle=ACC; ctx.lineWidth=3; rr(L,ry,rw,rh,22); ctx.stroke();
+    ctx.font='900 62px Inter'; ctx.fillStyle='#fff'; ctx.textAlign='right'; ctx.fillText(num,W-L-30,ry+78); ctx.textAlign='left';
+    const nw=ctx.measureText(num).width, maxLab=rw-nw-90;
+    ctx.letterSpacing='2px';
+    const s1=fit(lab[0],maxLab,26,'800'); ctx.font=`800 ${s1}px Inter`; ctx.letterSpacing='2px'; ctx.fillStyle=ACC; ctx.fillText(lab[0],L+30,ry+48);
+    ctx.font='700 24px Inter'; ctx.fillStyle='#fff'; ctx.fillText(lab[1],L+30,ry+84);
+    ctx.letterSpacing='0px';
+    ry+=rh+16;
   });
 }
 
