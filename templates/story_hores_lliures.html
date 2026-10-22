@@ -168,12 +168,14 @@ function draw(){
   // note
 
   // contact (small, low): WhatsApp personal + clínica
-  const cy=1605, gap=20, cw=(W-2*L-gap)/2, ch=118;
-  [['WHATSAPP · AMB MI','627 148 092'],['CLÍNICA · DEMANA PER MI','601 983 214']].forEach(([k,v],i)=>{
-    const x=L+i*(cw+gap);
+  const cy=1588, gap=20, cw=(W-2*L-gap)/2, ch=146;
+  [['WHATSAPP','627 148 092','Amb mi directament'],['CLÍNICA TONUS FISIOTERÀPIA','601 983 214','Demana per mi']].forEach(([k,v,s],i)=>{
+    const x=L+i*(cw+gap), iw=cw-52;
     ctx.strokeStyle=ACC; ctx.lineWidth=3; rr(x,cy,cw,ch,22); ctx.stroke();
-    ctx.font='800 20px Inter'; ctx.letterSpacing='2px'; ctx.fillStyle=ACC; ctx.fillText(k,x+26,cy+40); ctx.letterSpacing='0px';
-    ctx.font='900 50px Inter'; ctx.fillStyle='#fff'; ctx.fillText(v,x+26,cy+97);
+    ctx.letterSpacing='1.5px'; let fs=20; do{ctx.font=`800 ${fs}px Inter`; if(ctx.measureText(k).width<=iw) break; fs--;}while(fs>14);
+    ctx.fillStyle=ACC; ctx.fillText(k,x+26,cy+38); ctx.letterSpacing='0px';
+    ctx.font='900 50px Inter'; ctx.fillStyle='#fff'; ctx.fillText(v,x+26,cy+94);
+    ctx.font='700 26px Inter'; ctx.fillStyle='#D6DEE3'; ctx.fillText(s,x+26,cy+128);
   });
 }
 
