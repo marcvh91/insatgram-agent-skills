@@ -23,3 +23,6 @@ Marc prefiere no grabar: los Reels se montan con diapositivas verticales 1080×1
 
 ## Story «Hores lliures»
 Plantilla per anunciar hores disponibles: `templates/story_hores_lliures.html` (pàgina publicada i fixada a claude.ai: https://claude.ai/artifact/4t9H3BScyi9jaQhnv5HPHr). Fons negre amb rellotge verd llima que marca la primera hora, etiqueta «Agenda a Tonus Fisioteràpia», títol «Tinc 1 hora lliure / 2 hores lliures», dia + data, hores en caixes llima, a baix dues files a tot l'ample: «WhatsApp · amb mi — 627 148 092» i «Clínica Tonus Fisioteràpia · demana per mi — 601 983 214» (sempre amb «demana per mi»). Sense foto i sense frase extra (Marc ho va demanar així).
+
+## Sèries de stories
+Quan un tema ocupa diverses stories: capçalera comuna a dalt (y≈200, fora de la zona de la barra d'Instagram) «SÈRIE · <TEMA>» + barra de progrés 1/N, i a baix (y≈1600) una franja «SEGÜENT → <què ve>» que lliga amb la següent. L'última story porta contactes i «Dubtes? Respon aquesta story». Zona segura: contingut entre y=200 i y=1700. Plantilla: `templates/stories/pointer_serie.html`.
