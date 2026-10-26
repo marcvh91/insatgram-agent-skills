@@ -32,3 +32,4 @@ Evitar repetir la misma foto de portada en publicaciones seguidas.
 - 21/10/2026: Reel «Queden 18 dies» (IMG_1935, 1956, 1958, 1955, 2073 + 3,5 s de `video_terapia_manual_peu.mp4`). Plantilla `templates/reel_vertical.html`.
 - `pointer_excel_ii.jpg` — el Pointer Excel II sobre la camilla. Marc l'usa per estimular l'agulla col·locada amb ecògraf (neuromodulació percutània ecoguiada): dolor neuropàtic, irritació/compressió nerviosa, dolor musculoesquelètic amb component neural.
 - 23/10/2026: stories pregunta + resposta del pointer (`templates/stories/`).
+- `video_sabatilles_noves.mp4` — sabatilles noves a terra, gravat en horitzontal des de dalt (girar 90° per a vertical). Usat al Reel «Queden menys de 2 setmanes».
