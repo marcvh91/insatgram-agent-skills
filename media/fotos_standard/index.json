@@ -1,5 +1,5 @@
 {
- "regla": "Fotos standard per a publicacions sense necessitats particulars. Variar: no repetir la mateixa foto en publicacions properes; registrar cada ús a usada_a.",
+ "regla": "Fotos standard per a publicacions sense necessitats particulars. Variar: no repetir la mateixa foto en publicacions properes; registrar cada ús a usada_a. Les fotos pro_* (sessió White Dragon) NO es poden publicar fins que el contracte de cessió de drets estigui signat (pendent a 5 nov 2026); mentrestant, només tonus_*.",
  "fotos": [
   {
    "fitxer": "tonus_camilla_tauleta_serios.jpg",
@@ -51,7 +51,8 @@
     1672,
     2504
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_camilla_bracos_creuats_vertical.jpg",
@@ -61,7 +62,8 @@
     1719,
     2576
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_retrat_bracos_creuats_somriu.jpg",
@@ -71,7 +73,8 @@
     855,
     1280
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_retrat_perfil_bracos_creuats.jpg",
@@ -81,7 +84,8 @@
     1720,
     2576
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_retrat_tres_quarts.jpg",
@@ -91,7 +95,8 @@
     1699,
     2546
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_retrat_frontal.jpg",
@@ -101,7 +106,8 @@
     1704,
     2552
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_retrat_bracos_creuats_frontal.jpg",
@@ -111,7 +117,8 @@
     1633,
     2446
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_camilla_horitzontal.jpg",
@@ -121,7 +128,8 @@
     2473,
     1651
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   },
   {
    "fitxer": "pro_retrat_rialla_perfil.jpg",
@@ -131,7 +139,8 @@
     1656,
     2480
    ],
-   "usada_a": []
+   "usada_a": [],
+   "bloquejada_fins_contracte": true
   }
  ]
 }
