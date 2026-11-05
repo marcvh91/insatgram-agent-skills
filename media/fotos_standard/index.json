@@ -1,0 +1,137 @@
+{
+ "regla": "Fotos standard per a publicacions sense necessitats particulars. Variar: no repetir la mateixa foto en publicacions properes; registrar cada ús a usada_a.",
+ "fotos": [
+  {
+   "fitxer": "tonus_camilla_tauleta_serios.jpg",
+   "descripcio": "Tonus · polo Tonus, assegut a la camilla amb la tauleta, seriós",
+   "idoni_per": "consulta, proper",
+   "mida": [
+    1512,
+    2016
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "tonus_camilla_tauleta_somriu.jpg",
+   "descripcio": "Tonus · polo Tonus, camilla i tauleta, somriu",
+   "idoni_per": "tancament/CTA (ja usada: carrusel recuperació 1)",
+   "mida": [
+    1932,
+    2576
+   ],
+   "usada_a": [
+    "carrusel recuperació 1/2 (dl 9 nov 2026), diapositiva final"
+   ]
+  },
+  {
+   "fitxer": "tonus_camilla_bracos_creuats.jpg",
+   "descripcio": "Tonus · polo Tonus, braços recolzats, cames creuades",
+   "idoni_per": "tancament, confiança",
+   "mida": [
+    1932,
+    2576
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "tonus_camilla_mans_juntes.jpg",
+   "descripcio": "Tonus · polo Tonus, assegut amb mans juntes",
+   "idoni_per": "neutre, explicatiu",
+   "mida": [
+    1932,
+    2576
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_camilla_mans_juntes_vertical.jpg",
+   "descripcio": "Pro · pijama negre, camilla moderna, mans juntes, cos sencer",
+   "idoni_per": "portada professional",
+   "mida": [
+    1672,
+    2504
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_camilla_bracos_creuats_vertical.jpg",
+   "descripcio": "Pro · pijama negre, camilla, braços creuats, somriu, cos sencer",
+   "idoni_per": "presentació, qui sóc",
+   "mida": [
+    1719,
+    2576
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_retrat_bracos_creuats_somriu.jpg",
+   "descripcio": "Pro · retrat fons blanc, braços creuats, somriu",
+   "idoni_per": "perfil, cita",
+   "mida": [
+    855,
+    1280
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_retrat_perfil_bracos_creuats.jpg",
+   "descripcio": "Pro · retrat de tres quarts, braços creuats",
+   "idoni_per": "autoritat, ciència",
+   "mida": [
+    1720,
+    2576
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_retrat_tres_quarts.jpg",
+   "descripcio": "Pro · retrat de tres quarts, mitja rialla",
+   "idoni_per": "portada amb text al costat",
+   "mida": [
+    1699,
+    2546
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_retrat_frontal.jpg",
+   "descripcio": "Pro · retrat frontal, mans avall",
+   "idoni_per": "neutre, fitxa",
+   "mida": [
+    1704,
+    2552
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_retrat_bracos_creuats_frontal.jpg",
+   "descripcio": "Pro · retrat frontal, braços creuats, somriu ampli",
+   "idoni_per": "CTA, cita",
+   "mida": [
+    1633,
+    2446
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_camilla_horitzontal.jpg",
+   "descripcio": "Pro · horitzontal, camilla llarga, espai buit a la dreta",
+   "idoni_per": "portades amb text a la dreta",
+   "mida": [
+    2473,
+    1651
+   ],
+   "usada_a": []
+  },
+  {
+   "fitxer": "pro_retrat_rialla_perfil.jpg",
+   "descripcio": "Pro · de perfil, gran rialla",
+   "idoni_per": "proximitat, humor",
+   "mida": [
+    1656,
+    2480
+   ],
+   "usada_a": []
+  }
+ ]
+}
