@@ -141,6 +141,20 @@
    ],
    "usada_a": [],
    "bloquejada_fins_contracte": true
+  },
+  {
+   "fitxer": "polo_tonus_esceptic_gel_nabius_curcuma.jpg",
+   "roba": "polo Tonus",
+   "lloc": "casa, paret blanca",
+   "descripcio": "Somriure escèptic amb nabius, gel i cúrcuma",
+   "usada": "portada carrusel 2 (18 nov)"
+  },
+  {
+   "fitxer": "polo_tonus_esceptic_gel_nabius_curcuma_2.jpg",
+   "roba": "polo Tonus",
+   "lloc": "casa, paret blanca",
+   "descripcio": "Variant de l'anterior",
+   "usada": ""
   }
  ]
 }
