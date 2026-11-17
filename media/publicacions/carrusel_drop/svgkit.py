@@ -96,21 +96,27 @@ def shoe(uid, heel_mm, toe_mm, px=3.2, dims=False, accent=LIME):
 """
     if dims:
         th, tt = top(HX), top(FX)
-        def bar(x, y0, y1, lab, anchor):
-            tw = 112; tx = x - 24 - tw if anchor == "end" else x + 24; ty = y1 / 2 - 22
-            return (f'<line x1="{x}" y1="{y0}" x2="{x}" y2="{y1:.1f}" stroke="{accent}" stroke-width="5"/>'
-                    f'<line x1="{x-14}" y1="{y0}" x2="{x+14}" y2="{y0}" stroke="{accent}" stroke-width="5"/>'
-                    f'<line x1="{x-14}" y1="{y1:.1f}" x2="{x+14}" y2="{y1:.1f}" stroke="{accent}" stroke-width="5"/>'
-                    f'<rect x="{tx}" y="{ty:.1f}" width="{tw}" height="44" rx="10" fill="{accent}"/>'
-                    f'<text x="{tx+tw/2}" y="{ty+31:.1f}" text-anchor="middle" fill="#0B0F12" font-size="26" font-weight="900" font-family="Inter">{lab}</text>')
+        LX, RX = -46, 652
+        def pill(x, y, txt, fill, col, anchor):
+            tw = 30 + 17 * len(txt); tx = x - tw if anchor == "end" else x
+            return (f'<rect x="{tx:.1f}" y="{y-24:.1f}" width="{tw}" height="48" rx="11" fill="{fill}"/>'
+                    f'<text x="{tx+tw/2:.1f}" y="{y+10:.1f}" text-anchor="middle" fill="{col}" font-size="28" font-weight="900" font-family="Inter">{txt}</text>')
+        def vbar(x, y0, y1, c, wd=6):
+            return (f'<line x1="{x}" y1="{y0:.1f}" x2="{x}" y2="{y1:.1f}" stroke="{c}" stroke-width="{wd}"/>'
+                    f'<line x1="{x-14}" y1="{y0:.1f}" x2="{x+14}" y2="{y0:.1f}" stroke="{c}" stroke-width="5"/>'
+                    f'<line x1="{x-14}" y1="{y1:.1f}" x2="{x+14}" y2="{y1:.1f}" stroke="{c}" stroke-width="5"/>')
         g += f"""
-<line x1="-90" y1="0" x2="690" y2="0" stroke="#8A9399" stroke-width="3"/>
-<text x="-90" y="-12" text-anchor="start" fill="#8A9399" font-size="30" font-weight="900" font-family="Inter">0</text>
-<line x1="{HX}" y1="{th:.1f}" x2="{FX+40}" y2="{th:.1f}" stroke="{accent}" stroke-width="3" stroke-dasharray="10 8" opacity=".9"/>
-<line x1="{FX+40}" y1="{th:.1f}" x2="{FX+40}" y2="{tt:.1f}" stroke="#FF4D2E" stroke-width="8"/>
-<rect x="{FX+56}" y="{(th+tt)/2-62:.1f}" width="170" height="44" rx="10" fill="#FF4D2E"/>
-<text x="{FX+141}" y="{(th+tt)/2-31:.1f}" text-anchor="middle" fill="#fff" font-size="26" font-weight="900" font-family="Inter">drop {heel_mm-toe_mm} mm</text>
-{bar(HX, 0, th, f"{heel_mm} mm", "end")}{bar(FX, 0, tt, f"{toe_mm} mm", "start")}"""
+<line x1="-130" y1="0" x2="740" y2="0" stroke="#8A9399" stroke-width="3"/>
+<text x="-136" y="10" text-anchor="end" fill="#8A9399" font-size="32" font-weight="900" font-family="Inter">0</text>
+<line x1="{LX}" y1="{th:.1f}" x2="{RX+40}" y2="{th:.1f}" stroke="{accent}" stroke-width="3" stroke-dasharray="10 8"/>
+<line x1="{FX}" y1="{tt:.1f}" x2="{RX}" y2="{tt:.1f}" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+<circle cx="{HX}" cy="{th:.1f}" r="7" fill="{accent}"/><circle cx="{FX}" cy="{tt:.1f}" r="7" fill="#fff"/>
+{vbar(LX, 0, th, accent)}{vbar(RX, 0, tt, "#fff")}{vbar(RX+40, tt, th, "#FF4D2E", 8)}
+{pill(LX-24, th/2, f"{heel_mm} mm", accent, "#0B0F12", "end")}
+{pill(RX+24, tt/2, f"{toe_mm} mm", "#fff", "#0B0F12", "start")}
+{pill(RX+64, (th+tt)/2 - 40, f"drop {heel_mm-toe_mm} mm", "#FF4D2E", "#fff", "start")}
+<text x="{LX}" y="40" text-anchor="middle" fill="{accent}" font-size="26" font-weight="800" font-family="Inter">taló</text>
+<text x="{RX}" y="40" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" font-family="Inter">punta</text>"""
     return g, top
 
 def shoe_svg(uid, heel_mm, toe_mm, w=880, dims=False, pad=(110, 340, 110, 30), px=3.2):
