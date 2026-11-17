@@ -87,21 +87,21 @@ S.append(f"""<div class="s" style="padding:0">
 </div>""")
 
 # 2 QUÈ ÉS EL DROP
-big, _ = shoe_svg("big", 32, 24, w=920, show_dims=True, pad=(90, 330, 90, 40))
+big = shoe_svg("big", 32, 24, w=920, dims=True, pad=(120, 330, 110, 30))
 S.append(f"""<div class="s"><div class="top"><span class="k">UNA POSSIBLE CAUSA</span><span class="pg">2/8</span></div>
 <h1>El <em>drop</em></h1>
 <p>És la diferència d'altura entre el <b>taló</b> i la <b>punta</b> de la sabatilla.</p>
 <div style="margin-top:60px;position:relative">{big}
-<div style="position:absolute;left:0;bottom:-58px;font-size:28px;font-weight:800">Taló <b>32 mm</b></div>
-<div style="position:absolute;right:0;bottom:-58px;font-size:28px;font-weight:800">Punta <b>24 mm</b></div></div>
-<div style="margin-top:110px;align-self:center;border:4px solid #D4FF3F;border-radius:22px;padding:22px 44px;font-size:52px;font-weight:900">32 − 24 = <span style="color:#D4FF3F">8 mm de drop</span></div>
+</div>
+<p style="font-size:32px;color:#B9C1C6;margin-top:16px">Les dues alçades es mesuren des del terra (0).</p>
+<div style="margin-top:50px;align-self:center;border:4px solid #D4FF3F;border-radius:22px;padding:22px 44px;font-size:52px;font-weight:900">32 − 24 = <span style="color:#D4FF3F">8 mm de drop</span></div>
 </div>""")
 
 # 3 TIPUS DE DROP
 rows = ""
 for uid, h, t, lab, sub in [("z", 26, 26, "0 mm", "Pla · «zero drop»"), ("m", 29, 24, "4–6 mm", "Baix"), ("a", 34, 23, "8–12 mm", "Alt · el més habitual")]:
-    sv, _ = shoe_svg(uid, h, t, w=560, pad=(60, 370, 60, 30), px=4.2, show_dims=True)
-    rows += f'<div style="display:flex;align-items:center;gap:30px;margin-top:22px"><div style="width:260px"><div style="font-size:56px;font-weight:900;color:#D4FF3F">{lab}</div><div style="font-size:28px;font-weight:600;color:#B9C1C6;margin-top:4px">{sub}</div></div>{sv}</div>'
+    sv = shoe_svg(uid, h, t, w=690, pad=(130, 340, 200, 20), px=3.6, dims=True)
+    rows += f'<div style="display:flex;align-items:center;gap:10px;margin-top:14px;margin-left:-20px"><div style="width:250px;padding-left:20px;flex-shrink:0"><div style="font-size:50px;font-weight:900;color:#D4FF3F;white-space:nowrap">{lab}</div><div style="font-size:28px;font-weight:600;color:#B9C1C6;margin-top:4px">{sub}</div></div>{sv}</div>'
 S.append(f"""<div class="s"><div class="top"><span class="k">TIPUS DE DROP</span><span class="pg">3/8</span></div>
 <h1>No totes són <em>iguals</em></h1>
 {rows}
@@ -109,14 +109,14 @@ S.append(f"""<div class="s"><div class="top"><span class="k">TIPUS DE DROP</span
 </div>""")
 
 # 4 COM ES REPARTEIXEN LES TENSIONS (clau)
-legA = leg_panel("la", 36, 22, "knee", w=280)
-legB = leg_panel("lb", 26, 26, "calf", w=280)
+legA = leg_panel("la", 36, 22, "knee", w=390)
+legB = leg_panel("lb", 26, 26, "calf", w=390)
 S.append(f"""<div class="s" style="padding-bottom:60px"><div class="top"><span class="k">EL MÉS IMPORTANT</span><span class="pg">4/8</span></div>
 <h1 style="font-size:76px">On va <em>la tensió?</em></h1>
-<div style="display:flex;justify-content:space-between;margin-top:18px">
- <div style="width:440px"><div class="lab">DROP ALT (10–15 mm)</div>{legA}
+<div style="display:flex;justify-content:space-between;margin-top:10px">
+ <div style="width:450px"><div class="lab">DROP ALT (10–15 mm)</div>{legA}
   <div style="font-size:28px;line-height:1.25;margin-top:6px">🔴 <b>Ròtula:</b> +15 % de tensió{r(1)}<br>🔴 Més esforç al genoll{r(2)}</div></div>
- <div style="width:440px"><div class="lab">DROP BAIX / 0 mm</div>{legB}
+ <div style="width:450px"><div class="lab">DROP BAIX / 0 mm</div>{legB}
   <div style="font-size:28px;line-height:1.25;margin-top:6px">🔴 <b>Bessó i Aquil·les</b> treballen més{r(2,3)}<br>🔵 Menys càrrega a la ròtula{r(1)}</div></div>
 </div>
 <div style="margin-top:18px;font-size:34px;font-weight:800;text-align:center">La càrrega no desapareix: <span style="color:#D4FF3F">canvia de lloc.</span></div>
