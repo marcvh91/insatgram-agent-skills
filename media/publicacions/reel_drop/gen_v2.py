@@ -34,13 +34,13 @@ def S4(active):
         op = 1 if on else .35
         bd = "#D4FF3F" if on else "#2A3238"
         x = "left:24px" if side == "L" else "right:24px"
-        return (f'<div style="position:absolute;top:470px;{x};width:340px;opacity:{op};background:rgba(11,15,18,.88);border:4px solid {bd};border-radius:26px;padding:20px 8px 18px;text-align:center">'
+        return (f'<div style="position:absolute;top:1000px;{x};width:340px;opacity:{op};background:rgba(11,15,18,.88);border:4px solid {bd};border-radius:26px;padding:20px 8px 18px;text-align:center">'
                 f'<div style="font-size:34px;font-weight:900;letter-spacing:1px;color:#D4FF3F">{title}</div>{leg}'
                 f'<div style="font-size:30px;font-weight:800;line-height:1.2;margin-top:6px;padding:0 10px">{txt}</div></div>')
-    L = card("L", "DROP ALT", f"🔴 Ròtula<br>fins a +15 %{ref(1)}", leg_panel(f"a{active}", 36, 22, "knee", w=320), active == "alt")
-    R = card("R", "DROP BAIX", f"🔴 Bessó i<br>Aquil·les{ref(2,3)}", leg_panel(f"b{active}", 26, 26, "calf", w=320), active == "baix")
+    L = card("L", "DROP ALT", f"🔴 Ròtula<br>fins a +15 %{ref(1)}", leg_panel(f"a{active}", 36, 22, "knee", w=320), active in ("alt", "tots"))
+    R = card("R", "DROP BAIX", f"🔴 Bessó i<br>Aquil·les{ref(2,3)}", leg_panel(f"b{active}", 26, 26, "calf", w=320), active in ("baix", "tots"))
     return f"""<div style="width:1080px;height:1920px;position:relative">{L}{R}
-<div style="position:absolute;bottom:250px;left:60px;right:60px;background:rgba(11,15,18,.9);border-radius:22px;padding:26px;text-align:center;font-size:44px;font-weight:900">La càrrega no desapareix: <span style="color:#D4FF3F">canvia de lloc.</span></div></div>"""
+</div>"""
 
 # ---- Escena 5: resum en un sol panell (meitat superior) + CTA final
 items = [("Canvia a poc a poc", f"12 setmanes o més{ref(4)}"), ("No allarguis de cop", f"cap sortida &gt;10 % més llarga del normal{ref(8)}"), ("El drop no ho és tot", f"lesions prèvies, càrrega i maluc{ref(7)}")]
@@ -52,8 +52,8 @@ async def render():
     async with async_playwright() as p:
         b = await p.chromium.launch(); pg = await b.new_page(viewport={"width": 1080, "height": 1920})
         for name, html, size, transp in [("s1_titol", S1, (1080, 1920), True), ("s3_bambes", S3, (1080, 1920), False),
-                                          ("s4_alt", S4("alt"), (1080, 1920), True), ("s4_baix", S4("baix"), (1080, 1920), True),
-                                          ("s5_resum", S5, (1080, 960), False)]:
+                                          ("s4_tensio", S4("tots"), (1080, 1920), True),
+                                          ]:
             await pg.set_viewport_size({"width": size[0], "height": size[1]})
             await pg.set_content(f"<html><head><style>{CSS}</style></head><body>{html}</body></html>"); await pg.wait_for_timeout(250)
             await pg.screenshot(path=str(OUT / f"{name}.png"), omit_background=transp)
@@ -76,13 +76,11 @@ frames = [
     ("1", ov(full("tonus_camilla_tauleta_somriu.jpg", .55), OUT / "s1_titol.png")),
     ("2", split(D / "panels" / "p2_drop.png", "tonus_camilla_tauleta_serios.jpg")),
     ("3", Image.open(OUT / "s3_bambes.png").convert("RGB")),
-    ("4a", ov(full("polo_tonus_esceptic_gel_nabius_curcuma.jpg", .5), OUT / "s4_alt.png")),
-    ("4b", ov(full("polo_tonus_esceptic_gel_nabius_curcuma.jpg", .5), OUT / "s4_baix.png")),
-    ("5", split(OUT / "s5_resum.png", "tonus_camilla_bracos_creuats.jpg")),
-    ("5cta", ov(full("tonus_camilla_bracos_creuats.jpg", .5), CTA)),
+    ("4", ov(full("tonus_camilla_bracos_creuats.jpg", .5), OUT / "s4_tensio.png")),
+    ("5", full("tonus_camilla_tauleta_somriu.jpg", .55)),
 ]
 for n, im in frames: im.save(OUT / f"esbos_{n}.jpg", quality=85)
 th = [im.resize((360, 640)) for _, im in frames]
-sheet = Image.new("RGB", (360 * 4 + 30, 640 * 2 + 10), "#222")
-for k, im in enumerate(th): sheet.paste(im, ((k % 4) * 370, (k // 4) * 650))
+sheet = Image.new("RGB", (360 * 5 + 40, 640), "#222")
+for k, im in enumerate(th): sheet.paste(im, (k * 370, 0))
 sheet.save(D / "esbos_reel_drop.jpg", quality=88)
