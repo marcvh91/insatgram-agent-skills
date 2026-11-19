@@ -24,3 +24,19 @@ async def main():
             await pg.screenshot(path=str(OUT / f"{k}.png"), omit_background=True)
         await b.close()
 asyncio.run(main())
+
+# --- CTA final amb web (foto del banc + WhatsApp + Tonus + web)
+CTA_WEB = """<div style="width:1080px;height:1920px;position:relative">
+<div style="position:absolute;bottom:0;left:0;right:0;height:980px;background:linear-gradient(0deg,rgba(11,15,18,.97) 0%,rgba(11,15,18,.9) 62%,rgba(11,15,18,0) 100%)"></div>
+<div style="position:absolute;bottom:250px;left:70px;right:70px">
+<div style="font-weight:900;font-size:78px;line-height:1;letter-spacing:-2px;text-transform:uppercase;color:#fff">Et fa mal el genoll? <span style="color:#D4FF3F">Vine i ho mirem.</span></div>
+<div style="margin-top:30px;border:4px solid #D4FF3F;border-radius:24px;padding:28px 36px;background:rgba(11,15,18,.6)">
+<div style="font-size:46px;font-weight:800;color:#fff">WhatsApp <span style="color:#D4FF3F">627 148 092</span></div>
+<div style="font-size:46px;font-weight:800;margin-top:10px;color:#fff">Tonus <span style="color:#D4FF3F">601 983 214</span> <span style="font-size:32px;color:#B9C1C6;font-weight:600">«demana per mi»</span></div>
+<div style="font-size:46px;font-weight:800;margin-top:10px;color:#fff">🌐 <span style="color:#D4FF3F">marcvallfisio.com</span></div></div></div></div>"""
+async def cta():
+    async with async_playwright() as p:
+        b = await p.chromium.launch(); pg = await b.new_page(viewport={"width": 1080, "height": 1920})
+        await pg.set_content(f"<html><head><style>{CSS}</style></head><body>{CTA_WEB}</body></html>"); await pg.wait_for_timeout(250)
+        await pg.screenshot(path=str(OUT / "cta_web.png"), omit_background=True); await b.close()
+asyncio.run(cta())
