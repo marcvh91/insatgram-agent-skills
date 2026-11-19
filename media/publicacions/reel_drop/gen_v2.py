@@ -29,16 +29,16 @@ S3 = f"""<div style="width:1080px;height:1920px;background:#0B0F12;padding:170px
 <h2 style="font-size:96px">De <em>0 a 12 mm</em></h2>{rows}</div>"""
 
 # ---- Escena 4: Marc al mig, cama a cada costat (estat: 'alt' o 'baix' actiu)
-def S4(active):
+def S4(active, top=1000, cw=340, lw=320):
     def card(side, title, txt, leg, on):
         op = 1 if on else .35
         bd = "#D4FF3F" if on else "#2A3238"
         x = "left:24px" if side == "L" else "right:24px"
-        return (f'<div style="position:absolute;top:1000px;{x};width:340px;opacity:{op};background:rgba(11,15,18,.88);border:4px solid {bd};border-radius:26px;padding:20px 8px 18px;text-align:center">'
+        return (f'<div style="position:absolute;top:{top}px;{x};width:{cw}px;opacity:{op};background:rgba(11,15,18,.88);border:4px solid {bd};border-radius:26px;padding:20px 8px 18px;text-align:center">'
                 f'<div style="font-size:34px;font-weight:900;letter-spacing:1px;color:#D4FF3F">{title}</div>{leg}'
                 f'<div style="font-size:30px;font-weight:800;line-height:1.2;margin-top:6px;padding:0 10px">{txt}</div></div>')
-    L = card("L", "DROP ALT", f"🔴 Ròtula<br>fins a +15 %{ref(1)}", leg_panel(f"a{active}", 36, 22, "knee", w=320), active in ("alt", "tots"))
-    R = card("R", "DROP BAIX", f"🔴 Bessó i<br>Aquil·les{ref(2,3)}", leg_panel(f"b{active}", 26, 26, "calf", w=320), active in ("baix", "tots"))
+    L = card("L", "DROP ALT", f"🔴 Ròtula<br>fins a +15 %{ref(1)}", leg_panel(f"a{active}{top}", 36, 22, "knee", w=lw), active in ("alt", "tots"))
+    R = card("R", "DROP BAIX", f"🔴 Bessó i<br>Aquil·les{ref(2,3)}", leg_panel(f"b{active}{top}", 26, 26, "calf", w=lw), active in ("baix", "tots"))
     return f"""<div style="width:1080px;height:1920px;position:relative">{L}{R}
 </div>"""
 
@@ -52,7 +52,7 @@ async def render():
     async with async_playwright() as p:
         b = await p.chromium.launch(); pg = await b.new_page(viewport={"width": 1080, "height": 1920})
         for name, html, size, transp in [("s1_titol", S1, (1080, 1920), True), ("s3_bambes", S3, (1080, 1920), False),
-                                          ("s4_tensio", S4("tots"), (1080, 1920), True),
+                                          ("s4_tensio", S4("tots"), (1080, 1920), True), ("s4_dalt", S4("tots", top=110, cw=290, lw=270), (1080, 1920), True),
                                           ]:
             await pg.set_viewport_size({"width": size[0], "height": size[1]})
             await pg.set_content(f"<html><head><style>{CSS}</style></head><body>{html}</body></html>"); await pg.wait_for_timeout(250)

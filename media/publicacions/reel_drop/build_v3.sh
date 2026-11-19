@@ -6,7 +6,7 @@ V="-c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -r 30"
 A="-c:a aac -b:a 192k -ar 48000 -ac 2"
 # 1 · ganxo: títol des del fotograma 0 fins a 4,0 s; després es veu la sabatilla
 ffmpeg -v error -y -ss 1.55 -t 5.45 -i $S/c1.mov -loop 1 -i $R/v3/t1_ganxo.png -filter_complex \
- "[0:v]scale=1080:1920,setsar=1[v];[1:v]format=rgba,fade=t=out:st=4.2:d=0.3:alpha=1[o];[v][o]overlay=0:0:shortest=1[out]" \
+ "[0:v]scale=1080:1920,setsar=1[v];[1:v]format=rgba,null[o];[v][o]overlay=0:0:shortest=1[out]" \
  -map "[out]" -map 0:a $V $A $W/s1.mp4
 # 2 · què és el drop: panell a dalt (720) + vídeo a baix (1200) amb laterals difuminats
 ffmpeg -v error -y -ss 0.75 -t 6.95 -i $S/c2.mov -loop 1 -i $R/panels/p2_drop.png -filter_complex \
@@ -18,7 +18,7 @@ ffmpeg -v error -y -loop 1 -i $R/v2/s3_bambes.png -ss 1.35 -t 12.9 -i $S/c3.mov 
  "[0:v]scale=1188:2112,zoompan=z='1+0.0001*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps=30,setsar=1[out]" \
  -map "[out]" -map 1:a -t 12.9 $V $A $W/s3.mp4
 # 4 · on va la tensió: dibuixos fixos a baix
-ffmpeg -v error -y -ss 1.15 -t 15.6 -i $S/c4.mov -i $R/v2/s4_tensio.png -filter_complex \
+ffmpeg -v error -y -ss 1.15 -t 15.6 -i $S/c4.mov -i $R/v2/s4_dalt.png -filter_complex \
  "[0:v]scale=1080:1920,setsar=1[v];[v][1:v]overlay=0:0[out]" -map "[out]" -map 0:a $V $A $W/s4.mp4
 # 5 · consells (títol) + cita (targeta WhatsApp)
 ffmpeg -v error -y -ss 0.5 -t 19.75 -i $S/c5.mov -loop 1 -i $R/v3/t5_canvi.png -loop 1 -i $R/panels/ov9_cta.png -filter_complex \
