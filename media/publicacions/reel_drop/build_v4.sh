@@ -17,8 +17,8 @@ ffmpeg -v error -y -ss 0.75 -t 6.95 -i $S/c2.mov -loop 1 -i $R/panels/p2_drop.pn
 ffmpeg -v error -y -loop 1 -i $R/v2/s3_bambes.png -ss 1.25 -t 17.05 -i $S/n41.mov -filter_complex \
  "[0:v]scale=1188:2112,zoompan=z='1+0.0001*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps=30,setsar=1[out]" \
  -map "[out]" -map 1:a -t 17.05 $V $A $W/s3.mp4
-# 4 · on va la tensió: dibuixos a les cantonades de dalt
-ffmpeg -v error -y -ss 1.0 -t 11.9 -i $S/n40.mov -i $R/v2/s4_dalt.png -filter_complex \
+# 4 · on va la tensió: dibuixos a baix (els assenyala)
+ffmpeg -v error -y -ss 1.0 -t 11.9 -i $S/n40.mov -i $R/v2/s4_baix_n40.png -filter_complex \
  "[0:v]scale=1080:1920,setsar=1[v];[v][1:v]overlay=0:0[out]" -map "[out]" -map 0:a $V $A $W/s4.mp4
 # 5 · consells (títol) + cita (targeta WhatsApp)
 ffmpeg -v error -y -ss 0.5 -t 19.75 -i $S/c5.mov -loop 1 -i $R/v3/t5_canvi.png -loop 1 -i $R/panels/ov9_cta.png -filter_complex \

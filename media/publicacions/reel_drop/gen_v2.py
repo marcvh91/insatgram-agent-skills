@@ -52,7 +52,7 @@ async def render():
     async with async_playwright() as p:
         b = await p.chromium.launch(); pg = await b.new_page(viewport={"width": 1080, "height": 1920})
         for name, html, size, transp in [("s1_titol", S1, (1080, 1920), True), ("s3_bambes", S3, (1080, 1920), False),
-                                          ("s4_tensio", S4("tots"), (1080, 1920), True), ("s4_dalt", S4("tots", top=110, cw=290, lw=270), (1080, 1920), True),
+                                          ("s4_tensio", S4("tots"), (1080, 1920), True), ("s4_dalt", S4("tots", top=110, cw=290, lw=270), (1080, 1920), True), ("s4_baix_n40", S4("tots", top=1060, cw=300, lw=280), (1080, 1920), True),
                                           ]:
             await pg.set_viewport_size({"width": size[0], "height": size[1]})
             await pg.set_content(f"<html><head><style>{CSS}</style></head><body>{html}</body></html>"); await pg.wait_for_timeout(250)
