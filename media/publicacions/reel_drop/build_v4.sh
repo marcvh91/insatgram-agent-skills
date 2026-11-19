@@ -14,9 +14,9 @@ ffmpeg -v error -y -ss 0.75 -t 6.95 -i $S/c2.mov -loop 1 -i $R/panels/p2_drop.pn
 [b]scale=918:1632,crop=918:1200:0:150[fg];[bg][fg]overlay=81:0[vid];[1:v]crop=1080:720:0:0,setsar=1[top];\
 [top][vid]vstack[out]" -map "[out]" -map 0:a -shortest $V $A $W/s2.mp4
 # 3 · tipus: 3 sabatilles a pantalla completa + veu
-ffmpeg -v error -y -loop 1 -i $R/v2/s3_bambes.png -ss 1.25 -t 17.05 -i $S/n41.mov -filter_complex \
+ffmpeg -v error -y -loop 1 -i $R/v2/s3_bambes.png -ss 3.25 -t 10.4 -i $S/a3.m4a -filter_complex \
  "[0:v]scale=1188:2112,zoompan=z='1+0.0001*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps=30,setsar=1[out]" \
- -map "[out]" -map 1:a -t 17.05 $V $A $W/s3.mp4
+ -map "[out]" -map 1:a -t 10.4 $V $A $W/s3.mp4
 # 4 · on va la tensió: dibuixos a baix (els assenyala)
 ffmpeg -v error -y -ss 1.0 -t 11.9 -i $S/n40.mov -i $R/v2/s4_baix_n40.png -filter_complex \
  "[0:v]scale=1080:1920,setsar=1[v];[v][1:v]overlay=0:0[out]" -map "[out]" -map 0:a $V $A $W/s4.mp4
