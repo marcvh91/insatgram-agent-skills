@@ -17,3 +17,8 @@ Abans de parlar, compta 1 segon en silenci. Si t'equivoques, repeteix la frase s
 **Com que les escenes 5 i 6 no porten text a la pantalla,** els telèfons (WhatsApp 627 148 092 · Tonus 601 983 214 «demana per mi») aniran al peu, amb les 8 referències.
 
 **Envia'm** els clips en ordre, un per escena.
+
+## Clip 2 (pont) · versió definitiva per regravar (19/11)
+«Has canviat de bambes de córrer i ara et molesta el genoll? O el tendó d'Aquil·les? *(pausa)* Saps que podria ser cosa del drop de la bamba? *(pausa)* Si el canvies de cop, la càrrega canvia de lloc, i el cos pot necessitar fins a dotze setmanes per adaptar-s'hi. Mira què és el drop!»
+- Dret, de cintura amunt, polo de Tonus. Una paraula clau per frase (drop, de cop, dotze setmanes), pausa abans de «drop», un gest per idea, somriure a l'inici i al final. 3 preses.
+- Va just després del ganxo, amb el títol a dalt «El canvi de calçat i l'adaptació al drop!».
