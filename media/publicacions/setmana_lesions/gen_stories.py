@@ -13,13 +13,13 @@ PREG = f"""<div style="position:relative;width:1080px;height:1920px">{bg("trail_
 <div style="font-weight:900;font-size:100px;line-height:.98;letter-spacing:-3px;text-transform:uppercase;color:#fff;margin-top:22px">Quina lesió de corredor <span style="color:#D4FF3F">vols que t'expliqui?</span></div>
 <div style="font-size:40px;font-weight:600;color:#C9D1D6;margin-top:26px">Vota i divendres t'explico la més votada 👇</div></div>
 </div>"""
-CITA = f"""<div style="position:relative;width:1080px;height:1920px">{bg("polo_tonus_kiprun_somriu_1.jpg","50% 30%")}
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,#0B0F12 0%,#0B0F12 26%,rgba(11,15,18,0) 36%,rgba(11,15,18,.1) 55%,rgba(11,15,18,.92) 72%,rgba(11,15,18,.97) 100%)"></div>
+CITA = f"""<div style="position:relative;width:1080px;height:1920px">{bg("tonus_camilla_bracos_creuats.jpg","50% 40%")}
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,#0B0F12 0%,#0B0F12 26%,rgba(11,15,18,0) 36%,rgba(11,15,18,0) 66%,rgba(11,15,18,.9) 82%,rgba(11,15,18,.97) 100%)"></div>
 <div style="position:absolute;top:200px;left:70px;right:70px">
 <div style="font-weight:900;font-size:104px;line-height:.98;letter-spacing:-3px;text-transform:uppercase;color:#fff">Com demanar <span style="color:#D4FF3F">cita amb mi</span></div></div>
-<div style="position:absolute;bottom:260px;left:70px;right:70px">
+<div style="position:absolute;bottom:170px;left:70px;right:70px">
 <div style="font-size:40px;font-weight:600;color:#C9D1D6">Fisioteràpia per a corredors · Tarragona</div>
-<div style="margin-top:26px;border:4px solid #D4FF3F;border-radius:26px;padding:34px 38px;background:rgba(11,15,18,.6)">
+<div style="margin-top:26px;border:4px solid #D4FF3F;border-radius:26px;padding:26px 34px;background:rgba(11,15,18,.75)">
 <div style="font-size:50px;font-weight:800;color:#fff">📲 WhatsApp <span style="color:#D4FF3F">627 148 092</span></div>
 <div style="font-size:50px;font-weight:800;color:#fff;margin-top:14px">📞 Tonus <span style="color:#D4FF3F">601 983 214</span></div>
 <div style="font-size:36px;color:#B9C1C6;margin-top:6px;padding-left:64px">«demana per mi»</div>
