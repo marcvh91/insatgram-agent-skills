@@ -11,7 +11,7 @@ PREG = f"""<div style="position:relative;width:1080px;height:1920px">{bg("tonus_
 <div style="position:absolute;top:200px;left:70px;right:70px">
 <div style="font-size:30px;font-weight:800;letter-spacing:5px;color:#D4FF3F">SETMANA DE LESIONS</div>
 <div style="font-weight:900;font-size:100px;line-height:.98;letter-spacing:-3px;text-transform:uppercase;color:#fff;margin-top:22px">Quina lesió de corredor <span style="color:#D4FF3F">vols que t'expliqui?</span></div>
-<div style="font-size:40px;font-weight:600;color:#C9D1D6;margin-top:26px">La més demanada, divendres en un carrusel 👇</div></div>
+<div style="font-size:40px;font-weight:600;color:#C9D1D6;margin-top:26px">Vota i divendres t'explico la més votada 👇</div></div>
 </div>"""
 CITA = f"""<div style="position:relative;width:1080px;height:1920px">{bg("tonus_camilla_bracos_creuats.jpg","50% 45%")}
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,#0B0F12 0%,#0B0F12 26%,rgba(11,15,18,0) 36%,rgba(11,15,18,.1) 55%,rgba(11,15,18,.92) 72%,rgba(11,15,18,.97) 100%)"></div>
