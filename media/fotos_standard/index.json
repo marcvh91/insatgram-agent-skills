@@ -33,7 +33,7 @@
         2576
       ],
       "usada_a": [],
-      "usada": "story com demanar cita (27 nov 2026)"
+      "usada": ""
     },
     {
       "fitxer": "tonus_camilla_mans_juntes.jpg",
@@ -44,7 +44,7 @@
         2576
       ],
       "usada_a": [],
-      "usada": "story pregunta lesions (23 nov 2026)"
+      "usada": ""
     },
     {
       "fitxer": "pro_camilla_mans_juntes_vertical.jpg",
@@ -164,7 +164,7 @@
       "roba": "trail (equipació de cursa)",
       "lloc": "UTMB Vall d'Aran 2026",
       "descripcio": "Pujant amb bastons, cridant content",
-      "usada": ""
+      "usada": "story enquesta lesions (23 nov 2026)"
     },
     {
       "fitxer": "trail_utmb_vallaran_2026_horitzontal.jpg",
@@ -193,6 +193,22 @@
       "lloc": "Un Tomb pel Montsant",
       "descripcio": "Baixant per pedra solta. Porta marca d'aigua del fotògraf: citar «Foto: Carlos Castillo» si s'usa",
       "usada": ""
+    },
+    {
+      "fitxer": "polo_tonus_kiprun_somriu_1.jpg",
+      "descripcio": "Polo Tonus, somriu amb una sabatilla Kiprun a les mans, fons paret clara. Vertical",
+      "idoni_per": "",
+      "mida": "",
+      "usada_a": "",
+      "usada": "story com demanar cita (27 nov 2026)"
+    },
+    {
+      "fitxer": "polo_tonus_kiprun_somriu_2.jpg",
+      "descripcio": "Variant: polo Tonus, sabatilla Kiprun, somriu. Vertical",
+      "idoni_per": "",
+      "mida": "",
+      "usada_a": "",
+      "usada": "portada Reel drop (1 des 2026)"
     }
   ]
 }
