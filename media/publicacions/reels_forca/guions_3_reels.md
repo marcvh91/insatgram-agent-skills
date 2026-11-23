@@ -70,3 +70,5 @@ Graella en parelles (esquerra moviment · dreta «anti»):
 
 **Referències:** [1] Dong 2023 Behav Sci (MA: el core millora la resistència del tronc i l'equilibri, però poc el rendiment específic) · [2] Leppänen 2024 BJSM (maluc i core guiat per fisio: −39 % lesions per sobrecàrrega en principiants) · [3] Naderi 2026 Res Sports Med, doi:10.1080/15438627.2025.2558950 (programa amb core, flexibilitat i control neuromuscular: −47 % lesions en 9 mesos).
 **Matís:** no hi ha estudis que comparin cada exercici concret en corredors → el Reel parla del core en conjunt, no promet res d'un exercici en particular.
+
+**PEU del Reel de core (obligatori, decisió de Marc):** destacar l'assaig de 2026 → «Un assaig amb 264 corredors populars: fer 2–4 cops per setmana 15–30 min d'exercicis de core, flexibilitat i control del moviment va reduir les lesions un 47 % en 9 mesos [3].»
