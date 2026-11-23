@@ -28,38 +28,43 @@ S[1] = photo_slide("tonus_camilla_bracos_creuats.jpg", """
 <div style="font-weight:900;font-size:104px;line-height:.94;letter-spacing:-4px;text-transform:uppercase;color:#fff;margin-top:16px">Els 3 pilars <span style="color:#D4FF3F">de la força per córrer</span></div>
 <div style="display:inline-block;background:#D4FF3F;color:#0B0F12;font-weight:900;font-size:38px;padding:14px 24px;border-radius:14px;margin-top:26px">Fas força? Potser et falta una peça 👉</div>""", top_band=520, off=380)
 
+def ill(img, w, h, bottom="", tag=""):
+    t = f'<div style="position:absolute;top:16px;left:16px;background:#D4FF3F;color:#0B0F12;font-size:22px;font-weight:900;padding:6px 12px;border-radius:8px;letter-spacing:1px">{tag}</div>' if tag else ""
+    return (f'<div style="position:relative;width:{w}px;height:{h}px;border-radius:26px;overflow:hidden;border:2px solid #222B31;box-shadow:0 20px 50px rgba(0,0,0,.45)">'
+            f'<img src="{U(img)}" style="width:100%;height:100%;object-fit:cover">{t}'
+            f'<div style="position:absolute;left:0;right:0;bottom:0;padding:60px 14px 16px;background:linear-gradient(0deg,rgba(11,15,18,.92),rgba(11,15,18,0))">{bottom}</div></div>')
+def two(l, ls, r, rs):
+    return (f'<div style="display:flex;justify-content:space-around"><div class="lab"><b style="color:#B9C1C6">{l}</b>{ls}</div>'
+            f'<div class="lab"><b>{r}</b>{rs}</div></div>')
+one = lambda t, sub="": f'<div class="lab"><b>{t}</b>{sub}</div>'
+
 S[2] = f"""<div class="s">{pg(2)}<div class="k">Abans de començar</div>
 <h2>Fer exercicis <em>≠</em> estar preparat</h2>
 <p style="margin-top:30px">Equilibris, gomes i exercicis lleugers sumen. Però <b>si només fas això</b>, et falten peces. Córrer demana tres coses:</p>
-<div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:60px;height:720px">
-<div style="width:300px"><img src="{U('c_paret.png')}" style="width:300px;height:560px;object-fit:contain"><div class="lab"><b>1 · Tendons</b>que aguantin</div></div>
-<div style="width:320px"><img src="{U('c_esquat.png')}" style="width:320px;height:560px;object-fit:contain"><div class="lab"><b>2 · Múscul</b>que empenyi</div></div>
-<div style="width:300px"><img src="{U('c_salt.png')}" style="width:300px;height:560px;object-fit:contain"><div class="lab"><b>3 · Potència</b>per rebotar</div></div></div></div>"""
+<div style="display:flex;justify-content:space-between;margin-top:70px">
+{ill('q_paret.png', 300, 560, one('Tendons', 'que aguantin'), '1')}{ill('q_esquat.png', 300, 560, one('Múscul', 'que empenyi'), '2')}{ill('q_salt.png', 300, 560, one('Potència', 'per rebotar'), '3')}</div></div>"""
 
 S[3] = f"""<div class="s">{pg(3)}<div class="k">Pilar 1 · Tendons</div>
 <h2>Càrrega <em>alta</em>, tendó més fort</h2>
-<div style="display:flex;gap:20px;margin-top:26px;height:700px">
-<div style="flex:1.15;position:relative"><img src="{U('c_tendo.png')}" style="width:100%;height:620px;object-fit:contain">
-<div style="display:flex;justify-content:space-around"><div class="lab"><b style="color:#B9C1C6">Fibres laxes</b>poca càrrega</div><div class="lab"><b>Més fort</b>transmet millor la força</div></div></div>
-<div style="flex:.85;display:flex;flex-direction:column;justify-content:center"><img src="{U('c_paret.png')}" style="width:100%;height:420px;object-fit:contain"><div class="lab" style="margin-top:6px"><b>Ex.: cadira a la paret</b>o esquat aguantant</div></div></div>
+<div style="display:flex;gap:20px;margin-top:30px">
+{ill('q_aquil.png', 490, 640, two('Poca càrrega', 'fibres laxes', 'Càrrega alta', 'tendó més fort'))}
+{ill('q_paret.png', 420, 640, one('Cadira a la paret', 'o esquat aguantant'), 'EXEMPLE')}</div>
 <p style="margin-top:34px">Carregar el tendó el fa més fort. El que més l'enforteix és <b>la càrrega alta</b>, no fer moltes repeticions lleugeres{ref(1)}.</p>
 {card('[1] Lazarczuk SL et al. <i>Sports Med</i> 2022 · Revisió sistemàtica i metaanàlisi · 61 estudis')}</div>"""
 
 S[4] = f"""<div class="s">{pg(4)}<div class="k">Pilar 2 · Múscul</div>
 <h2>Pes <em>de debò</em></h2>
-<div style="display:flex;gap:10px;margin-top:20px;height:700px;align-items:center">
-<div style="flex:1"><img src="{U('c_muscul.png')}" style="width:100%;height:600px;object-fit:contain">
-<div style="display:flex;justify-content:space-around"><div class="lab"><b style="color:#B9C1C6">Abans</b></div><div class="lab"><b>Més fibra</b></div></div></div>
-<div style="flex:1"><img src="{U('c_esquat.png')}" style="width:100%;height:600px;object-fit:contain"><div class="lab"><b>Esquat amb barra</b></div></div></div>
-<p style="margin-top:30px">Esquat, pont de glutis, gambades, bessó i sòleo. Amb <b>càrregues altes</b> (≥80 % del teu màxim) millora el <b>temps</b>{ref(3)} i gastes menys energia a cada passa{ref(2)}.</p>
+<div style="display:flex;gap:20px;margin-top:30px">
+{ill('q_muscul.png', 490, 640, two('Abans', '', 'Després', 'més fibra'))}
+{ill('q_esquat.png', 420, 640, one('Esquat amb barra', 'càrrega alta'), 'EXEMPLE')}</div>
+<p style="margin-top:34px">Esquat, pont de glutis, gambades, bessó i sòleo. Amb <b>càrregues altes</b> (≥80 % del teu màxim) millora el <b>temps</b>{ref(3)} i gastes menys energia a cada passa{ref(2)}.</p>
 {card('[2][3] Llanos-Lagos C et al. <i>Sports Med</i> 2024 · 2 revisions sistemàtiques i metaanàlisis')}</div>"""
 
 S[5] = f"""<div class="s">{pg(5)}<div class="k">Pilar 3 · Potència</div>
 <h2>Fes la cama <em>més molla</em></h2>
-<div style="display:flex;gap:10px;margin-top:20px;height:540px;align-items:flex-end">
-<div style="flex:1.3"><img src="{U('c_molla.png')}" style="width:100%;height:400px;object-fit:contain">
-<div style="display:flex;justify-content:space-around"><div class="lab"><b style="color:#B9C1C6">Tova</b>s'enfonsa</div><div class="lab"><b>Rígida</b>rebota</div></div></div>
-<div style="flex:.7"><img src="{U('c_salt.png')}" style="width:100%;height:470px;object-fit:contain"><div class="lab"><b>Salts</b></div></div></div>
+<div style="display:flex;gap:20px;margin-top:30px">
+{ill('q_molla.png', 490, 520, two('Tova', "s'enfonsa", 'Rígida', 'rebota'))}
+{ill('q_salt.png', 420, 520, one('Salts', 'pliometria'), 'EXEMPLE')}</div>
 <p style="margin-top:30px"><b>Salts (pliometria):</b> milloren l'economia, sobretot a ritmes suaus (≤12 km/h){ref(2)}. Primer molts i suaus; després pocs i explosius.<br><b>Empènyer fort 3–5 s</b> contra un objecte fix va funcionar en un assaig{ref(4)}, però en conjunt l'evidència és més feble{ref(2)}.</p>
 {card('[4] Lum D et al. <i>Res Q Exerc Sport</i> 2023 · Assaig aleatoritzat · 26 corredors')}</div>"""
 
@@ -70,8 +75,7 @@ S[6] = f"""<div class="s">{pg(6)}<div class="k">Com ho encaixo?</div>
 <p style="margin-top:28px">Combinar mètodes (càrrega alta + pliometria) és el que <b>més millora el rendiment</b>{ref(3)}.</p>
 <div style="display:flex;gap:10px;margin-top:50px">{cells}</div>
 <p style="margin-top:44px;font-size:30px;color:#9AA5AC">Exemple orientatiu. Als estudis es feien <b>d'1 a 4 sessions</b> de força per setmana{ref(2,3)}. La força, lluny de les sèries o en dies de cursa suau.</p>
-<div style="display:flex;justify-content:center;gap:40px;margin-top:30px;opacity:.9">
-<img src="{U('c_paret.png')}" style="height:200px"><img src="{U('c_esquat.png')}" style="height:200px"><img src="{U('c_salt.png')}" style="height:200px"></div>
+<div style="display:flex;justify-content:space-between;margin-top:30px">{ill('q_paret.png', 290, 290, '', '1')}{ill('q_esquat.png', 290, 290, '', '2')}{ill('q_salt.png', 290, 290, '', '3')}</div>
 {card('[3] Llanos-Lagos C et al. <i>Sports Med</i> 2024;54:1801 · Revisió sistemàtica i metaanàlisi')}</div>"""
 
 row = lambda ic, col, t: f'<div style="display:flex;gap:24px;align-items:flex-start;margin-top:30px"><div style="width:62px;height:62px;border-radius:50%;background:{col};color:#0B0F12;font-size:36px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">{ic}</div><p style="font-size:34px">{t}</p></div>'
