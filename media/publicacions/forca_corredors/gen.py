@@ -20,13 +20,16 @@ def photo_slide(img, inner, top_band=470, off=330):
     return f"""<div class="s" style="padding:0;background:#0B0F12">
 <img src="{(F/img).as_uri()}" style="position:absolute;left:0;top:{off}px;width:1080px">
 <div style="position:absolute;left:0;right:0;top:0;height:{top_band+260}px;background:linear-gradient(180deg,#0B0F12 0%,#0B0F12 {int(top_band/(top_band+260)*100)}%,rgba(11,15,18,0) 100%)"></div>
-<div style="position:absolute;top:70px;left:70px;right:70px">{inner}</div></div>"""
+<div style="position:absolute;top:48px;left:70px;right:70px">{inner}</div></div>"""
 
 S = {}
-S[1] = photo_slide("tonus_camilla_bracos_creuats.jpg", """
-<div class="k">Força per a corredors</div>
-<div style="font-weight:900;font-size:104px;line-height:.94;letter-spacing:-4px;text-transform:uppercase;color:#fff;margin-top:16px">Els 3 pilars <span style="color:#D4FF3F">de la força per córrer</span></div>
-<div style="display:inline-block;background:#D4FF3F;color:#0B0F12;font-weight:900;font-size:38px;padding:14px 24px;border-radius:14px;margin-top:26px">Fas força? Potser et falta una peça 👉</div>""", top_band=520, off=380)
+_c = (F / "pro_retrat_bracos_creuats_frontal.jpg").as_uri()
+S[1] = f"""<div class="s" style="padding:0;background:#0B0F12">
+<div style="position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 52%,#E4E4E2 0%,#C9C9C7 55%,#8E9193 100%)"></div>
+<img src="{_c}" style="position:absolute;left:{(1080-748)//2}px;top:230px;height:1120px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)">
+<div style="position:absolute;left:0;right:0;top:0;height:470px;background:linear-gradient(180deg,#0B0F12 0%,#0B0F12 52%,rgba(11,15,18,0) 100%)"></div>
+<div style="position:absolute;top:48px;left:70px;right:70px"><div class="k">Força per a corredors</div>
+<div style="font-weight:900;font-size:92px;line-height:.94;letter-spacing:-3.5px;text-transform:uppercase;color:#fff;margin-top:12px">Els 3 pilars <span style="color:#D4FF3F">de la força per córrer</span></div></div></div>"""
 
 def ill(img, w, h, bottom="", tag=""):
     t = f'<div style="position:absolute;top:16px;left:16px;background:#D4FF3F;color:#0B0F12;font-size:22px;font-weight:900;padding:6px 12px;border-radius:8px;letter-spacing:1px">{tag}</div>' if tag else ""
@@ -88,12 +91,15 @@ S[7] = f"""<div class="s">{pg(7)}<div class="k">Sense vendre fum</div>
 <p style="margin-top:36px;font-size:38px;font-weight:800;color:#fff">Ajuda quan és <span style="color:#D4FF3F">guiat i progressiu.</span></p>
 {card('[5] Ramos-Campo DJ <i>JSCR</i> 2025 · [6] Leppänen M <i>BJSM</i> 2024 · [7] Taddei UT <i>AJSM</i> 2020 · [8] Toresdahl BG <i>Sports Health</i> 2020')}</div>"""
 
-S[8] = photo_slide("tonus_camilla_mans_juntes.jpg", """
-<div style="font-weight:900;font-size:80px;line-height:.98;letter-spacing:-2.5px;text-transform:uppercase;color:#fff">Vols el teu <span style="color:#D4FF3F">pla de força?</span></div>
-<div style="margin-top:26px;border:4px solid #D4FF3F;border-radius:22px;padding:22px 30px;background:rgba(11,15,18,.75)">
+S[8] = f"""<div class="s" style="padding:0;background:#0B0F12">
+<img src="{(F/'trail_utmb_vallaran_2026_horitzontal.jpg').as_uri()}" style="position:absolute;top:0;left:-800px;height:1350px">
+<div style="position:absolute;left:0;right:0;top:0;height:420px;background:linear-gradient(180deg,rgba(11,15,18,.92) 0%,rgba(11,15,18,.75) 55%,rgba(11,15,18,0) 100%)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:470px;background:linear-gradient(0deg,rgba(11,15,18,.95) 0%,rgba(11,15,18,.85) 60%,rgba(11,15,18,0) 100%)"></div>
+<div style="position:absolute;top:48px;left:70px;right:70px;font-weight:900;font-size:84px;line-height:.96;letter-spacing:-2.5px;text-transform:uppercase;color:#fff">Vols el teu <span style="color:#D4FF3F">pla de força?</span></div>
+<div style="position:absolute;bottom:60px;left:70px;right:70px;border:4px solid #D4FF3F;border-radius:22px;padding:22px 30px;background:rgba(11,15,18,.7)">
 <div style="font-size:40px;font-weight:800">WhatsApp <span style="color:#D4FF3F">627 148 092</span></div>
 <div style="font-size:40px;font-weight:800;margin-top:8px">Tonus <span style="color:#D4FF3F">601 983 214</span> <span style="font-size:28px;color:#B9C1C6;font-weight:600">«demana per mi»</span></div>
-<div style="font-size:40px;font-weight:800;margin-top:8px">🌐 <span style="color:#D4FF3F">marcvallfisio.com</span></div></div>""", top_band=560, off=420)
+<div style="font-size:40px;font-weight:800;margin-top:8px">🌐 <span style="color:#D4FF3F">marcvallfisio.com</span></div></div></div>"""
 
 async def main():
     async with async_playwright() as p:
