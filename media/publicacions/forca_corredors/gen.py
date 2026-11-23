@@ -37,12 +37,12 @@ S[2] = f"""<div class="s">{pg(2)}<div class="k">Abans de començar</div>
 <div style="width:300px"><img src="{U('c_salt.png')}" style="width:300px;height:560px;object-fit:contain"><div class="lab"><b>3 · Potència</b>per rebotar</div></div></div></div>"""
 
 S[3] = f"""<div class="s">{pg(3)}<div class="k">Pilar 1 · Tendons</div>
-<h2>Càrrega <em>alta</em>, tendó més rígid</h2>
+<h2>Càrrega <em>alta</em>, tendó més fort</h2>
 <div style="display:flex;gap:20px;margin-top:26px;height:700px">
 <div style="flex:1.15;position:relative"><img src="{U('c_tendo.png')}" style="width:100%;height:620px;object-fit:contain">
-<div style="display:flex;justify-content:space-around"><div class="lab"><b style="color:#B9C1C6">Fibres laxes</b>poca càrrega</div><div class="lab"><b>Més rígid</b>transmet millor la força</div></div></div>
+<div style="display:flex;justify-content:space-around"><div class="lab"><b style="color:#B9C1C6">Fibres laxes</b>poca càrrega</div><div class="lab"><b>Més fort</b>transmet millor la força</div></div></div>
 <div style="flex:.85;display:flex;flex-direction:column;justify-content:center"><img src="{U('c_paret.png')}" style="width:100%;height:420px;object-fit:contain"><div class="lab" style="margin-top:6px"><b>Ex.: cadira a la paret</b>o esquat aguantant</div></div></div>
-<p style="margin-top:34px">Carregar el tendó el fa més rígid. El que més el canvia és <b>la càrrega alta</b>, no fer moltes repeticions lleugeres{ref(1)}.</p>
+<p style="margin-top:34px">Carregar el tendó el fa més fort. El que més l'enforteix és <b>la càrrega alta</b>, no fer moltes repeticions lleugeres{ref(1)}.</p>
 {card('[1] Lazarczuk SL et al. <i>Sports Med</i> 2022 · Revisió sistemàtica i metaanàlisi · 61 estudis')}</div>"""
 
 S[4] = f"""<div class="s">{pg(4)}<div class="k">Pilar 2 · Múscul</div>
