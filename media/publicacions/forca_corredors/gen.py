@@ -92,7 +92,7 @@ S[7] = f"""<div class="s">{pg(7)}<div class="k">Sense vendre fum</div>
 {card('[5] Ramos-Campo DJ <i>JSCR</i> 2025 · [6] Leppänen M <i>BJSM</i> 2024 · [7] Taddei UT <i>AJSM</i> 2020 · [8] Toresdahl BG <i>Sports Health</i> 2020')}</div>"""
 
 S[8] = f"""<div class="s" style="padding:0;background:#0B0F12">
-<img src="{(F/'trail_utmb_vallaran_2026_horitzontal.jpg').as_uri()}" style="position:absolute;top:0;left:-800px;height:1350px;filter:brightness(.8) contrast(1.1) saturate(1.08)">
+<img src="{(F/'trail_utmb_vallaran_2026_horitzontal_retoc.jpg').as_uri()}" style="position:absolute;top:0;left:-800px;height:1350px;filter:brightness(.8) contrast(1.1) saturate(1.08)">
 <div style="position:absolute;left:0;right:0;top:0;height:420px;background:linear-gradient(180deg,rgba(11,15,18,.92) 0%,rgba(11,15,18,.75) 55%,rgba(11,15,18,0) 100%)"></div>
 <div style="position:absolute;left:0;right:0;bottom:0;height:470px;background:linear-gradient(0deg,rgba(11,15,18,.95) 0%,rgba(11,15,18,.85) 60%,rgba(11,15,18,0) 100%)"></div>
 <div style="position:absolute;top:48px;left:70px;right:70px;font-weight:900;font-size:84px;line-height:.96;letter-spacing:-2.5px;text-transform:uppercase;color:#fff">Vols el teu <span style="color:#D4FF3F">pla de força?</span></div>
