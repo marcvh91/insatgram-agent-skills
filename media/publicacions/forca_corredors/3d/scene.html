@@ -1,0 +1,212 @@
+<html><body style="margin:0;background:transparent">
+<canvas id=c></canvas>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+
+const P = new URLSearchParams(location.search);
+const W = +P.get('w') || 1080, H = +P.get('h') || 1080, SC = P.get('s');
+const canvas = document.getElementById('c');
+const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+r.setPixelRatio(1); r.setSize(W, H);
+r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.05;
+r.outputColorSpace = THREE.SRGBColorSpace;
+r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene();
+const pm = new THREE.PMREMGenerator(r);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+const cam = new THREE.PerspectiveCamera(30, W / H, 0.1, 200);
+const LIME = 0xD4FF3F;
+
+function lights(rim = LIME) {
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(4, 6, 6); key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6; Object.assign(key.shadow.camera, { left: -8, right: 8, top: 8, bottom: -8 });
+  scene.add(key);
+  const r1 = new THREE.DirectionalLight(rim, 2.4); r1.position.set(-6, 2, -5); scene.add(r1);
+  const r2 = new THREE.DirectionalLight(0x6fa8ff, 0.9); r2.position.set(6, -2, -4); scene.add(r2);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.15));
+}
+function floor(y) {
+  const g = new THREE.Mesh(new THREE.CircleGeometry(6, 64), new THREE.ShadowMaterial({ opacity: 0.45 }));
+  g.rotation.x = -Math.PI / 2; g.position.y = y; g.receiveShadow = true; scene.add(g);
+  const ring = new THREE.Mesh(new THREE.RingGeometry(1.55, 1.6, 96), new THREE.MeshBasicMaterial({ color: LIME, transparent: true, opacity: .35 }));
+  ring.rotation.x = -Math.PI / 2; ring.position.y = y + 0.002; scene.add(ring);
+}
+// pseudo-random
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+// ---------- TENDÓ: fibres ondulades (laxes) vs alineades (rígides)
+function tendon(stiff, x) {
+  seed = 11; const grp = new THREE.Group(); const geos = [];
+  const N = 70, L = 4.2;
+  for (let i = 0; i < N; i++) {
+    const a = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * (stiff ? 0.42 : 0.55);
+    const px = Math.cos(a) * rr, pz = Math.sin(a) * rr;
+    const amp = stiff ? 0.012 : 0.07 + rnd() * 0.05, freq = 3 + rnd() * 2, ph = rnd() * 6.28;
+    const pts = [];
+    for (let k = 0; k <= 40; k++) {
+      const t = k / 40, y = -L / 2 + t * L;
+      // estretament als extrems (inserció)
+      const pinch = 0.75 + 0.25 * Math.sin(Math.PI * t);
+      pts.push(new THREE.Vector3(px * pinch + amp * Math.sin(freq * t * 6.28 + ph), y, pz * pinch + amp * Math.cos(freq * t * 6.28 + ph * 1.3)));
+    }
+    geos.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 80, 0.045 + rnd() * 0.02, 8, false));
+  }
+  const mat = new THREE.MeshPhysicalMaterial({ color: stiff ? 0xF1EADB : 0xCFC6B8, roughness: .35, clearcoat: .8, clearcoatRoughness: .25, sheen: .6, sheenColor: new THREE.Color(stiff ? LIME : 0xffffff) });
+  const m = new THREE.Mesh(mergeGeometries(geos), mat); m.castShadow = true; grp.add(m);
+  // os d'inserció (dalt)
+  const bmat = new THREE.MeshPhysicalMaterial({ color: 0xEDE3D1, roughness: .55, clearcoat: .25 });
+  const b1 = new THREE.Mesh(new THREE.SphereGeometry(0.62, 64, 48), bmat); b1.position.set(-0.32, L / 2 + 0.5, 0); b1.scale.set(1, .9, 1);
+  const b2 = b1.clone(); b2.position.x = 0.32;
+  const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.55, 1.6, 48), bmat); shaft.position.y = L / 2 + 1.4;
+  for (const b of [b1, b2, shaft]) { b.castShadow = true; grp.add(b); }
+  grp.position.x = x; return grp;
+}
+
+// ---------- MÚSCUL: feix fusiforme de fibres, normal vs hipertròfia
+function muscle(big, x) {
+  seed = 23; const grp = new THREE.Group(); const geos = [];
+  const N = big ? 150 : 70, L = 4.2, R = big ? 1.05 : 0.5;
+  for (let i = 0; i < N; i++) {
+    const a = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * R;
+    const pts = [];
+    for (let k = 0; k <= 30; k++) {
+      const t = k / 30, y = -L / 2 + t * L, belly = Math.pow(Math.sin(Math.PI * t), 0.8);
+      const tw = 0.25 * t;
+      pts.push(new THREE.Vector3(Math.cos(a + tw) * rr * belly, y, Math.sin(a + tw) * rr * belly));
+    }
+    geos.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 60, 0.06 + rnd() * 0.03, 8, false));
+  }
+  const mat = new THREE.MeshPhysicalMaterial({ color: 0x8E1720, roughness: .45, clearcoat: .6, clearcoatRoughness: .3, sheen: .8, sheenColor: new THREE.Color(0xff8a7a) });
+  const m = new THREE.Mesh(mergeGeometries(geos), mat); m.castShadow = true; grp.add(m);
+  const tmat = new THREE.MeshPhysicalMaterial({ color: 0xF1EADB, roughness: .3, clearcoat: .8 });
+  for (const s of [1, -1]) {
+    const t = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.2, 0.7, 32), tmat); t.position.y = s * (L / 2 + 0.25); t.castShadow = true; grp.add(t);
+  }
+  grp.position.x = x; return grp;
+}
+
+// ---------- MOLLA: rigidesa = es deforma menys i torna l'energia
+function spring(stiff, x) {
+  const grp = new THREE.Group();
+  const turns = 6, R = 0.8, h = stiff ? 2.6 : 1.5, wire = stiff ? 0.2 : 0.09, pts = [];
+  for (let k = 0; k <= 400; k++) { const t = k / 400, a = t * turns * 6.28; pts.push(new THREE.Vector3(Math.cos(a) * R, t * h, Math.sin(a) * R)); }
+  const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 800, wire, 24, false),
+    new THREE.MeshPhysicalMaterial({ color: stiff ? LIME : 0x9AA5AC, metalness: .65, roughness: .25, clearcoat: 1 }));
+  m.castShadow = true; grp.add(m);
+  const pmat = new THREE.MeshPhysicalMaterial({ color: 0x20272C, metalness: .5, roughness: .35, clearcoat: .6 });
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(1.15, 1.15, 0.18, 64), pmat); base.position.y = -0.09; base.castShadow = true; grp.add(base);
+  const top = new THREE.Mesh(new THREE.CylinderGeometry(1.15, 1.15, 0.3, 64), pmat); top.position.y = h + 0.15; top.castShadow = true; grp.add(top);
+  grp.position.set(x, -1.6, 0); return grp;
+}
+
+// ---------- GENOLL 28 %: donut 3D
+function donut() {
+  const g = new THREE.Group(); const parts = [[28, LIME, 'Genoll'], [26, 0x3E4A52, ''], [16, 0x2C353B, ''], [30, 0x1F262B, '']];
+  let a0 = Math.PI / 2;
+  for (const [pct, col, ] of parts) {
+    const ang = pct / 100 * Math.PI * 2;
+    const shape = new THREE.Shape(); const R1 = 2.2, R0 = 1.35, gap = 0.03;
+    shape.absarc(0, 0, R1, a0 - gap, a0 - ang + gap, true); shape.absarc(0, 0, R0, a0 - ang + gap, a0 - gap, false);
+    const geo = new THREE.ExtrudeGeometry(shape, { depth: col === LIME ? 0.9 : 0.45, bevelEnabled: true, bevelSize: 0.04, bevelThickness: 0.04, bevelSegments: 4, curveSegments: 64 });
+    const m = new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ color: col, roughness: .35, clearcoat: .7, emissive: col === LIME ? 0x2a3300 : 0x000000 }));
+    m.castShadow = true; g.add(m); a0 -= ang;
+  }
+  g.rotation.x = -0.95; return g;
+}
+
+
+// ---------- MANIQUÍ: postures d'exercici
+function seg(a, b, r1, r2, mat, bulge = 0, peak = .35) {
+  const d = new THREE.Vector3().subVectors(b, a), L = d.length(); const pts = [];
+  const n = 40;
+  for (let k = 0; k <= n; k++) {
+    const t = k / n; let r = r1 + (r2 - r1) * t + bulge * Math.pow(Math.sin(Math.PI * Math.min(1, t / (2 * peak) < .5 ? t / (2 * peak) : .5 + (t - peak) / (2 * (1 - peak)))), 1.4);
+    // arrodonir extrems
+    if (t < .5 * r1 / L * 2) {} pts.push(new THREE.Vector2(r, t * L));
+  }
+  const g = new THREE.Group();
+  const lat = new THREE.Mesh(new THREE.LatheGeometry(pts, 48), mat); g.add(lat);
+  const s1 = new THREE.Mesh(new THREE.SphereGeometry(r1, 32, 24), mat); g.add(s1);
+  const s2 = new THREE.Mesh(new THREE.SphereGeometry(r2, 32, 24), mat); s2.position.y = L; g.add(s2);
+  g.position.copy(a); g.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.normalize());
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; }); return g;
+}
+const rad = x => x * Math.PI / 180;
+const dn = (p, th, L) => new THREE.Vector3(p.x + Math.sin(rad(th)) * L, p.y - Math.cos(rad(th)) * L, p.z);
+function man(P, hi) {
+  // P: {tor, legs:[[thigh,shin,foot]x2], arms:[[up,fore]x2], lift}
+  const base = new THREE.MeshPhysicalMaterial({ color: 0xC5CDD2, roughness: .38, clearcoat: .6, clearcoatRoughness: .3 });
+  const hot = new THREE.MeshPhysicalMaterial({ color: LIME, roughness: .3, clearcoat: .8, emissive: 0x2a3300, emissiveIntensity: .6 });
+  const M = n => hi.includes(n) ? hot : base;
+  const g = new THREE.Group(); const parts = [];
+  const pelvis = new THREE.Vector3(0, 0, 0);
+  const neck = new THREE.Vector3(Math.sin(rad(P.tor)) * 1.05, Math.cos(rad(P.tor)) * 1.05, 0);
+  // tronc
+  const up = new THREE.Vector3(Math.sin(rad(P.tor)), Math.cos(rad(P.tor)), 0), q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), up);
+  const ell = (r, sx, sy, sz, at, mat) => { const e = new THREE.Mesh(new THREE.SphereGeometry(r, 48, 36), mat); e.scale.set(sx, sy, sz); e.quaternion.copy(q); e.position.copy(up.clone().multiplyScalar(at)); e.castShadow = true; g.add(e); };
+  ell(0.3, .78, 1.05, 1.0, 0.35, M('tronc')); ell(0.34, .8, 1.0, 1.25, 0.75, base);
+  const hp = new THREE.Mesh(new THREE.SphereGeometry(0.27, 40, 30), M('gluti')); hp.scale.set(1, .8, 1.15); hp.position.set(-0.05, 0, 0); hp.castShadow = true; g.add(hp);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.19, 48, 36), base); head.scale.set(1, 1.18, .95);
+  const hd = new THREE.Vector3(Math.sin(rad(P.tor)) * 1.4, Math.cos(rad(P.tor)) * 1.4, 0); head.position.copy(hd); head.castShadow = true; g.add(head);
+  g.add(seg(neck, hd, 0.08, 0.08, base));
+  let low = 99;
+  P.legs.forEach(([t, s, f], i) => {
+    const z = i ? -0.17 : 0.17; const h = new THREE.Vector3(0, -0.05, z);
+    const k = dn(h, t, 0.95), a = dn(k, s, 0.92), toe = dn(a, f, 0.28);
+    g.add(seg(h, k, 0.13, 0.085, M('quadri'), 0.05, .35)); g.add(seg(k, a, 0.085, 0.05, M('besso'), 0.035, .3)); g.add(seg(a, toe, 0.065, 0.05, M('peu')));
+    if (hi.includes('tendo')) { const pt = seg(dn(k, s, 0.05), dn(k, s, 0.3), 0.045, 0.04, hot); g.add(pt); const at = seg(dn(a, s, -0.35), dn(a, s, -0.02), 0.04, 0.05, hot); at.position.x -= 0.05; g.add(at); }
+    low = Math.min(low, a.y - 0.07, toe.y - 0.05);
+  });
+  P.arms.forEach(([u, f], i) => {
+    const z = i ? -0.42 : 0.42; const sh = new THREE.Vector3(neck.x - 0.02, neck.y - 0.08, z);
+    const e = dn(sh, u, 0.62), w = dn(e, f, 0.58);
+    g.add(seg(sh, e, 0.075, 0.055, base, 0.02, .4)); g.add(seg(e, w, 0.055, 0.04, base, 0.015, .3));
+    const hand = new THREE.Mesh(new THREE.SphereGeometry(0.065, 24, 18), base); hand.position.copy(dn(w, f, 0.06)); g.add(hand);
+  });
+  g.position.y = -low + (P.lift || 0); g.userData.neck = neck.clone().add(new THREE.Vector3(0, g.position.y, 0)); return g;
+}
+function plateBar(y, x) {
+  const m = new THREE.MeshPhysicalMaterial({ color: 0x15191C, metalness: .6, roughness: .35, clearcoat: .7 });
+  const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 2.6, 24), new THREE.MeshPhysicalMaterial({ color: 0xBFC6CA, metalness: 1, roughness: .2 }));
+  bar.rotation.x = Math.PI / 2; bar.position.set(x, y, 0); const g = new THREE.Group(); g.add(bar);
+  for (const z of [1, -1]) for (const k of [0, 1]) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.48 - k * .1, 0.48 - k * .1, 0.1, 64), m); p.rotation.x = Math.PI / 2; p.position.set(x, y, z * (0.95 + k * .12)); p.castShadow = true; g.add(p);
+    const rim = new THREE.Mesh(new THREE.TorusGeometry(0.47 - k * .1, 0.012, 8, 64), new THREE.MeshBasicMaterial({ color: LIME })); rim.position.copy(p.position); rim.position.z += z * 0.052; g.add(rim); }
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; }); return g;
+}
+
+lights();
+if (SC === 'tendo') {
+  scene.add(tendon(false, -1.35)); scene.add(tendon(true, 1.35)); floor(-2.25);
+  cam.position.set(0, 0.6, 11.5); cam.lookAt(0, 0.2, 0);
+} else if (SC === 'muscul') {
+  scene.add(muscle(false, -1.45)); scene.add(muscle(true, 1.45)); floor(-2.6);
+  cam.position.set(0, 0.8, 12.5); cam.lookAt(0, 0, 0);
+} else if (SC === 'molla') {
+  scene.add(spring(false, -1.55)); scene.add(spring(true, 1.55)); floor(-1.78);
+  cam.position.set(0, 2.2, 10.5); cam.lookAt(0, -0.2, 0);
+} else if (SC === 'paret') {
+  // isomètric cadira a la paret
+  const m = man({ tor: 0, legs: [[90, 0, 90], [90, 0, 90]], arms: [[20, 70], [20, 70]] }, ['quadri', 'tendo']); scene.add(m);
+  const wall = new THREE.Mesh(new THREE.BoxGeometry(0.15, 3.4, 3.2), new THREE.MeshPhysicalMaterial({ color: 0x2A3238, roughness: .7 }));
+  wall.position.set(-0.36, 1.7, 0); wall.receiveShadow = true; scene.add(wall);
+  floor(0); scene.position.set(-0.2, -1.2, 0); cam.position.set(5.2, 1.4, 5.6); cam.lookAt(0, 0.1, 0);
+} else if (SC === 'esquat') {
+  const m = man({ tor: 38, legs: [[78, -32, 90], [78, -32, 90]], arms: [[-35, -150], [-35, -150]] }, ['quadri', 'gluti']); scene.add(m);
+  const n = m.userData.neck; scene.add(plateBar(n.y - 0.02, n.x - 0.12));
+  floor(0); scene.position.set(-0.1, -1.25, 0); cam.position.set(5.6, 1.5, 5.2); cam.lookAt(0, 0.15, 0);
+} else if (SC === 'salt') {
+  const m = man({ tor: 8, legs: [[-8, -18, 120], [22, -40, 105]], arms: [[150, 160], [-40, -10]], lift: 0.45 }, ['besso', 'quadri', 'gluti']); scene.add(m);
+  floor(0);
+  const arc = new THREE.Mesh(new THREE.TorusGeometry(0.75, 0.018, 8, 80, Math.PI * .7), new THREE.MeshBasicMaterial({ color: LIME, transparent: true, opacity: .6 }));
+  arc.position.set(0.15, 0.3, 0); arc.rotation.z = Math.PI * 1.15; scene.add(arc);
+  scene.position.set(0, -1.6, 0); cam.position.set(6.6, 1.6, 7.4); cam.lookAt(0, 0.6, 0);
+} else if (SC === 'donut') {
+  const d = donut(); scene.add(d); floor(-1.2);
+  cam.position.set(0, 1.5, 8.5); cam.lookAt(0, 0, 0);
+}
+r.render(scene, cam);
+window.done = true;
+</script></body></html>
