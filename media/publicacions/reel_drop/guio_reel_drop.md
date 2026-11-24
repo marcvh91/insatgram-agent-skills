@@ -1,4 +1,4 @@
-# Reel · «Molèsties al genoll quan corres?» · v3 (≈45 s)
+# Reel · «Molèsties al tendó d'Aquil·les o al genoll quan corres?» · v4 (54 s)
 
 **Roba:** polo de Tonus. **Lloc:** consulta, amb llum de cara. **Mòbil:** vertical, amb trípode.
 Abans de parlar, compta 1 segon en silenci. Si t'equivoques, repeteix la frase sencera.
