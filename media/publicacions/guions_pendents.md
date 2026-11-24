@@ -3,7 +3,7 @@
 ## Què necessito de tu (resum)
 | Quan | Què | Per a |
 |---|---|---|
-| Dc 25/11 · 13:00 | 7 clips parlant (polo Tonus) + 6 plans 3D de l'app | Reel cintilla (dv 27) |
+| Dc 25/11 · 13:00 | 7 clips parlant (polo Tonus) · 3D ja rebut ✅ | Reel cintilla (dv 27) |
 | Quan puguis (abans del dg 29) | Clip 2 del drop (opcional) | Reel drop (dl 30) |
 | Dc 2/12 · 13:00 | 6 clips parlant (polo Tonus) | Reel errors (dv 11/12) |
 | Dv 18/12 | Clips força (ja tens la guia) | Reel força (dt 29/12) |
@@ -14,22 +14,22 @@
 
 ---
 
-## 1 · Dv 27/11 · 10:00 · REEL «Mal a fora del genoll quan corres? La cintilla» (~50 s)
+## 1 · Dv 27/11 · 10:00 · REEL «Mal a la cara externa del genoll quan corres? La cintilla» (~50 s)
 **Format:** pantalla partida com el del drop: 3D a dalt (1080×1000) i tu a baix. El ganxo i el final, tu a pantalla completa. Maqueta: `reel_cintilla/maqueta/maquetacio_cintilla.jpg`.
 
 | # | Temps | Pantalla | Text a pantalla | Què dius (literal) |
 |---|---|---|---|---|
-| 1 | 0–4 s | Tu, pantalla completa | **MAL A FORA DEL GENOLL QUAN CORRES?** (a dalt) | «Et fa mal la part de fora del genoll quan corres? Pot ser la cintilla.» |
+| 1 | 0–4 s | Tu, pantalla completa | **MAL A LA CARA EXTERNA DEL GENOLL QUAN CORRES?** (a dalt) | «Et fa mal la cara externa del genoll quan corres? Pot ser la cintilla.» |
 | 2 | 4–10 s | 3D pla 1 → pla 2 / tu | CINTILLA ILIOTIBIAL · del maluc fins sota el genoll | «És una banda de teixit molt dura que va del maluc fins a sota del genoll, i està ben ancorada al fèmur.» [1] |
 | 3 | 10–17 s | 3D plans 4 i 5 / tu | TENSOR DE LA FÀSCIA LATA · GLUTI MAJOR | «Hi tiren dos músculs: el tensor de la fàscia lata, per davant, i el gluti major, per darrere.» [1] |
-| 4 | 17–26 s | 3D pla 3 (genoll) / tu | AQUÍ FA MAL | «El dolor surt aquí, a fora del genoll. Abans es deia que la cintilla fregava l'os. Avui sabem que el més probable és que comprimeixi un teixit amb nervis que hi ha a sota.» [2][3] |
+| 4 | 17–26 s | 3D pla 3 (genoll) / tu | AQUÍ FA MAL | «El dolor surt aquí, a la cara externa del genoll. Abans es deia que la cintilla fregava l'os. Avui sabem que el més probable és que comprimeixi un teixit amb nervis que hi ha a sota.» [2][3] |
 | 5 | 26–36 s | 3D pla 6 / tu | PER QUÈ? · càrrega de cop · maluc fluix | «Per què passa? Sobretot per pujar massa de pressa els quilòmetres o la intensitat. I en corredores s'ha vist menys força al gluti mitjà, el múscul que controla el maluc.» [2][4] |
 | 6 | 36–46 s | Tu, pantalla completa | QUÈ FER? · força de maluc · ajusta la càrrega | «Què fer? Estirar-la no l'allargarà: és massa rígida. El que funciona és enfortir el maluc; als estudis, el dolor baixa en dues a vuit setmanes. I ajusta la càrrega uns dies.» [1][5] |
-| 7 | 46–52 s | Foto del banc + targeta | WhatsApp · Tonus · web | «Et fa mal a fora del genoll? Escriu-me i ho mirem.» |
+| 7 | 46–52 s | Foto del banc + targeta | WhatsApp · Tonus · web | «Et fa mal la cara externa del genoll? Escriu-me i ho mirem.» |
 
 **Plans 3D que necessito** (app en vertical, 5–6 s cadascun, gir lent, sense «Feina»/«No molestar» activat):
-1. Cama sencera de perfil i zoom lent fins a la cuixa · 2. Només la cintilla marcada, girant 20–30° · **3. Zoom a la cara de fora del genoll (on la cintilla passa pel fèmur i s'insereix a la tíbia) — el més important, falta** · 4. Tensor de la fàscia lata · 5. Gluti major, vist una mica des del darrere · 6. Gluti mitjà.
-Dels vídeos que m'has passat ja puc fer servir 1, 2, 4, 5 i 6 (retallats). Si no tens temps, només em falta el **pla 3**.
+1. Cama sencera de perfil i zoom lent fins a la cuixa · 2. Només la cintilla marcada, girant 20–30° · 3. Zoom a la cara externa del genoll ✅ rebut · 4. Tensor de la fàscia lata · 5. Gluti major, vist una mica des del darrere · 6. Gluti mitjà.
+✅ Tots els plans 3D rebuts (24/11) i retallats a `/home/claude/reel_cintilla_src/panels`. Consell per a la propera: activa «Ocultar interfaz» a l'app.
 
 **Referències (peu):** [1] Hutchinson L 2022, Sports Med (anatomia i funció de la cintilla) · [2] Bonoan M 2024, Curr Phys Med Rehabil Rep (evidència actual) · [3] Mliczek A 2026, Quality in Sport (model de compressió) · [4] Foch E 2023, Gait Posture (RS-MA: menys força d'abductors en corredores amb cintilla) · [5] Sanchez-Alvarado A 2024, Front Sports Act Living (RS: força d'abductors, −27 a −100 % de dolor en 2–8 setmanes). DOIs abans de programar.
 **Matisos:** el gluti mitjà NO s'insereix a la cintilla (només TFL i gluti major). La debilitat de maluc s'ha vist en dones amb dolor actual, no és una causa demostrada.

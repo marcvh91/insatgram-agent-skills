@@ -18,13 +18,13 @@ def pill_div(): return ""
 F = {
  "1_ganxo": f"""<div style="position:relative;width:1080px;height:1920px"><img src="{U('marc_full.jpg')}" style="width:1080px;height:1920px">
 <div style="position:absolute;inset:0 0 auto 0;height:560px;background:linear-gradient(180deg,#0B0F12 55%,rgba(11,15,18,0))"></div>
-<div style="position:absolute;top:120px;left:60px;right:60px;font-weight:900;font-size:88px;line-height:.96;letter-spacing:-3px;text-transform:uppercase;color:#fff">Mal a fora <span style="color:#D4FF3F">del genoll quan corres?</span></div></div>""",
- "2_que_es": split("full_leg_crop.png", "Cintilla iliotibial", "Del maluc fins sota el genoll", "QUÈ ÉS"),
- "3_cintilla": split("itb_crop.png", "Cintilla iliotibial", "Molt dura i ancorada al fèmur", "QUÈ ÉS"),
- "4_tfl": split("tfl_crop.png", "Tensor de la fàscia lata", "Hi tira des de davant", "QUI HI TIRA"),
- "5_gmax": split("gmax_crop.png", "Gluti major", "Hi tira des de darrere", "QUI HI TIRA"),
- "6_genoll": placeholder("PLA 3 · FALTA<br><span style='font-size:38px;color:#E8ECEF'>Zoom a la cara de fora del genoll:<br>on fa mal</span>"),
- "7_gmed": split("gmed_crop.png", "Gluti mitjà", "Controla el maluc", "PER QUÈ"),
+<div style="position:absolute;top:120px;left:60px;right:60px;font-weight:900;font-size:88px;line-height:.96;letter-spacing:-3px;text-transform:uppercase;color:#fff">Mal a la cara externa <span style="color:#D4FF3F">del genoll quan corres?</span></div></div>""",
+ "2_que_es": split("p1_cama.png", "Cintilla iliotibial", "Del maluc fins sota el genoll", "QUÈ ÉS"),
+ "3_cintilla": split("p2_cintilla.png", "Cintilla iliotibial", "Molt dura i ancorada al fèmur", "QUÈ ÉS"),
+ "4_tfl": split("p4_tfl_src.png", "Tensor de la fàscia lata", "Hi tira des de davant", "QUI HI TIRA"),
+ "5_gmax": split("p5_gmax.png", "Gluti major", "Hi tira des de darrere", "QUI HI TIRA"),
+ "6_genoll": split("p3_genoll.png", "Aquí fa mal", "Cara externa del genoll", "ON FA MAL"),
+ "7_gmed": split("p6_gmed.png", "Gluti mitjà", "Controla el maluc", "PER QUÈ"),
 }
 async def main():
     async with async_playwright() as p:
