@@ -27,7 +27,7 @@ def panel(out, clip, s, d, fin=True, fout=False):
     """Dibuix del drop a dalt (720 px) i ell a sota, com a la v1."""
     af = "afade=t=in:d=0.03" + (f",afade=t=out:st={d-0.04}:d=0.04" if fout else "")
     ff('-ss', s, '-t', d, '-i', P/f'p_{clip}.mov', '-loop', 1, '-framerate', 30, '-i', R/'panels/p2_drop.png', '-filter_complex',
-       f"[0:v]scale=1080:1920,setsar=1,split[a][b];[a]crop=1080:1200:0:200,boxblur=30:3,eq=brightness=-0.15[bg];[b]scale=918:1632,crop=918:1200:0:120[fg];[bg][fg]overlay=81:0[vid];[1:v]crop=1080:720:0:0,setsar=1[top];[top][vid]vstack[out];[0:a]{af}[a]",
+       f"[0:v]scale=1080:1920,setsar=1,split[a][b];[a]crop=1080:1200:0:200,boxblur=30:3,eq=brightness=-0.15[bg];[b]scale=1000:1778,crop=1000:1200:0:410[fg];[bg][fg]overlay=40:0[vid];[1:v]crop=1080:720:0:0,setsar=1[top];[top][vid]vstack[out];[0:a]{af}[a]",
        '-map', '[out]', '-map', '[a]', '-t', d, *V, *A, out)
 panel(W/'a2.mov', 4174, 0.45, 3.65, fout=True)
 panel(W/'a3.mov', 4176, 1.35, 4.60 + PAD)
