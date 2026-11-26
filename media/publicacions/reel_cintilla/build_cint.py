@@ -41,6 +41,20 @@ def splitseg(out, clip, s, e, lab, mp4, m0, cx, yt, wf, lows=()):
         fc += f";[{i+3}:v]format=rgba,fade=t=in:st={a}:d=0.15:alpha=1{fo}[l{i}];[{last}][l{i}]overlay=0:0[c{i+1}]"; last = f'c{i+1}'
     fc += f";[0:a]afade=t=in:d=0.03,afade=t=out:st={d-0.04}:d=0.04[a]"
     ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-map', '[a]', '-t', d, *V, *A, out)
+def split3(out, clip, s, e, lab, mp4, m0, cx, yt, wf, lows=()):
+    """1/3 a dalt el 3D sencer (sense retallar, centrat sobre fons fosc) i 2/3 a baix ell (1080×1280 del 4K)."""
+    d = round(e - s, 3); w = wf * 2160; h = w * 1280 / 1080
+    if h > 3840: h = 3840; w = h * 1080 / 1280
+    x0 = min(max(cx * 2160 - w / 2, 0), 2160 - w); y0 = min(max(yt * 3840, 0), 3840 - h)
+    ins = ['-ss', s, '-t', d, '-i', S / f'IMG_{clip}.mov', '-stream_loop', -1, '-ss', m0, '-i', P3 / mp4, '-loop', 1, '-framerate', 30, '-t', d, '-i', OV / lab]
+    fc = (f"[0:v]crop={w:.0f}:{h:.0f}:{x0:.0f}:{y0:.0f},scale=1080:1280:flags=lanczos,setsar=1[bot];"
+          f"[1:v]setpts=PTS-STARTPTS,fps=30,scale=-2:640,pad=1080:640:(ow-iw)/2:0:color=0x0B0F12,setsar=1[top];[top][bot]vstack[st];[st][2:v]overlay=0:0[c0]"); last = 'c0'
+    for i, (png, a, b) in enumerate(lows):
+        ins += ['-loop', 1, '-framerate', 30, '-t', d, '-i', OV / png]
+        fo = f",fade=t=out:st={b-0.12}:d=0.12:alpha=1" if b < d else ""
+        fc += f";[{i+3}:v]format=rgba,fade=t=in:st={a}:d=0.15:alpha=1{fo}[l{i}];[{last}][l{i}]overlay=0:0[c{i+1}]"; last = f'c{i+1}'
+    fc += f";[0:a]afade=t=in:d=0.03,afade=t=out:st={d-0.04}:d=0.04[a]"
+    ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-map', '[a]', '-t', d, *V, *A, out)
 def silhouette(out, clip, s, d, audio_clip, a_s, a_d, pops):
     """Exercici a contrallum (S2/S3) amb la veu de la frase; si la veu és més curta, silenci al final."""
     ins = ['-ss', s, '-t', d, '-i', S / f'IMG_{clip}.mov', '-ss', a_s, '-t', a_d, '-i', S / f'IMG_{audio_clip}.mov']
@@ -66,26 +80,26 @@ def card(out, clip, s, e, cardpng, mp4, m0, lows=()):
 seq = []
 def add(f): seq.append(f); return f
 # 1 · Ganxo: arriba corrent (velocitat real, retallat) i parla; títol des del primer fotograma
-talk(add(W/'01.mov'), 4195, 3.20, 6.66, 1.0, 0.5, 0.2, [('t_hook.png', 0, 99)])
+talk(add(W/'01.mov'), 4195, 2.20, 6.66, 1.0, 0.5, 0.2)
 talk(add(W/'02.mov'), 4195, 6.66, 11.05, 1.15, 0.5, 0.17, [('t_hook.png', 0, 2.75), ('pop_cintilla.png', 2.75, 99)])
 # 2 · Què és (a dalt 3D, a baix ell)
 talk(add(W/'03.mov'), 4198, 0.85, 2.30, 1.3, 0.45, 0.21)
-splitseg(add(W/'04.mov'), 4198, 2.30, 7.35, 'sp_cint.png', 'p2_cintilla.mp4', 1.0, 0.42, 0.19, 0.78)
+split3(add(W/'04.mov'), 4198, 2.30, 7.35, 's2_cint.png', 'p2_cintilla.mp4', 1.0, 0.45, 0.15, 0.92)
 # 3 · Qui hi tira
 talk(add(W/'05.mov'), 4200, 0.35, 2.25, 1.7, 0.47, 0.40)
-splitseg(add(W/'06.mov'), 4200, 2.25, 4.70, 'sp_tfl.png', 'p4_tfl_src.mp4', 0.0, 0.47, 0.38, 0.84)
-splitseg(add(W/'07.mov'), 4200, 4.70, 6.75, 'sp_gmax.png', 'p5_gmax.mp4', 1.5, 0.47, 0.38, 0.84)
+split3(add(W/'06.mov'), 4200, 2.25, 4.70, 's2_tfl.png', 'p4_tfl_src.mp4', 0.0, 0.47, 0.36, 0.76)
+split3(add(W/'07.mov'), 4200, 4.70, 6.75, 's2_gmax.png', 'p5_gmax.mp4', 1.5, 0.47, 0.36, 0.76)
 # 4 · On fa mal i per què
 talk(add(W/'08.mov'), 4206, 1.00, 2.85, 1.0, 0.5, 0.0)
-splitseg(add(W/'09.mov'), 4206, 2.85, 12.25, 'sp_genoll.png', 'p3_genoll.mp4', 0.5, 0.5, 0.45, 1.0, [('low_friccio.png', 2.6, 5.4), ('low_compr.png', 5.6, 99)])
+split3(add(W/'09.mov'), 4206, 2.85, 12.25, 's2_genoll.png', 'p3_genoll.mp4', 0.5, 0.5, 0.12, 1.0, [('l2_friccio.png', 2.6, 5.4), ('l2_compr.png', 5.6, 99)])
 # 5 · Per què apareix
 talk(add(W/'10.mov'), 4211, 1.20, 6.15, 1.35, 0.5, 0.32, [('pop_carrega.png', 1.6, 99)])
-splitseg(add(W/'11.mov'), 4211, 6.15, 9.40, 'sp_gmed.png', 'p6_gmed.mp4', 0.5, 0.5, 0.30, 0.90)
+split3(add(W/'11.mov'), 4211, 6.15, 9.40, 's2_gmed.png', 'p6_gmed.mp4', 0.5, 0.5, 0.13, 0.92)
 # 6 · Què fer: estirar ✗ (ell) → enfortir ✓ i ajustar la càrrega (exercici a contrallum)
 talk(add(W/'12.mov'), 4212, 1.50, 5.40, 1.3, 0.48, 0.33, [('pop_estirar.png', 1.35, 99)])
 silhouette(add(W/'13.mov'), 4152, 2.80, 4.6, 4212, 5.40, 3.0, [('pop_enfortir.png', 0.1, 2.5), ('pop_carrega2.png', 2.5, 99)])
 # 7 · Crida
-talk(add(W/'14.mov'), 4214, 0.00, 7.95, 1.6, 0.52, 0.34, [(CTA, 6.0, 99)], tail=2.0)
+talk(add(W/'14.mov'), 4214, 0.00, 7.95, 1.6, 0.52, 0.34, [(CTA, 6.0, 99)], tail=1.5)
 (W/'l.txt').write_text(''.join(f"file '{x}'\n" for x in seq))
 ff('-f', 'concat', '-safe', 0, '-i', W/'l.txt', '-c', 'copy', W/'join.mov')
 # whoosh a l'entrada/sortida de cada targeta 3D

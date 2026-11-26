@@ -24,6 +24,16 @@ def split(name, sub):
 <div style="font-weight:900;font-size:56px;letter-spacing:-1.5px;line-height:1;color:#D4FF3F;text-transform:uppercase">{name}</div>
 <div style="margin-top:10px;font-weight:700;font-size:34px;color:#fff">{sub}</div></div>
 <div style="position:absolute;left:0;right:0;top:957px;height:6px;background:#D4FF3F"></div>''')
+def split2(name, sub):
+    """Pantalla partida 1/3 (3D, 0–640) + 2/3 (ell, 640–1920). Nom en una etiqueta lima damunt la línia divisòria."""
+    return frame(f'''<div style="position:absolute;left:0;right:0;top:637px;height:6px;background:#D4FF3F"></div>
+<div style="position:absolute;top:596px;left:0;right:0;text-align:center"><span style="display:inline-block;background:#D4FF3F;color:#0B0F12;font-weight:900;font-size:46px;letter-spacing:-1px;padding:10px 26px;border-radius:18px;text-transform:uppercase">{name}<sup style="color:#0B0F12">{sub}</sup></span></div>
+''')
+def low2(big, sub, ok):
+    col = "#D4FF3F" if ok else "#FF6B5B"; mark = "✓" if ok else "✗"
+    return frame(f'''<div style="position:absolute;top:1450px;left:70px;right:70px;border:4px solid {col};border-radius:24px;padding:20px 26px;background:rgba(11,15,18,.9)">
+<div style="font-weight:900;font-size:46px;letter-spacing:-1px;color:{col};text-transform:uppercase">{mark} {big}</div>
+<div style="margin-top:6px;font-weight:700;font-size:34px;color:#fff">{sub}</div></div>''')
 def low(big, sub, ok):
     """Text a sota del 3D, en una targeta (no hi ha persona)."""
     col = "#D4FF3F" if ok else "#FF6B5B"; mark = "✓" if ok else "✗"
@@ -32,6 +42,13 @@ def low(big, sub, ok):
 <div style="margin-top:8px;font-weight:700;font-size:36px;color:#fff">{sub}</div></div>''')
 ITEMS = {
  "t_hook": title(),
+ "s2_cint": split2("Cintilla iliotibial", "[1]"),
+ "s2_tfl": split2("Tensor de la fàscia lata", "[1]"),
+ "s2_gmax": split2("Gluti major", "[1]"),
+ "s2_genoll": split2("Cara externa del genoll", ""),
+ "s2_gmed": split2("Gluti mitjà · menys força", "[4]"),
+ "l2_friccio": low2("Abans: fricció amb l'os", "Ja no és l'explicació principal<sup>[2]</sup>", False),
+ "l2_compr": low2("Avui: compressió", "D'un teixit amb nervis que hi ha a sota<sup>[2][3]</sup>", True),
  "sp_cint": split("Cintilla iliotibial", "Del maluc fins a sota del genoll<sup>[1]</sup>"),
  "sp_tfl": split("Tensor de la fàscia lata", "Hi tira per davant<sup>[1]</sup>"),
  "sp_gmax": split("Gluti major", "Hi tira per darrere<sup>[1]</sup>"),
