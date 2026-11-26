@@ -14,7 +14,7 @@ TITLE = 'Molèsties al tendó d\'Aquil·les <span style="color:#D4FF3F">o al gen
 def title(top, fs, h):
     return f'''<div style="width:1080px;height:1920px;position:relative">{topband(h)}
 <div style="position:absolute;top:{top}px;left:60px;right:60px;text-align:center;font-weight:900;font-size:{fs}px;line-height:1;letter-spacing:-2.5px;text-transform:uppercase;color:#fff">{TITLE}</div></div>'''
-def cards(show_baix, top=1080, show_alt=True, cw=300, lw=270):
+def cards(show_baix, top=1160, show_alt=True, cw=300, lw=270):
     """Targetes grans als costats (com a la v2), apareixen quan les anomena."""
     def card(side, t, txt, leg, vis):
         x = "left:24px" if side == "L" else "right:24px"
