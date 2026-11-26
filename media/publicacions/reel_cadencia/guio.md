@@ -1,6 +1,6 @@
 # Reel «180 passes per minut: mite o veritat?» · setmana del 30/11 (proposta: dv 4/12 10:00)
 Vídeo: corredor a la cinta, de costat (IMG_4164 càmera lenta + IMG_4163 velocitat real). **Consentiment d'imatge signat.** No es diu que és pacient ni el diagnòstic.
-Format senzill: només text a la franja de baix (terra), sense tapar el corredor. Música des de l'app. ~26 s. Maqueta: `reel_cadencia_maqueta.mp4`.
+Format senzill: només text a la franja de baix (terra), sense tapar el corredor. Música des de l'app. ~35 s. Maqueta: `reel_cadencia_maqueta.mp4`.
 
 | Temps | Imatge | Text |
 |---|---|---|
@@ -20,8 +20,8 @@ Format senzill: només text a la franja de baix (terra), sense tapar el corredor
 180 passes per minut: mite o veritat? 👟
 
 Mite. No hi ha cap número màgic per a tothom. El que sí que sabem:
-1️⃣ Una passa llarga, aterrant de taló i amb el peu molt per davant del cos, frena més i carrega més la ròtula [1][2].
-2️⃣ Pujar la TEVA cadència un 5–10 % fa la passa més curta, el peu cau més a prop del cos i la càrrega al genoll baixa [1][2].
+1️⃣ Aterrar de taló amb una passa llarga frena més i carrega més el genoll (la ròtula) [1][2].
+2️⃣ Pujar la TEVA cadència un 5–10 % fa la passa més curta, el peu toca menys de taló i la càrrega al genoll baixa [1][2].
 3️⃣ En corredors amb dolor a la part davantera del genoll, augmentar una mica la cadència és de les estratègies amb resultats més consistents [3].
 
 🔢 Prova-ho: compta les passes durant 30 segons i multiplica per 2. Escriu-me el número als comentaris o per WhatsApp i t'ho miro.
