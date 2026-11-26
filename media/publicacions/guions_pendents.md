@@ -1,4 +1,6 @@
-# Guions pendents · @marcvallfisio (actualitzat 25/11/2026)
+# Guions pendents · @marcvallfisio (actualitzat 26/11/2026)
+
+**Norma (Marc, 26/11):** els reels NO acaben amb crida a demanar cita ni contactes. Contingut divulgatiu; tancament amb guardar/compartir o pregunta als comentaris.
 
 ## Què necessito de tu (resum)
 | Quan | Què | Per a |
@@ -52,7 +54,7 @@ Ja està a Metricool. Si arriben els clips D1/D2 del rodatge del 25/11, els subs
 | 3 | 12–19 s | 2 · IGNORAR LESIONS D'ABANS | «Dos: oblidar-te de les lesions que ja has tingut. És el factor de risc que més es repeteix.» | van Poppel 2020 |
 | 4 | 19–26 s | 3 · SENSE PLA, UN DIA I PROU | «Tres: córrer sense pla i només un dia per setmana. Millor dos o tres sortides curtes.» | Abrahamson 2024 |
 | 5 | 26–34 s | 4 · LA BAMBA «PER AL TEU PEU» | «Quatre: triar la bamba pel tipus de peu. Cap estudi diu que funcioni. Tria la que et sigui més còmoda.» | Relph 2022 (Cochrane); Malisoux 2025 |
-| 6 | 34–40 s | Crida | «Vols començar sense lesionar-te? Escriu-me i et faig el pla.» | – |
+| 6 | 34–40 s | Tancament | «Guarda't el vídeo i passa'l a qui està començant a córrer.» | – |
 **Clips:** 6 (un per fila), 3 preses de cada. Pla A (1,5 m, cintura amunt): E1, E2, E4, E6 (E6 entrant caminant). Pla B (1 m, 45°): E3, E5 (bamba a la mà). Dits a càmera a cada error.
 **Recursos nous:** R1 llibreta amb el pla (zenital, 6–8 s) · R2 bamba de prop (5 s) · R3 dits 1-2-3-4 (2 s cadascun). **Ja tinc:** corrent pel passeig (E2) i fotos al banc (E3) del 26/11.
 Guia: https://claude.ai/artifact/FGwRnsgx8x3ix9JQEL8amf · Teleprompter: reel «4 errors».
