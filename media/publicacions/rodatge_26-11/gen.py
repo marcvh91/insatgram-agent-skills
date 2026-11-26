@@ -78,6 +78,24 @@ CINT = [
 REC = [("R1", "Peus i genolls corrent de costat", "Mòbil a l'altura del genoll, a 2 m. Passa 3 vegades corrent suau per davant."),
        ("R2", "S2 i S3 a contrallum", "Ja els tens gravats: envia'ls adjuntats al xat.")]
 drop = "".join(card(*c) for c in DROP); cint = "".join(card(*c) for c in CINT)
+GEN = [
+ ("★", "B1", "Corrent cap a càmera", "Mòbil a l'altura del maluc. Comences a 30–40 m i passes just pel costat de la càmera. 2 passades.", "Ganxos, portades, crides"),
+ ("★", "B2", "Corrent de costat, pla obert", "Trípode a 5 m del camí. 3 passades: suau, ritme mitjà, ràpid. Que es vegi tot el cos i el paisatge.", "Fons de Reels i carrusels"),
+ ("★", "B3", "Peus i bambes corrent", "Mòbil a terra, a 30 cm del camí. Passa per davant 3 vegades. Si pots, en <b>càmera lenta</b>.", "Drop, bambes, càrrega"),
+ ("★", "B4", "Trot i mà al genoll (cara externa)", "Trotes cap a càmera, pares de cop i et poses la mà a la cara externa del genoll, amb cara de molèstia. De davant i de costat.", "Cintilla, ganxos de lesions"),
+ ("★", "B5", "Mà a l'Aquil·les", "Assegut en un banc o pedra, et toques el tendó d'Aquil·les amb cara de molèstia. Pla de detall i pla mitjà.", "Aquil·les, drop"),
+ ("★", "B6", "Lligant-se les bambes", "Primer pla de les mans, peu sobre un banc. 2 preses.", "Començar a córrer (Reel dels errors, Pla d'atac)"),
+ ("", "B7", "Caminar → trotar", "Camines 3–4 passes i arrenques a trotar suau, de costat.", "Pla d'atac: caminar i córrer"),
+ ("", "B8", "Mirant el rellotge", "Pares, mires el rellotge GPS i respires. Detall del canell i pla mitjà.", "Planificació, càrrega, regla del 10 %"),
+ ("", "B9", "Baixant escales amb mà al genoll", "Baixes unes escales i et toques la part davantera del genoll.", "Genoll, ròtula"),
+ ("", "B10", "Pujada o escales corrent", "Puges corrent una costa o escales. De costat i de baix.", "Força, càrrega"),
+ ("", "B11", "Maluc des de darrere", "Mòbil a l'altura del maluc, darrere teu, corrent-te allunyant. <b>Càmera lenta</b>.", "Gluti mitjà, cintilla"),
+ ("", "B12", "Escalfament", "Skipping, talons al cul i 2 progressius curts, de costat.", "Escalfament, prevenció"),
+ ("", "B13", "Silueta a contrallum", "Corrent amb el sol de cara a la càmera (l'únic pla a contrallum).", "Portades i fons estètics"),
+ ("", "B14", "Final de l'entrenament", "Mans als genolls respirant, i després un estirament suau.", "Recuperació"),
+ ("", "B15", "Fotos en ràfega", "Mode foto, ràfega mantenint el botó: corrent cap a càmera, mà al genoll, somrient amb roba de córrer.", "Portades i banc de fotos"),
+]
+gen = "".join(f'<li class="mini"><label class="chk"><input type="checkbox" id="g{i}"><span>{i}</span></label><div><b>{star+" " if star else ""}{e(a)}</b><p>{b}</p><p class="use">Per a: {e(u)}</p></div></li>' for star, i, a, b, u in GEN)
 rec = "".join(f'<li class="mini"><label class="chk"><input type="checkbox" id="r{i}"><span>{i}</span></label><div><b>{e(a)}</b><p>{e(b)}</p></div></li>' for i, a, b in REC)
 page = f'''<title>Rodatge drop i cintilla</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -105,12 +123,12 @@ ol.clips,ul.recs{{list-style:none;margin:0;padding:0;display:grid;gap:14px}}
 dl{{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14px}} dt{{color:var(--mute);font-weight:600}} dd{{margin:0}}
 .ex img.il{{width:100%;max-width:220px;border-radius:10px;display:block}}
 .chk{{display:inline-flex;align-items:center;gap:6px;cursor:pointer}} .chk input{{width:20px;height:20px;accent-color:var(--lime)}} .chk span{{font-weight:900;color:var(--lime)}}
-.mini{{display:flex;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}} .mini p{{margin:2px 0 0;color:var(--mute);font-size:14px}}
+.mini{{display:flex;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}} .mini p{{margin:2px 0 0;color:var(--mute);font-size:14px}} .mini p.use{{color:var(--lime);font-size:13px}}
 input:focus-visible{{outline:2px solid var(--lime);outline-offset:2px}}
 @media (max-width:480px){{.clip{{grid-template-columns:92px 1fr}} .say{{font-size:16px}}}}
 </style>
 <main class="wrap">
-<header><h1>Rodatge <em>drop i cintilla</em></h1><p class="lead">Part 1: el Reel del drop sencer, 7 clips (~45 s), tot en una sessió perquè la llum sigui la mateixa. Part 2: el Reel de la cintilla sencer, en 7 clips i uns 42 s.</p></header>
+<header><h1>Rodatge <em>drop i cintilla</em></h1><p class="lead">Part 1: el Reel del drop sencer, 7 clips (~45 s), tot en una sessió perquè la llum sigui la mateixa. Part 2: el Reel de la cintilla sencer, en 7 clips i uns 42 s. Part 3: material genèric per a futures publicacions.</p></header>
 <section><h2>Normes per a tots els clips</h2><div class="box"><ul>
 <li><b>Càmera del darrere 1×</b> (la frontal grava en mirall), 4K 30 fps, <b>vídeo HDR desactivat</b>.</li>
 <li><b>Bloqueja la llum:</b> mantén el dit sobre la teva cara fins que surti «Bloqueo AE/AF», i no ho toquis més durant aquell bloc.</li>
@@ -129,5 +147,12 @@ input:focus-visible{{outline:2px solid var(--lime);outline-offset:2px}}
 </ul></div>
 <h3>Clips, en l'ordre del Reel</h3><ol class="clips">{cint}</ol>
 <h3>Recursos</h3><ul class="recs">{rec}</ul></section>
+<section><h2><span>3 ·</span> Material genèric · per al futur</h2><p class="sub">Mateix lloc i roba de córrer. Cada pla 8–10 s, i comença a gravar 2 s abans de l'acció. Varia l'altura: a terra, al maluc, als ulls. ★ = prioritari.</p>
+<div class="box"><ul>
+<li><b>Pla per a 1 h:</b> 0–25 min, els clips de la cintilla (part 2) · 25–50 min, els ★ i tots els que puguis · 50–60 min, fotos en ràfega.</li>
+<li><b>Càmera lenta</b> (B3, B11): Ajustes › Cámara › Grabar a cámara lenta › 1080p a 240 fps.</li>
+<li>Si algú t'acompanya, que et segueixi corrent amb el mòbil a la mà en algun pla: dona molt de dinamisme.</li>
+</ul></div>
+<h3>Plans</h3><ul class="recs">{gen}</ul></section>
 </main>'''
 open("index.html", "w").write(page)
