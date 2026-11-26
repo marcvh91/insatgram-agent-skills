@@ -27,8 +27,8 @@ ITEMS = {
  "t3": low('<b>Mite:</b> no hi ha cap<br>número màgic', 96, T),
  "t4": low('Puja la <b>teva</b><br>cadència un <b>5–10 %</b><sup>[2][3]</sup>', 96, T),
  "t5": low('Passa més curta,<br>menys taló i <b>menys<br>càrrega al genoll</b><sup>[1][2]</sup>', 84, T),
- "t6": low('Et fa mal el genoll?<br>És de les <b>primeres<br>coses</b> que treballem<sup>[3]</sup>', 84, T),
- "t7": low('Compta les passes<br><b>30 s × 2</b> i escriu-me<br>el número 👇<div style="margin-top:26px;font-size:42px;letter-spacing:-.5px;text-transform:none;font-weight:800;color:#fff">WhatsApp <b>627 148 092</b> · Tonus <b>601 983 214</b><br><b>marcvallfisio.com</b></div>', 76, 1310),
+ "t6": low('Amb dolor de genoll,<br>és de les estratègies<br>amb <b>més evidència</b><sup>[3]</sup>', 84, T),
+ "t7": low('<b>Repte:</b> compta<br>les teves passes<br><b>30 s × 2</b>', 96, T),
 }
 async def main():
     async with async_playwright() as p:

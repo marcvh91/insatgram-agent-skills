@@ -53,13 +53,12 @@ seg(W/'c1.mov', 4181, 1.45 - PAD, 4.45, 1.10, 0.85, [('d5_alt.png', 0.45, 99)])
 seg(W/'c2.mov', 4181, 6.45, 9.85, 1.18, 0.85, [('d5_alt.png', 0, 99), ('d5_baix.png', 0.15, 99)])
 seg(W/'c3.mov', 4181, 16.35, 20.05, 1.0, 0.5)
 seg(W/'c4.mov', 4183, 0.25, 4.60, 1.0, 0.5)
-seg(W/'c5.mov', 4183, 4.60, 6.50 + PAD, 1.16, 0.2, [('pop_setm.png', 0.05, 99)])
+seg(W/'c5.mov', 4183, 4.60, 6.72, 1.16, 0.2, [('pop_setm.png', 0.05, 99)])
 BC = concat('C', [W/f'c{i}.mov' for i in range(1, 6)])
 # Bloc D · crida a la consulta + contacte (congela l'últim fotograma per llegir-lo)
-seg(W/'d1.mov', 4191, 1.95 - PAD, 7.40, 1.12, 0.45, [('cta.png', 4.90, 99)], tail=2.4)
-BD = W/'d1.mov'
+# (sense crida final: decisió de Marc 26/11)
 # Transicions entre blocs + whoosh suau
-blocks = [BA, BB, BC, BD]; trans = ['slideleft', 'slideleft', 'fadeblack']
+blocks = [BA, BB, BC]; trans = ['slideleft', 'slideleft']
 ds = [dur(b) for b in blocks]; ins = sum((['-i', b] for b in blocks), [])
 fc = ''; lv, la = '0:v', '0:a'; acc = ds[0]; T = []
 for i, t in enumerate(trans, 1):

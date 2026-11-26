@@ -17,7 +17,7 @@ P = [('a', SLOW, 22.2, 3.5, ['annot.png', 't0.png'], True),
      ('e', REAL, 5.0, 4.4, ['t4.png'], False),
      ('f', REAL, 9.4, 4.6, ['t5.png'], False),
      ('g', SLOW, 28.6, 4.6, ['t6.png'], False),
-     ('h', SLOW, 33.2, 6.0, ['t7.png'], False)]
+     ('h', SLOW, 33.2, 5.0, ['t7.png'], False)]
 for n, src, s, d, ovs, fr in P: seg(W / f'{n}.mp4', src, s, d, ovs, fr)
 (W / 'l.txt').write_text(''.join(f"file '{W}/{p[0]}.mp4'\n" for p in P))
 ff('-f', 'concat', '-safe', 0, '-i', W / 'l.txt', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-c:v', 'copy', '-c:a', 'aac', '-shortest', R / 'reel_cadencia_maqueta.mp4')

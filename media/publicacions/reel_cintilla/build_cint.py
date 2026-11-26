@@ -93,8 +93,7 @@ def card(out, clip, s, e, cardpng, mp4, m0, lows=()):
 seq = []
 def add(f): seq.append(f); return f
 # 1 · Ganxo: arriba corrent (velocitat real, retallat) i parla; títol des del primer fotograma
-broll(add(W/'00.mov'), 4220, 3.75, 0.8, None, 0, 1.0, 0.5, 0.2)
-talk(add(W/'01.mov'), 4197, 4.00, 5.25, 1.2, 0.76, 0.41)
+talk(add(W/'01.mov'), 4197, 2.20, 5.25, 1.0, 0.5, 0.41)
 talk(add(W/'02.mov'), 4195, 6.66, 11.05, 1.15, 0.5, 0.17, [('t_hook.png', 0, 2.75), ('pop_cintilla.png', 2.75, 99)])
 # 2 · Què és (a dalt 3D, a baix ell)
 talk(add(W/'03.mov'), 4198, 0.85, 2.30, 1.3, 0.45, 0.21)
@@ -115,7 +114,7 @@ split3(add(W/'11.mov'), 4211, 6.15, 9.40, 's2_gmed.png', 'p6_gmed.mp4', 0.5, 0.5
 talk(add(W/'12.mov'), 4212, 1.50, 5.40, 1.3, 0.48, 0.33, [('pop_estirar.png', 1.35, 99)])
 silhouette(add(W/'13.mov'), 4152, 2.80, 4.6, 4212, 5.40, 3.0, [('pop_enfortir.png', 0.1, 2.5), ('pop_carrega2.png', 2.5, 99)])
 # 7 · Crida
-talk(add(W/'14.mov'), 4214, 0.00, 7.95, 1.6, 0.52, 0.34, [(CTA, 6.0, 99)], tail=1.5)
+# (sense crida final: decisió de Marc 26/11)
 (W/'l.txt').write_text(''.join(f"file '{x}'\n" for x in seq))
 ff('-f', 'concat', '-safe', 0, '-i', W/'l.txt', '-c', 'copy', W/'join.mov')
 # whoosh a l'entrada/sortida de cada targeta 3D
