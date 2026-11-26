@@ -75,6 +75,11 @@ Missatge clau: progressiu i flexible; els plans massa rígids s'abandonen més [
 
 ---
 
+## Dv 4/12 · 10:00 (proposta) · REEL «180 passes per minut: mite o veritat?» — MAQUETA FETA
+Vídeo de la cinta (consentiment signat), només text + música. Guió, peu i maqueta a `reel_cadencia/`. 3 missatges: passa llarga + taló per davant = més càrrega al genoll [Yu 2026; Anderson 2022] · no hi ha número màgic, +5–10 % de la teva cadència [Anderson 2022; Petri 2026] · amb dolor de genoll, de les primeres coses que treballem [Petri 2026]. Crida: compta les passes 30 s × 2 i escriu-me.
+
+---
+
 ## 6 · Dl 21/12 · Carrusel «Els 3 pilars de la força per córrer» — PROGRAMAT (cal contracte White Dragon signat)
 ## 7 · Dt 29/12 · Reel força · Dl 11/01 · Reel pliometria · Dl 18/01 · Reel core — guions fets a `reels_forca/guions_3_reels.md` i guia amb imatges.
 
