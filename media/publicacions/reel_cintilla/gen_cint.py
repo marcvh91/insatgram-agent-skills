@@ -17,14 +17,27 @@ def card(name, sub):
 <div style="position:absolute;top:120px;left:60px;right:60px;text-align:center">
 <div style="font-weight:900;font-size:66px;letter-spacing:-2px;line-height:1;color:#D4FF3F;text-transform:uppercase">{name}</div>
 <div style="margin-top:18px;font-weight:700;font-size:40px;color:#fff">{sub}</div></div>''')
+def split(name, sub):
+    """Pantalla partida: 3D a dalt (0–960) i ell a baix (960–1920). Nom de l'estructura sobre el 3D i línia lima al mig."""
+    return frame(f'''<div style="position:absolute;left:0;right:0;top:0;height:230px;background:linear-gradient(180deg,rgba(11,15,18,.92) 0%,rgba(11,15,18,.7) 65%,rgba(11,15,18,0) 100%)"></div>
+<div style="position:absolute;top:44px;left:40px;right:40px;text-align:center">
+<div style="font-weight:900;font-size:56px;letter-spacing:-1.5px;line-height:1;color:#D4FF3F;text-transform:uppercase">{name}</div>
+<div style="margin-top:10px;font-weight:700;font-size:34px;color:#fff">{sub}</div></div>
+<div style="position:absolute;left:0;right:0;top:957px;height:6px;background:#D4FF3F"></div>''')
 def low(big, sub, ok):
     """Text a sota del 3D, en una targeta (no hi ha persona)."""
     col = "#D4FF3F" if ok else "#FF6B5B"; mark = "✓" if ok else "✗"
-    return frame(f'''<div style="position:absolute;top:1470px;left:70px;right:70px;border:4px solid {col};border-radius:24px;padding:22px 28px;background:rgba(11,15,18,.92)">
+    return frame(f'''<div style="position:absolute;top:735px;left:70px;right:70px;border:4px solid {col};border-radius:24px;padding:22px 28px;background:rgba(11,15,18,.92)">
 <div style="font-weight:900;font-size:50px;letter-spacing:-1px;color:{col};text-transform:uppercase">{mark} {big}</div>
 <div style="margin-top:8px;font-weight:700;font-size:36px;color:#fff">{sub}</div></div>''')
 ITEMS = {
  "t_hook": title(),
+ "sp_cint": split("Cintilla iliotibial", "Del maluc fins a sota del genoll<sup>[1]</sup>"),
+ "sp_tfl": split("Tensor de la fàscia lata", "Hi tira per davant<sup>[1]</sup>"),
+ "sp_gmax": split("Gluti major", "Hi tira per darrere<sup>[1]</sup>"),
+ "sp_genoll": split("On fa mal", "La cara externa del genoll"),
+ "sp_gmed": split("Gluti mitjà", "Menys força en corredores amb cintilla<sup>[4]</sup>"),
+ "pop_carrega2": pop("Ajusta la càrrega", "Uns dies, sense aturar-te del tot<sup>[2]</sup>"),
  "pop_cintilla": pop("La cintilla?", "Cintilla iliotibial"),
  "card_cint": card("Cintilla iliotibial", "Del maluc fins a sota del genoll<sup>[1]</sup>"),
  "card_tfl": card("Tensor de la fàscia lata", "Hi tira per davant<sup>[1]</sup>"),
