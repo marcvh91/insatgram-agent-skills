@@ -114,7 +114,7 @@ split3(add(W/'11.mov'), 4211, 6.15, 9.40, 's2_gmed.png', 'p6_gmed.mp4', 0.5, 0.5
 talk(add(W/'12.mov'), 4212, 1.50, 5.40, 1.3, 0.48, 0.33, [('pop_estirar.png', 1.35, 99)])
 silhouette(add(W/'13.mov'), 4152, 2.80, 4.6, 4212, 5.40, 3.0, [('pop_enfortir.png', 0.1, 2.5), ('pop_carrega2.png', 2.5, 99)])
 # 7 · Crida
-broll(add(W/'14.mov'), 4223, 2.40, 4.5, None, 0, 1.0, 0.5, 0.2, [('t_final.png', 0.3, 99)])
+broll(add(W/'14.mov'), 4223, 2.40, 3.0, None, 0, 1.0, 0.5, 0.2, [('t_final.png', 0.3, 99)])
 (W/'l.txt').write_text(''.join(f"file '{x}'\n" for x in seq))
 ff('-f', 'concat', '-safe', 0, '-i', W/'l.txt', '-c', 'copy', W/'join.mov')
 # whoosh a l'entrada/sortida de cada targeta 3D
