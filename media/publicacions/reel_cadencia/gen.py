@@ -9,11 +9,14 @@ def low(html, size=62, top=1330):
 <div style="position:absolute;left:0;right:0;top:{top-40}px;height:{1920-top+40}px;background:linear-gradient(180deg,rgba(11,15,18,0) 0%,rgba(11,15,18,.9) 8%,rgba(11,15,18,.94) 100%)"></div>
 <div style="position:absolute;top:{top}px;left:64px;right:64px;font-weight:900;font-size:{size}px;line-height:1.05;letter-spacing:-2px;text-transform:uppercase">{html}</div></div>'''
 SVG = '''<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
-<circle cx="510" cy="1120" r="70" fill="none" stroke="#FF4D3D" stroke-width="12"/>
-<line x1="360" y1="960" x2="450" y2="1058" stroke="#FF4D3D" stroke-width="10" stroke-linecap="round"/>
-<polygon points="466,1076 428,1064 454,1038" fill="#FF4D3D"/>
-<rect x="150" y="890" width="230" height="78" rx="14" fill="#FF4D3D"/>
-<text x="265" y="944" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="900" font-size="46">TALÓ</text>
+<line x1="705" y1="700" x2="728" y2="1005" stroke="#FF4D3D" stroke-width="10" stroke-linecap="round"/><circle cx="705" cy="700" r="12" fill="#FF4D3D"/><circle cx="728" cy="1005" r="12" fill="#FF4D3D"/>
+<line x1="740" y1="1146" x2="955" y2="1076" stroke="#FF4D3D" stroke-width="10" stroke-linecap="round"/>
+<line x1="600" y1="1146" x2="1010" y2="1146" stroke="#FF4D3D" stroke-width="6" stroke-linecap="round" opacity=".85"/>
+<circle cx="708" cy="1128" r="40" fill="none" stroke="#FF4D3D" stroke-width="11"/>
+<line x1="560" y1="1205" x2="672" y2="1150" stroke="#FF4D3D" stroke-width="9" stroke-linecap="round"/>
+<polygon points="690,1141 652,1140 668,1170" fill="#FF4D3D"/>
+<rect x="330" y="1180" width="230" height="78" rx="14" fill="#FF4D3D"/>
+<text x="445" y="1234" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="900" font-size="46">TALÓ</text>
 </svg>'''
 T = 1335
 ITEMS = {

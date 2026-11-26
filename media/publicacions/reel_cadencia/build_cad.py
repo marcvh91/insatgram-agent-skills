@@ -10,8 +10,8 @@ def seg(out, src, s, d, ovs, freeze=False):
     for i, png in enumerate(ovs):
         ins += ['-loop', 1, '-framerate', 30, '-t', d, '-i', OV / png]; fc += f";[{last}][{i+1}:v]overlay=0:0[v{i+1}]"; last = f'v{i+1}'
     ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-t', d, *V, out)
-P = [('a', SLOW, 20.14, 3.5, ['annot.png', 't0.png'], True),
-     ('b', SLOW, 20.14, 4.0, ['annot.png', 't1.png'], True),
+P = [('a', SLOW, 22.2, 3.5, ['annot.png', 't0.png'], True),
+     ('b', SLOW, 22.2, 4.0, ['annot.png', 't1.png'], True),
      ('c', SLOW, 20.3, 4.6, ['t2.png'], False),
      ('d', SLOW, 25.0, 3.6, ['t3.png'], False),
      ('e', REAL, 5.0, 4.4, ['t4.png'], False),
