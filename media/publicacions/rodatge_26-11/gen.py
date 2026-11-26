@@ -16,42 +16,19 @@ def card(n, name, t, pla, pic, say, act, edit, extra=""):
 <div class="hd"><label class="chk"><input type="checkbox" id="c{e(n)}"><span>{e(n)}</span></label><b>{e(name)}</b><span class="pill">{e(t)}</span><span class="pill set">{e(pla)}</span></div>
 <p class="say">«{say}»</p><dl><dt>Què fas</dt><dd>{act}</dd><dt>Edició</dt><dd>{e(edit)}</dd></dl>{ex}</div></li>'''
 DROP = [
- ("D1", "Ganxo + portada", "0–3 s", "Pla A", img("ref_ganxo.jpg", "Bamba a l'altura del pit"),
-  "Has canviat de bambes i ara et fa mal el <b>genoll</b> o l'<b>Aquil·les</b>?",
-  "Comença amb la bamba <b>tapant l'objectiu</b> (a 30 cm) i baixa-la mentre parles fins a l'altura del pit. Al final, <b>2 s quiet somrient de veritat</b> amb la bamba: d'aquí trec la portada.",
-  "Títol des del primer fotograma"),
- ("D2", "La sospita", "3–5 s", "Pla A", img("ref_B.jpg", "Primer pla"),
-  "Pot ser culpa del <b>drop</b>.",
-  "Cella aixecada i dos copets amb el dit a la bamba.",
-  "Zoom ràpid al teu primer pla"),
- ("D3", "Què és", "5–9 s", "Pla A", img("ref_detall.jpg", "Bamba de perfil"),
-  "El drop és la diferència d'alçada entre el <b>taló</b> i la <b>punta</b>.",
-  "Bamba de perfil a l'altura del pit. Assenyala el taló i després la punta.",
-  "A dalt, el dibuix del drop"),
- ("D4", "Els 3 tipus", "9–15 s", "Pla A", img("ref_il.jpg", "Il·lustració de les 3 sabatilles"),
+ ("D1", "Ganxo + portada", "~6 s", "Pla A", img("ref_ganxo.jpg", "Bamba a l'altura del pit"),
+  "Tens molèsties al tendó d'<b>Aquil·les</b> o al <b>genoll</b> quan corres, i mai t'has parat a mirar el <b>calçat</b>?",
+  "Comença sense bamba. A «calçat», aixeca-la <b>a l'altura del pit</b> (no més avall: a sota hi va el títol). En acabar, <b>2 s quiet somrient de veritat</b> amb la bamba: d'aquí trec la portada.",
+  "Substitueix el ganxo actual; títol igual que ara"),
+ ("D3", "Què és el drop", "~7 s", "Pla A", img("ref_detall.jpg", "Bamba de perfil"),
+  "Això és el drop: la diferència d'altura entre el <b>taló</b> i la <b>punta</b>. I aquesta té un drop de <b>__ mil·límetres</b>.",
+  "Bamba de perfil a l'altura del pit. Assenyala el taló i després la punta. <b>Mira abans quin drop té la bamba</b> (a la web de la marca) i digues el número.",
+  "Substitueix el clip de la bamba blava; a dalt, el dibuix del drop"),
+ ("D4", "Els 3 tipus (àudio)", "~7 s", "Veu", sk("veu", "Només àudio"),
   "N'hi ha de tres tipus. <b>Zero drop</b>: taló i punta a la mateixa altura. <b>Drop baix</b>: de quatre a sis mil·límetres. I <b>drop alt</b>: de vuit a dotze, el més habitual.",
-  "Compta amb els dits: 1, 2, 3. Somriu: es nota a la veu.",
-  "La il·lustració a pantalla completa; cada sabatilla s'il·lumina quan l'anomenes"),
- ("D5", "Alt i baix", "15–21 s", "Pla A", img("ref_cards.jpg", "Targetes drop alt i baix"),
-  "Drop <b>alt</b>: més càrrega al <b>genoll</b>. <i>(pausa)</i> Drop <b>baix</b>: més feina per al <b>bessó</b> i l'<b>Aquil·les</b>.",
-  "Sense bamba. A «drop alt» assenyala avall a la teva <b>esquerra</b>; a «drop baix», avall a la teva <b>dreta</b>.",
-  "Les targetes de drop alt i baix a baix, com ara"),
- ("D6", "La idea clau", "21–24 s", "Pla A", img("ref_A.jpg", "Pla de cintura amunt"),
-  "La càrrega <b>no desapareix</b>: <b>canvia de lloc</b>.",
-  "Fes <b>un pas cap a càmera</b>. Les mans es mouen d'un costat a l'altre a «canvia de lloc».",
-  "Paraules clau en lima"),
- ("D7", "Què fer", "24–30 s", "Pla A", img("ref_A.jpg", "Pla de cintura amunt"),
-  "Per això, si canvies de drop, no ho facis <b>de cop</b>: dona-li de <b>vuit a dotze setmanes</b>.",
-  "Mans obertes de cop a «de cop». Compta amb els dits a «vuit a dotze».",
-  "«8–12 SETMANES» en lima"),
- ("D8", "Comoditat", "30–32 s", "Pla A", img("ref_A.jpg", "Pla de cintura amunt"),
-  "I tria sempre la que et sigui <b>més còmoda</b>.",
-  "Somriu i abraça la bamba contra el pit.",
-  "—"),
- ("D9", "Crida", "32–36 s", "Pla A", img("ref_cta.jpg", "Caminant cap a càmera"),
-  "Et fa mal el genoll o l'Aquil·les quan corres? <b>Escriu-me</b> i ho mirem.",
-  "Comença a 3 m i <b>camina cap a càmera</b>; para a 1,5 m i assenyala avall.",
-  "WhatsApp, Tonus i web a baix"),
+  "Grava-ho com un vídeo, al <b>mateix lloc i amb el mateix micro</b>, perquè soni igual. Dret i <b>somrient mentre parles</b>. Un punt més ràpid que l'altra vegada.",
+  "Cada sabatilla s'il·lumina quan l'anomenes",
+  img("ref_il.jpg", "Il·lustració de les 3 sabatilles", "il")),
 ]
 CINT = [
  ("C1", "Ganxo + portada", "0–4 s", "Pla A", sk("corre", "Entres corrent"),
@@ -118,7 +95,7 @@ input:focus-visible{{outline:2px solid var(--lime);outline-offset:2px}}
 @media (max-width:480px){{.clip{{grid-template-columns:92px 1fr}} .say{{font-size:16px}}}}
 </style>
 <main class="wrap">
-<header><h1>Rodatge <em>drop i cintilla</em></h1><p class="lead">Part 1: el Reel del drop sencer (avui, 9 clips, ~36 s). Part 2: el Reel de la cintilla sencer, en 7 clips i uns 42 s.</p></header>
+<header><h1>Rodatge <em>drop i cintilla</em></h1><p class="lead">Part 1: els 3 clips nous del drop (avui); la resta del Reel es queda com està. Part 2: el Reel de la cintilla sencer, en 7 clips i uns 42 s.</p></header>
 <section><h2>Normes per a tots els clips</h2><div class="box"><ul>
 <li><b>Càmera del darrere 1×</b> (la frontal grava en mirall), 4K 30 fps, <b>vídeo HDR desactivat</b>.</li>
 <li><b>Bloqueja la llum:</b> mantén el dit sobre la teva cara fins que surti «Bloqueo AE/AF», i no ho toquis més durant aquell bloc.</li>
@@ -128,7 +105,7 @@ input:focus-visible{{outline:2px solid var(--lime);outline-offset:2px}}
 <li><b>3 preses</b> de cada clip (normal, amb més energia, amb el gest exagerat). Si t'equivoques, 2 s de silenci i repeteix la frase sencera.</li>
 <li><b>Un vídeo per clip</b>, adjuntats al xat (no al Drive).</li>
 </ul></div></section>
-<section><h2><span>1 ·</span> Drop · avui, sencer</h2><p class="sub">Polo de Tonus, paret blanca, sense bombetes grogues. Una sola bamba, la mateixa a tots els clips.</p>
+<section><h2><span>1 ·</span> Drop · avui</h2><p class="sub">Polo de Tonus, paret blanca, sense bombetes grogues. La mateixa bamba al D1 i al D3.</p>
 <ol class="clips">{drop}</ol></section>
 <section><h2><span>2 ·</span> Cintilla · Reel sencer</h2><p class="sub">Roba de córrer, a l'aire lliure. Ombra uniforme o dia ennuvolat; si fa sol, que et toqui de cara o de costat, mai per darrere.</p>
 <div class="box"><ul>
