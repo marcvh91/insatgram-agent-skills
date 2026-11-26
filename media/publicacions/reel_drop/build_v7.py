@@ -10,12 +10,11 @@ def zc(z, k): return f"scale=round(1080*{z}/2)*2:round(1920*{z}/2)*2,crop=1080:1
 def seg(out, clip, s, e, z=1.0, k=0.5, ovs=(), vf_extra='', tail=0):
     """ovs: [(png, t_in, t_out)] relatius al segment, amb fosa de 0,15 s."""
     d = round(e - s, 3); ins = ['-ss', s, '-t', d, '-i', P / f'p_{clip}.mov']
-    fc = f"[0:v]{zc(z, k)}{vf_extra}[v0]"; last = 'v0'
+    fc = f"[0:v]{zc(z, k)}{vf_extra}" + (f",tpad=stop_mode=clone:stop_duration={tail}" if tail else "") + "[v0]"; last = 'v0'
     for i, (png, a, b) in enumerate(ovs):
-        ins += ['-loop', 1, '-t', d, '-i', OV / png if '/' not in str(png) else png]
-        fo = f",fade=t=out:st={b - 0.15}:d=0.15:alpha=1" if b < d else ""
+        ins += ['-loop', 1, '-t', d + tail, '-i', OV / png if '/' not in str(png) else png]
+        fo = f",fade=t=out:st={b - 0.15}:d=0.15:alpha=1" if b < d + tail else ""
         fc += f";[{i+1}:v]format=rgba,fade=t=in:st={a}:d=0.15:alpha=1{fo}[o{i}];[{last}][o{i}]overlay=0:0[v{i+1}]"; last = f'v{i+1}'
-    if tail: fc += f";[{last}]tpad=stop_mode=clone:stop_duration={tail}[vt]"; last = 'vt'
     fc += f";[0:a]afade=t=in:d=0.03,afade=t=out:st={d-0.04}:d=0.04{f',apad=pad_dur={tail}' if tail else ''}[a]"
     ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-map', '[a]', '-t', d + tail, *V, *A, out)
 def concat(name, parts):
@@ -53,7 +52,7 @@ seg(W/'c1.mov', 4181, 1.45 - PAD, 4.45, 1.10, 0.85, [('d5_alt.png', 0.45, 99)])
 seg(W/'c2.mov', 4181, 6.45, 9.85, 1.18, 0.85, [('d5_alt.png', 0, 99), ('d5_baix.png', 0.15, 99)])
 seg(W/'c3.mov', 4181, 16.35, 20.05, 1.0, 0.5)
 seg(W/'c4.mov', 4183, 0.25, 4.60, 1.0, 0.5)
-seg(W/'c5.mov', 4183, 4.60, 6.72, 1.16, 0.2, [('pop_setm.png', 0.05, 99)])
+seg(W/'c5.mov', 4183, 4.60, 6.72, 1.16, 0.2, [('pop_setm.png', 0.05, 2.12), ('t_final.png', 2.05, 99)], tail=2.0)
 BC = concat('C', [W/f'c{i}.mov' for i in range(1, 6)])
 # Bloc D · crida a la consulta + contacte (congela l'últim fotograma per llegir-lo)
 # (sense crida final: decisió de Marc 26/11)

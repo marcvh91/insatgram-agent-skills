@@ -11,7 +11,7 @@ sup{color:#D4FF3F;font-size:22px;font-weight:800}"""
 def ref(*n): return '<sup>' + ''.join(f'[{i}]' for i in n) + '</sup>'
 def topband(h): return f'<div style="position:absolute;left:0;right:0;top:0;height:{h}px;background:linear-gradient(180deg,rgba(11,15,18,.93) 0%,rgba(11,15,18,.86) 62%,rgba(11,15,18,0) 100%)"></div>'
 TITLE = 'Molèsties al tendó d\'Aquil·les <span style="color:#D4FF3F">o al genoll quan corres?</span>'
-def title(top, fs, h):
+def title(top, fs, h, TITLE=TITLE):
     return f'''<div style="width:1080px;height:1920px;position:relative">{topband(h)}
 <div style="position:absolute;top:{top}px;left:60px;right:60px;text-align:center;font-weight:900;font-size:{fs}px;line-height:1;letter-spacing:-2.5px;text-transform:uppercase;color:#fff">{TITLE}</div></div>'''
 def cards(show_baix, top=1160, show_alt=True, cw=300, lw=270):
@@ -35,8 +35,8 @@ CTA = """<div style="width:1080px;height:1920px;position:relative">
 <div style="font-size:44px;font-weight:800;color:#fff">WhatsApp <span style="color:#D4FF3F">627 148 092</span></div>
 <div style="font-size:44px;font-weight:800;margin-top:10px;color:#fff">Tonus <span style="color:#D4FF3F">601 983 214</span> <span style="font-size:30px;color:#B9C1C6;font-weight:600">«demana per mi»</span></div>
 <div style="font-size:44px;font-weight:800;margin-top:10px;color:#fff">🌐 <span style="color:#D4FF3F">marcvallfisio.com</span></div></div></div></div>"""
-ITEMS = {"t_ganxo": title(70, 64, 430), "t_cover": title(265, 74, 640), "d5_alt": cards(False), "d5_tots": cards(True), "d5_baix": cards(True, show_alt=False),
-         "pop_setm": POP("8–12 setmanes", "d'adaptació a un drop nou"), "pop_lloc": POP("Canvia de lloc", "la càrrega no desapareix"), "cta": CTA}
+ITEMS = {"t_final": title(80, 76, 420, TITLE='I tu, <span style="color:#D4FF3F">quin drop portes?</span>'), "t_ganxo": title(70, 64, 430), "t_cover": title(265, 74, 640), "d5_alt": cards(False), "d5_tots": cards(True), "d5_baix": cards(True, show_alt=False),
+         "t_final": title(80, 84, 360, 'I tu, <span style="color:#D4FF3F">quin drop portes?</span>'), "pop_setm": POP("8–12 setmanes", "d'adaptació a un drop nou"), "pop_lloc": POP("Canvia de lloc", "la càrrega no desapareix"), "cta": CTA}
 async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(); pg = await b.new_page(viewport={"width": 1080, "height": 1920})

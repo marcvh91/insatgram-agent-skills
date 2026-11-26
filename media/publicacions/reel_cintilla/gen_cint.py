@@ -41,6 +41,7 @@ def low(big, sub, ok):
 <div style="font-weight:900;font-size:50px;letter-spacing:-1px;color:{col};text-transform:uppercase">{mark} {big}</div>
 <div style="margin-top:8px;font-weight:700;font-size:36px;color:#fff">{sub}</div></div>''')
 ITEMS = {
+ "t_final": frame(band(330) + '<div style="position:absolute;top:60px;left:30px;right:30px;text-align:center;font-weight:900;font-size:50px;line-height:1.08;letter-spacing:-1.5px;text-transform:uppercase;color:#fff">Guarda-ho per si mai et molesta<br><span style="color:#D4FF3F">i envia-ho al teu company de sortides</span></div>'),
  "t_hook": title(),
  "s2_cint": split2("Cintilla iliotibial", "[1]"),
  "s2_tfl": split2("Tensor de la fàscia lata", "[1]"),
