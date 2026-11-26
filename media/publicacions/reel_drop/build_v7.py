@@ -31,7 +31,7 @@ BA = concat('A', [W/'a1.mov', W/'a2.mov', W/'a3.mov'])
 # Bloc B · els 3 tipus: veu de 4179 sobre la il·lustració, cada sabatilla s'il·lumina i s'hi apropa
 IL = R / 'v2' / 's3_bambes.png'
 def ill(out, s, e, mask, cy, z0, z1):
-    d = round(e - s, 3); ins = ['-loop', 1, '-t', d, '-i', IL, '-ss', s, '-t', d, '-i', P/'p_4179.mov']
+    d = round(e - s, 3); ins = ['-loop', 1, '-framerate', 30, '-t', d, '-i', IL, '-ss', s, '-t', d, '-i', P/'p_4179.mov']
     zp = f"scale=2160:3840,zoompan=z='{z0}+({z1}-{z0})*on/({d}*30)':x='iw/2-(iw/zoom/2)':y='max(0,min(ih-ih/zoom,{cy*2}-ih/zoom/2))':d=1:s=1080x1920:fps=30,setsar=1"
     fc = f"[0:v]{zp}[v0]"; last = 'v0'
     if mask is not None:
