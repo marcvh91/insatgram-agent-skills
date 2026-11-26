@@ -22,27 +22,31 @@ def concat(name, parts):
     (W / f'{name}.txt').write_text(''.join(f"file '{x}'\n" for x in parts)); ff('-f', 'concat', '-safe', 0, '-i', W / f'{name}.txt', '-c', 'copy', W / f'{name}.mov'); return W / f'{name}.mov'
 T5 = R / 'v3' / 't5_canvi.png'
 # Bloc A · ganxo, pont, què és
-seg(W/'a1.mov', 4171, 0.55, 6.70, 1.0, 0.5, [('t_ganxo.png', 0, 99)])
-seg(W/'a2.mov', 4174, 0.45, 4.10, 1.12, 0.3, [(T5, 0, 99)])
-ff('-ss', 1.35, '-t', 4.60 + PAD, '-i', P/'p_4176.mov', '-loop', 1, '-i', R/'panels/p2_drop.png', '-filter_complex',
-   "[0:v]scale=1080:1920,setsar=1,split[a][b];[a]crop=1080:1200:0:200,boxblur=30:3,eq=brightness=-0.15[bg];[b]scale=918:1632,crop=918:1200:0:120[fg];[bg][fg]overlay=81:0[vid];[1:v]crop=1080:720:0:0,setsar=1[top];[top][vid]vstack[out];[0:a]afade=t=in:d=0.03[a]",
-   '-map', '[out]', '-map', '[a]', '-t', 4.60 + PAD, *V, *A, W/'a3.mov')
+seg(W/'a1.mov', 4171, 0.55, 5.70, 1.0, 0.5, [('t_ganxo.png', 0, 99)])
+def panel(out, clip, s, d, fin=True, fout=False):
+    """Dibuix del drop a dalt (720 px) i ell a sota, com a la v1."""
+    af = "afade=t=in:d=0.03" + (f",afade=t=out:st={d-0.04}:d=0.04" if fout else "")
+    ff('-ss', s, '-t', d, '-i', P/f'p_{clip}.mov', '-loop', 1, '-framerate', 30, '-i', R/'panels/p2_drop.png', '-filter_complex',
+       f"[0:v]scale=1080:1920,setsar=1,split[a][b];[a]crop=1080:1200:0:200,boxblur=30:3,eq=brightness=-0.15[bg];[b]scale=918:1632,crop=918:1200:0:120[fg];[bg][fg]overlay=81:0[vid];[1:v]crop=1080:720:0:0,setsar=1[top];[top][vid]vstack[out];[0:a]{af}[a]",
+       '-map', '[out]', '-map', '[a]', '-t', d, *V, *A, out)
+panel(W/'a2.mov', 4174, 0.45, 3.65, fout=True)
+panel(W/'a3.mov', 4176, 1.35, 4.60 + PAD)
 BA = concat('A', [W/'a1.mov', W/'a2.mov', W/'a3.mov'])
 # Bloc B · els 3 tipus: veu de 4179 sobre la il·lustració, cada sabatilla s'il·lumina i s'hi apropa
 IL = R / 'v2' / 's3_bambes.png'
-def ill(out, s, e, mask, cy, z0, z1):
+def ill(out, s, e, mask, cy, z0, z1, fade=True):
     d = round(e - s, 3); ins = ['-loop', 1, '-framerate', 30, '-t', d, '-i', IL, '-ss', s, '-t', d, '-i', P/'p_4179.mov']
     zp = f"scale=2160:3840,zoompan=z='{z0}+({z1}-{z0})*on/({d}*30)':x='iw/2-(iw/zoom/2)':y='max(0,min(ih-ih/zoom,{cy*2}-ih/zoom/2))':d=1:s=1080x1920:fps=30,setsar=1"
     fc = f"[0:v]{zp}[v0]"; last = 'v0'
     if mask is not None:
         ins += ['-loop', 1, '-t', d, '-i', OV / f'mask_{mask}.png']
-        fc = f"[0:v]scale=1080:1920[il];[2:v]format=rgba,fade=t=in:d=0.2:alpha=1[m];[il][m]overlay=0:0,{zp}[v0]"
+        fc = f"[0:v]scale=1080:1920[il];[2:v]format=rgba{',fade=t=in:d=0.2:alpha=1' if fade else ''}[m];[il][m]overlay=0:0,{zp}[v0]"
     fc += ";[1:a]afade=t=in:d=0.03,afade=t=out:st=%s:d=0.04[a]" % (d - 0.04)
     ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-map', '[a]', '-t', d, *V, *A, out)
-ill(W/'b1.mov', 0.85 - PAD, 4.00, None, 960, 1.0, 1.04)
-ill(W/'b2.mov', 4.00, 8.15, 0, 530, 1.02, 1.07)
-ill(W/'b3.mov', 8.15, 10.56, 1, 1005, 1.02, 1.07)
-ill(W/'b4.mov', 10.56, 13.40 + PAD, 2, 1475, 1.02, 1.07)
+ill(W/'b1.mov', 0.85 - PAD, 4.00, 0, 960, 1.0, 1.02, fade=False)
+ill(W/'b2.mov', 4.00, 8.15, 0, 530, 1.02, 1.07, fade=False)
+ill(W/'b3.mov', 8.15, 10.56, 1, 1005, 1.02, 1.07, fade=False)
+ill(W/'b4.mov', 10.56, 13.40 + PAD, 2, 1475, 1.02, 1.07, fade=False)
 BB = concat('B', [W/f'b{i}.mov' for i in range(1, 5)])
 # Bloc C · on va la tensió (targetes sota les mans) + adaptació
 seg(W/'c1.mov', 4181, 1.45 - PAD, 4.45, 1.10, 0.85, [('d5_alt.png', 0.45, 99)])
@@ -52,7 +56,7 @@ seg(W/'c4.mov', 4183, 0.25, 4.60, 1.0, 0.5)
 seg(W/'c5.mov', 4183, 4.60, 6.50 + PAD, 1.16, 0.2, [('pop_setm.png', 0.05, 99)])
 BC = concat('C', [W/f'c{i}.mov' for i in range(1, 6)])
 # Bloc D · crida a la consulta + contacte (congela l'últim fotograma per llegir-lo)
-seg(W/'d1.mov', 4191, 1.95 - PAD, 9.00, 1.12, 0.45, [('cta.png', 4.90, 99)], tail=1.8)
+seg(W/'d1.mov', 4191, 1.95 - PAD, 7.40, 1.12, 0.45, [('cta.png', 4.90, 99)], tail=2.4)
 BD = W/'d1.mov'
 # Transicions entre blocs + whoosh suau
 blocks = [BA, BB, BC, BD]; trans = ['slideleft', 'slideleft', 'fadeblack']

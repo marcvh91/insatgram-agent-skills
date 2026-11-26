@@ -14,15 +14,15 @@ TITLE = 'Molèsties al tendó d\'Aquil·les <span style="color:#D4FF3F">o al gen
 def title(top, fs, h):
     return f'''<div style="width:1080px;height:1920px;position:relative">{topband(h)}
 <div style="position:absolute;top:{top}px;left:60px;right:60px;text-align:center;font-weight:900;font-size:{fs}px;line-height:1;letter-spacing:-2.5px;text-transform:uppercase;color:#fff">{TITLE}</div></div>'''
-def cards(show_baix, top=1390, show_alt=True, cw=372, lw=130):
-    """Targetes compactes, a baix al centre (sobre la cintura): no tapen les mans i queden fora de la zona dels botons d'Instagram."""
-    def card(x, t, txt, leg, vis):
-        return (f'<div style="position:absolute;top:{top}px;left:{x}px;width:{cw}px;opacity:{1 if vis else 0};background:rgba(11,15,18,.9);border:4px solid #D4FF3F;border-radius:24px;padding:14px 14px 12px">'
-                f'<div style="font-size:32px;font-weight:900;letter-spacing:1px;color:#D4FF3F;text-align:center">{t}</div>'
-                f'<div style="display:flex;align-items:center;gap:10px"><div style="flex:0 0 {lw}px">{leg}</div>'
-                f'<div style="font-size:29px;font-weight:800;line-height:1.18">{txt}</div></div></div>')
-    L = card(160, "DROP ALT", f"🔴 Genoll<br>(ròtula)<br>fins a +15 %{ref(1)}", leg_panel(f"a{show_baix}{show_alt}", 36, 22, "knee", w=lw), show_alt)
-    R = card(548, "DROP BAIX", f"🔴 Bessó i<br>Aquil·les{ref(2,3)}", leg_panel(f"b{show_baix}", 26, 26, "calf", w=lw), show_baix)
+def cards(show_baix, top=1080, show_alt=True, cw=300, lw=270):
+    """Targetes grans als costats (com a la v2), apareixen quan les anomena."""
+    def card(side, t, txt, leg, vis):
+        x = "left:24px" if side == "L" else "right:24px"
+        return (f'<div style="position:absolute;top:{top}px;{x};width:{cw}px;opacity:{1 if vis else 0};background:rgba(11,15,18,.9);border:4px solid #D4FF3F;border-radius:26px;padding:18px 8px 16px;text-align:center">'
+                f'<div style="font-size:34px;font-weight:900;letter-spacing:1px;color:#D4FF3F">{t}</div>{leg}'
+                f'<div style="font-size:30px;font-weight:800;line-height:1.2;margin-top:6px">{txt}</div></div>')
+    L = card("L", "DROP ALT", f"🔴 Genoll (ròtula)<br>fins a +15 %{ref(1)}", leg_panel(f"a{show_baix}{show_alt}", 36, 22, "knee", w=lw), show_alt)
+    R = card("R", "DROP BAIX", f"🔴 Bessó i<br>Aquil·les{ref(2,3)}", leg_panel(f"b{show_baix}{show_alt}", 26, 26, "calf", w=lw), show_baix)
     return f'<div style="width:1080px;height:1920px;position:relative">{L}{R}</div>'
 POP = lambda big, sub: f'''<div style="width:1080px;height:1920px;position:relative">{topband(330)}
 <div style="position:absolute;top:70px;left:0;right:0;text-align:center"><span style="display:inline-block;background:#D4FF3F;color:#0B0F12;font-weight:900;font-size:66px;letter-spacing:-2px;padding:12px 30px;border-radius:22px;text-transform:uppercase;transform:rotate(-2deg)">{big}</span>
