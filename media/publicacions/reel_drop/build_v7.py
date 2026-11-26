@@ -40,9 +40,9 @@ def ill(out, s, e, mask, cy, z0, z1):
     fc += ";[1:a]afade=t=in:d=0.03,afade=t=out:st=%s:d=0.04[a]" % (d - 0.04)
     ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-map', '[a]', '-t', d, *V, *A, out)
 ill(W/'b1.mov', 0.85 - PAD, 4.00, None, 960, 1.0, 1.04)
-ill(W/'b2.mov', 4.00, 8.15, 0, 530, 1.10, 1.16)
-ill(W/'b3.mov', 8.15, 10.56, 1, 1005, 1.10, 1.16)
-ill(W/'b4.mov', 10.56, 13.40 + PAD, 2, 1475, 1.10, 1.16)
+ill(W/'b2.mov', 4.00, 8.15, 0, 530, 1.02, 1.07)
+ill(W/'b3.mov', 8.15, 10.56, 1, 1005, 1.02, 1.07)
+ill(W/'b4.mov', 10.56, 13.40 + PAD, 2, 1475, 1.02, 1.07)
 BB = concat('B', [W/f'b{i}.mov' for i in range(1, 5)])
 # Bloc C · on va la tensió (targetes sota les mans) + adaptació
 seg(W/'c1.mov', 4181, 1.45 - PAD, 4.45, 1.10, 0.85, [('d5_alt.png', 0.45, 99)])
@@ -52,7 +52,7 @@ seg(W/'c4.mov', 4183, 0.25, 4.60, 1.0, 0.5)
 seg(W/'c5.mov', 4183, 4.60, 6.50 + PAD, 1.16, 0.2, [('pop_setm.png', 0.05, 99)])
 BC = concat('C', [W/f'c{i}.mov' for i in range(1, 6)])
 # Bloc D · crida a la consulta + contacte (congela l'últim fotograma per llegir-lo)
-seg(W/'d1.mov', 4191, 1.30 - PAD, 9.00, 1.0, 0.5, [('cta.png', 5.55, 99)], tail=1.8)
+seg(W/'d1.mov', 4191, 1.95 - PAD, 9.00, 1.12, 0.45, [('cta.png', 4.90, 99)], tail=1.8)
 BD = W/'d1.mov'
 # Transicions entre blocs + whoosh suau
 blocks = [BA, BB, BC, BD]; trans = ['slideleft', 'slideleft', 'fadeblack']
