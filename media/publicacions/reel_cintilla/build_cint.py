@@ -55,6 +55,19 @@ def split3(out, clip, s, e, lab, mp4, m0, cx, yt, wf, lows=()):
         fc += f";[{i+3}:v]format=rgba,fade=t=in:st={a}:d=0.15:alpha=1{fo}[l{i}];[{last}][l{i}]overlay=0:0[c{i+1}]"; last = f'c{i+1}'
     fc += f";[0:a]afade=t=in:d=0.03,afade=t=out:st={d-0.04}:d=0.04[a]"
     ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-map', '[a]', '-t', d, *V, *A, out)
+B = pathlib.Path('/home/claude/broll')
+def broll(out, vclip, vs, d, aclip, a_s, z, cx, ht, pops=()):
+    """Pla de recurs (vídeo d'un clip de suport) amb l'àudio d'un altre clip."""
+    vsrc = B / f'IMG_{vclip}.mov' if (B / f'IMG_{vclip}.mov').exists() else S / f'IMG_{vclip}.mov'
+    asrc = S / f'IMG_{aclip}.mov' if aclip else vsrc
+    ins = ['-ss', vs, '-t', d, '-i', vsrc, '-ss', a_s if aclip else vs, '-t', d, '-i', asrc]
+    fc = f"[0:v]scale=2160:3840:flags=lanczos,{crop(z, cx, ht)}[v0]"; last = 'v0'
+    for i, (png, a, b) in enumerate(pops):
+        ins += ['-loop', 1, '-framerate', 30, '-t', d, '-i', OV / png]
+        fi = f",fade=t=in:st={a}:d=0.12:alpha=1" if a > 0 else ""
+        fc += f";[{i+2}:v]format=rgba{fi}[o{i}];[{last}][o{i}]overlay=0:0[v{i+1}]"; last = f'v{i+1}'
+    fc += f";[1:a]afade=t=in:d=0.03,afade=t=out:st={d-0.04}:d=0.04[a]"
+    ff(*ins, '-filter_complex', fc, '-map', f'[{last}]', '-map', '[a]', '-t', d, *V, *A, out)
 def silhouette(out, clip, s, d, audio_clip, a_s, a_d, pops):
     """Exercici a contrallum (S2/S3) amb la veu de la frase; si la veu és més curta, silenci al final."""
     ins = ['-ss', s, '-t', d, '-i', S / f'IMG_{clip}.mov', '-ss', a_s, '-t', a_d, '-i', S / f'IMG_{audio_clip}.mov']
@@ -80,7 +93,8 @@ def card(out, clip, s, e, cardpng, mp4, m0, lows=()):
 seq = []
 def add(f): seq.append(f); return f
 # 1 · Ganxo: arriba corrent (velocitat real, retallat) i parla; títol des del primer fotograma
-talk(add(W/'01.mov'), 4195, 2.20, 6.66, 1.0, 0.5, 0.2)
+broll(add(W/'00.mov'), 4220, 3.75, 0.8, None, 0, 1.0, 0.5, 0.2)
+talk(add(W/'01.mov'), 4197, 4.00, 5.25, 1.2, 0.76, 0.41)
 talk(add(W/'02.mov'), 4195, 6.66, 11.05, 1.15, 0.5, 0.17, [('t_hook.png', 0, 2.75), ('pop_cintilla.png', 2.75, 99)])
 # 2 · Què és (a dalt 3D, a baix ell)
 talk(add(W/'03.mov'), 4198, 0.85, 2.30, 1.3, 0.45, 0.21)
@@ -93,7 +107,9 @@ split3(add(W/'07.mov'), 4200, 4.70, 6.75, 's2_gmax.png', 'p5_gmax.mp4', 1.5, 0.4
 talk(add(W/'08.mov'), 4206, 1.00, 2.85, 1.0, 0.5, 0.0)
 split3(add(W/'09.mov'), 4206, 2.85, 12.25, 's2_genoll.png', 'p3_genoll.mp4', 0.5, 0.5, 0.12, 1.0, [('l2_friccio.png', 2.6, 5.4), ('l2_compr.png', 5.6, 99)])
 # 5 · Per què apareix
-talk(add(W/'10.mov'), 4211, 1.20, 6.15, 1.35, 0.5, 0.32, [('pop_carrega.png', 1.6, 99)])
+talk(add(W/'10.mov'), 4211, 1.20, 2.95, 1.35, 0.5, 0.32, [('pop_carrega.png', 0.4, 99)])
+broll(add(W/'10b.mov'), 4225, 3.90, 1.75, 4211, 2.95, 1.3, 0.5, 0.30, [('pop_carrega.png', 0, 99)])
+talk(add(W/'10c.mov'), 4211, 4.70, 6.15, 1.35, 0.5, 0.32, [('pop_carrega.png', 0, 99)])
 split3(add(W/'11.mov'), 4211, 6.15, 9.40, 's2_gmed.png', 'p6_gmed.mp4', 0.5, 0.5, 0.13, 0.92)
 # 6 · Què fer: estirar ✗ (ell) → enfortir ✓ i ajustar la càrrega (exercici a contrallum)
 talk(add(W/'12.mov'), 4212, 1.50, 5.40, 1.3, 0.48, 0.33, [('pop_estirar.png', 1.35, 99)])
@@ -106,7 +122,7 @@ ff('-f', 'concat', '-safe', 0, '-i', W/'l.txt', '-c', 'copy', W/'join.mov')
 cuts = []; t = 0
 for f in seq:
     d = dur(f); n = f.name
-    if n in ('04.mov', '06.mov', '09.mov', '11.mov', '13.mov', '14.mov'): cuts.append(t)
+    if n in ('01.mov', '04.mov', '06.mov', '09.mov', '11.mov', '13.mov', '14.mov'): cuts.append(t)
     t += d
 n = len(cuts)
 fc = f"anoisesrc=c=pink:d=0.4:a=0.5,highpass=f=900,lowpass=f=5500,afade=t=in:d=0.15,afade=t=out:st=0.15:d=0.25,volume=0.08,aformat=sample_rates=48000:channel_layouts=stereo,asplit={n}" + ''.join(f'[w{i}]' for i in range(n)) + ';'
