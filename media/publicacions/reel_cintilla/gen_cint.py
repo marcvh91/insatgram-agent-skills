@@ -14,13 +14,13 @@ def pop(big, sub="", ok=None):
 def card(name, sub):
     """Fons de la targeta 3D: el vídeo 3D (1080×1000) va a y=470."""
     return frame(f'''<div style="position:absolute;inset:0;background:#0B0F12"></div>
-<div style="position:absolute;top:150px;left:60px;right:60px;text-align:center">
+<div style="position:absolute;top:120px;left:60px;right:60px;text-align:center">
 <div style="font-weight:900;font-size:66px;letter-spacing:-2px;line-height:1;color:#D4FF3F;text-transform:uppercase">{name}</div>
 <div style="margin-top:18px;font-weight:700;font-size:40px;color:#fff">{sub}</div></div>''')
 def low(big, sub, ok):
     """Text a sota del 3D, en una targeta (no hi ha persona)."""
     col = "#D4FF3F" if ok else "#FF6B5B"; mark = "✓" if ok else "✗"
-    return frame(f'''<div style="position:absolute;top:{1500 if ok else 1500}px;left:70px;right:70px;border:4px solid {col};border-radius:24px;padding:22px 28px;background:rgba(11,15,18,.92)">
+    return frame(f'''<div style="position:absolute;top:1470px;left:70px;right:70px;border:4px solid {col};border-radius:24px;padding:22px 28px;background:rgba(11,15,18,.92)">
 <div style="font-weight:900;font-size:50px;letter-spacing:-1px;color:{col};text-transform:uppercase">{mark} {big}</div>
 <div style="margin-top:8px;font-weight:700;font-size:36px;color:#fff">{sub}</div></div>''')
 ITEMS = {

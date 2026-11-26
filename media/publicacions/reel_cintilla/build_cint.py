@@ -31,7 +31,7 @@ def card(out, clip, s, e, cardpng, mp4, m0, lows=()):
     """Àudio del clip, imatge = targeta 3D (fons + vídeo 3D a y=470) amb petita entrada en zoom."""
     d = round(e - s, 3)
     ins = ['-ss', s, '-t', d, '-i', S / f'IMG_{clip}.mov', '-loop', 1, '-framerate', 30, '-t', d, '-i', OV / cardpng, '-stream_loop', -1, '-ss', m0, '-i', P3 / mp4]
-    fc = "[2:v]setpts=PTS-STARTPTS,fps=30,scale=1080:1000[m];[1:v][m]overlay=0:470:shortest=1[c0]"; last = 'c0'
+    fc = "[2:v]setpts=PTS-STARTPTS,fps=30,scale=1350:1250,crop=1080:1250:135:0[m];[1:v][m]overlay=0:330:shortest=1[c0]"; last = 'c0'
     for i, (png, a, b) in enumerate(lows):
         ins += ['-loop', 1, '-framerate', 30, '-t', d, '-i', OV / png]
         fo = f",fade=t=out:st={b-0.12}:d=0.12:alpha=1" if b < d else ""
@@ -60,7 +60,7 @@ add(talk(W/'11.mov', 4211, 1.20, 6.15, 1.35, 0.5, 0.32, [('pop_carrega.png', 1.6
 add(card(W/'12.mov', 4211, 6.15, 9.40, 'card_gmed.png', 'p6_gmed.mp4', 0.5) or W/'12.mov')
 # 6 · Què fer
 add(talk(W/'13.mov', 4212, 1.50, 5.30, 1.3, 0.48, 0.33, [('pop_estirar.png', 1.35, 99)]) or W/'13.mov')
-add(talk(W/'14.mov', 4212, 5.30, 8.40, 1.45, 0.48, 0.31, [('pop_enfortir.png', 0.25, 99)]) or W/'14.mov')
+add(talk(W/'14.mov', 4212, 5.30, 8.40, 1.0, 0.48, 0.31, [('pop_enfortir.png', 0.25, 99)]) or W/'14.mov')
 # 7 · Crida
 add(talk(W/'15.mov', 4214, 0.00, 7.95, 1.6, 0.52, 0.34, [(CTA, 6.0, 99)], tail=2.0) or W/'15.mov')
 (W/'l.txt').write_text(''.join(f"file '{x}'\n" for x in seq))
